@@ -7,7 +7,7 @@
         id        = "com.aap.AAPGatewayReader"
         version   = "1.0.0">
 
-    <name>AAPGatewayReader</name>
+    <name>AAP Gateway Reader</name>
 
     <description>
         AAP Gateway article reader.
