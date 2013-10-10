@@ -56,7 +56,7 @@ div { margin:0px; padding:0px; }
 	margin: 0 auto;
 	position: relative;
 	top: 100px;
-	background: url('../img/logo.png') center top no-repeat #d9d9d9;
+	background: url('../img/gatewayLogo.png') center top no-repeat #d9d9d9;
 }
 #logoWrapper h1{
 	font-family: "noticia text", "Times New Roman", Times, serif;
