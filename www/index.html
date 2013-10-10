@@ -26,6 +26,10 @@
 <link rel="stylesheet" type="text/css" href="css/index.css" />
 <link rel="stylesheet" href="css/main.css" />
 
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
 <!--<link href="http://fonts.googleapis.com/css?family=Noticia+Text" rel="stylesheet" type="text/css" />-->
 
 </head>
@@ -41,15 +45,16 @@
             <input id="uname" type="text" />
             <label for="pword">Password</label>
             <input id="pword" type="password" />
-            <input id="login_sign_in" type="submit" value="Sign In" />
+            
+            <button id="login_sign_in" type="submit" class="show-page-loading-msg" data-theme="b" data-textonly="false" data-textvisible="true" data-msgtext="Loading theme b" data-inline="true">SIgn in</button>
           </form>
 			<span id="loading_msg">ZOMG it's loading! (not really)</span>
          </div>
 </div>
 <!-- END LOGIN -->
 
-<div id="content_viewer">
-  <div id="content_navigation" class="blue_bar">
+<div id="content_viewer" >
+  <div id="content_navigation" data-role="header" class="blue_bar">
     <button class="back">&lt;--</button>
     <button class="show_article_list_btn">Select an Article</button>
     <button class="forward">--&gt;</button>
@@ -870,55 +875,65 @@
 <!-- end content viewer -->
 
 <div id="article_list">
-  <div class="header blue_bar"> <img class="aap_header_logo" src="" alt="aap gateway logo" />
+  <div data-role="header" data-position="fixed" class="header blue_bar">
+  	<!--<img class="aap_header_logo" src="" alt="aap gateway logo" />-->
     <h3><span>Article List</span></h3>
-    <button class="history">History</button>
+    <!--<button class="history">History</button>-->
   </div>
-  <ul>
-    <li>
+  <ul data-role="listview" data-split-icon="gear" data-split-theme="d" data-inset="true">
+    <li><a href="#">
+      <img src="img/pediatrics-tn.png">
       <h4>High school athletes say concussions won't sideline them</h4>
-      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span>
-      <button class="select_article_btn" data-page="1">&gt;</button>
+      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span></a>
+      <!--<button data-rel="popup" data-position-to="window" data-transition="pop" class="select_article_btn" data-page="1">&gt;</button>-->
     </li>
-    <li>
+    <li><a href="#" class="select_article_btn" data-page="2">
+      <img src="img/pediatrics-tn.png">
       <h4>Unwrapping the controversy over swaddling</h4>
-      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span>
-      <button class="select_article_btn" data-page="2">&gt;</button>
+      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span></a>
+      <!--<button class="select_article_btn" data-page="2">&gt;</button>-->
     </li>
-    <li>
+    <li><a href="#" class="select_article_btn" data-page="3">
+      <img src="img/pediatrics-tn.png">
       <h4>President-elect candidates� position statements</h4>
-      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span>
-      <button class="select_article_btn" data-page="3">&gt;</button>
+      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span></a>
+      <!--<button class="select_article_btn" data-page="3">&gt;</button>-->
     </li>
-    <li>
+    <li><a href="#">
+      <img src="img/pediatrics-tn.png">
       <h4>Suspiciously familiar article #1</h4>
-      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span>
-      <button class="select_article_btn" data-page="4">&gt;</button>
+      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span></a>
+      <!--<button class="select_article_btn" data-page="4">&gt;</button>-->
     </li>
-    <li>
+    <li><a href="#">
+      <img src="img/pediatrics-tn.png">
       <h4>Suspiciously familiar article #2</h4>
-      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span>
-      <button class="select_article_btn" data-page="5">&gt;</button>
+      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span></a>
+      <!--<button class="select_article_btn" data-page="5">&gt;</button>-->
     </li>
-    <li>
+    <li><a href="#">
+      <img src="img/pediatrics-tn.png">
       <h4>Suspiciously familiar article #3</h4>
-      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span>
-      <button class="select_article_btn" data-page="6">&gt;</button>
+      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span></a>
+      <!--<button class="select_article_btn" data-page="6">&gt;</button>-->
     </li>
-    <li>
+    <li><a href="#">
+      <img src="img/pediatrics-tn.png">
       <h4>Suspiciously familiar article #4</h4>
-      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span>
-      <button class="select_article_btn" data-page="7">&gt;</button>
+      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span></a>
+      <!--<button class="select_article_btn" data-page="7">&gt;</button>-->
     </li>
-    <li>
+    <li><a href="#">
+      <img src="img/pediatrics-tn.png">
       <h4>Suspiciously familiar article #5</h4>
-      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span>
-      <button class="select_article_btn" data-page="8">&gt;</button>
+      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span></a>
+      <!--<button class="select_article_btn" data-page="8">&gt;</button>-->
     </li>
-    <li>
+    <li><a href="#">
+      <img src="img/pediatrics-tn.png">
       <h4>Suspiciously familiar article #6</h4>
-      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span>
-      <button class="select_article_btn" data-page="9">&gt;</button>
+      <b>Published: </b><span>09-05-2013</span><b class="added_label">Added: </b><span>09-10-2013</span></a>
+      <!--<button class="select_article_btn" data-page="9">&gt;</button>-->
     </li>
   </ul>
 </div>

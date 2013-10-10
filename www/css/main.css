@@ -86,7 +86,7 @@ div { margin:0px; padding:0px; }
 #logoWrapper #login_form label {
 	display:block;
 	margin-left: 4px;
-	padding-top: 20px;
+	padding-top: 10px;
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
 	font-size: 12px;
@@ -98,6 +98,9 @@ div { margin:0px; padding:0px; }
 	font-weight: normal;
 	font-size: 18px;
 }
+
+#uname {}
+#pword {}
 /* END LOGIN SCREEN */
 
 /* CONTENT LIST SCREEN */
@@ -166,7 +169,7 @@ div { margin:0px; padding:0px; }
 	overflow:hidden;
 }
 
-	#article_list > .header {
+/*	#article_list > .header {
 		position:relative; z-index:20;
 		height:3em;
 		vertical-align:middle;
@@ -181,7 +184,7 @@ div { margin:0px; padding:0px; }
 	.header > h3 > span {
 		vertical-align:middle;
 		line-height:3em;
-	}
+	}*/
 	
 	.aap_header_logo {
 		position:absolute; top:0px; left:0px;
@@ -202,16 +205,16 @@ div { margin:0px; padding:0px; }
 	overflow:auto;
 }
 
-#article_list li {
+/*<!--#article_list li {
 	position:relative;
 	padding:0.75em 4em; border-bottom:solid 1px #000;
 	height:3em;
-}
+}-->*/
 
-#article_list li > .select_article_btn {
+/*#article_list li > .select_article_btn {
 	position:absolute; top:0px; right:0px;
 	width:3em; height:90%;
-}
+}*/
 
 #article_list li > * { margin:.1em;}
 
@@ -227,10 +230,7 @@ div { margin:0px; padding:0px; }
 
 .added_label { margin-left:.5em; }
 
-/* Login Page */
 
-#uname {}
-#pword {}
 
 /* styling classes */
 
