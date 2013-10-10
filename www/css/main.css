@@ -152,6 +152,8 @@ div { margin:0px; padding:0px; }
 	box-sizing:border-box;
 	min-height:100%; padding:15px 25px;
 	background-color:#fff;
+	
+	-webkit-overflow-scrolling : touch;
 }
 
 /* Article Navigation Flyout/Page */
