@@ -43,7 +43,7 @@ body {
 
 div { margin:0px; padding:0px; }
 
-/* login */
+/* LOGIN SCREEN */
 #login {
 	position:absolute; top:0px; left:0px;
 	height:100%; width:100%;
@@ -67,15 +67,22 @@ div { margin:0px; padding:0px; }
 	position: relative;
 	top: 160px;
 }
-
 #logoWrapper #login_form{
 	position: relative;
 	top: 180px;
 	margin: 0 50px;	
 }
-
-#logoWrapper #loading_msg { display:none; }
-
+#logoWrapper #loading_msg { 
+	display:none; 
+	position: relative;
+	top: 200px;
+	text-align: center;
+	font-family: "noticia text", "Times New Roman", Times, serif;
+	font-weight: normal;
+	font-size: 12px;
+	color: #333333;
+	line-height: 22px;
+	}
 #logoWrapper #login_form label {
 	display:block;
 	font-family: "noticia text", "Times New Roman", Times, serif;
@@ -84,7 +91,9 @@ div { margin:0px; padding:0px; }
 	color: #333333;
 	line-height: 22px;
 }
+/* END LOGIN SCREEN */
 
+/* CONTENT LIST SCREEN */
 #content_viewer {
 	position:relative;
 	height:100%;
@@ -186,7 +195,7 @@ div { margin:0px; padding:0px; }
 
 #article_list li {
 	position:relative;
-	padding:0 3em; border-bottom:solid 1px #000;
+	padding:0.75em 4em; border-bottom:solid 1px #000;
 	height:3em;
 }
 
@@ -198,6 +207,10 @@ div { margin:0px; padding:0px; }
 #article_list li > * { margin:.1em;}
 
 #article_list h4 {
+	font-family: "noticia text", "Times New Roman", Times, serif;
+	font-weight: normal;
+	color: #333333;
+	line-height: 22px;
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
