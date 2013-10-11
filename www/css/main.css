@@ -253,7 +253,7 @@ button.history {
 #article_list li {
 	position:relative;
 	padding:0 3em; border-bottom:solid 1px #000;
-	height:6em;
+	height:5em;
 }
 
 #article_list li > .select_article_btn {
