@@ -1,7 +1,17 @@
-document.addEventListener("deviceready", initApp, false);
+if(!/Chrome\/\d\d\.\d/.test(navigator.userAgent)){
+	document.addEventListener("deviceready", initApp, false);
+}
+else{
+	initApp();
+}
 
 function initApp(){
 	'use strict';
+	
+	if(/cleardata\=true/.test(location.href.split('?')[1])){
+		delete localStorage.creds;
+		delete localStorage.data;
+	}
 	
 		function supports_html5_storage() {
 			try {
@@ -73,13 +83,13 @@ function initApp(){
 			
 			if(isValid){
 				$_loadingMsg.toggle();
-				var loadingTimer = setInterval( function(){ $_loadingMsg.toggle(); },500 );
-				
-				$.get(
-					AAP_GATEWAY_ROOT + 'sendtodata/getdata?uid='+creds.uname+'&pwd='+creds.pword,//+'&duid='+device.uuid+'&dname='+device.name+'&os='+device.platform,
+				var loadingTimer = setInterval( function(){ $_loadingMsg.toggle(); },500 ),
+				url =/Chrome\/\d\d\.\d/.test(navigator.userAgent) ? 'https://dl.dropboxusercontent.com/u/28072275/data.txt' : AAP_GATEWAY_ROOT + 'sendtodata/getdata?uid='+creds.uname+'&pwd='+creds.pword+'&duid=12345&dname=CaptainPlanetsjPhoney&os=jos20';//'&duid='+device.uuid+'&dname='+device.name+'&os='+device.platform,
+				$.getJSON(
+					url,
 					buildContent
 				)
-				.fail(function(e){ alert(e.toString()); })
+				.fail(function(e){ console.log(e); })
 				.always(function(){
 					clearInterval(loadingTimer);
 				});
@@ -87,7 +97,6 @@ function initApp(){
 			else {
 				alert('At least one, perhaps both form fields are empty. This validator will leave what needs to happen next to your imagination.');
 			}
-			stashCreds( creds );
 			return false;
 		} );
 		
@@ -100,7 +109,16 @@ function initApp(){
 	
 	function buildContent(data){
 		
-		localStorage['data'] = JSON.stringify(data);
+		
+		stashCreds( creds );
+		
+		if(typeof data === 'string'){
+			localStorage['data'] = data;
+			data = JSON.parse(data);
+		}
+		else {
+			localStorage['data'] = JSON.stringify(data);
+		}
 		
 		var
 			i = data.length,
@@ -108,15 +126,18 @@ function initApp(){
 			contentPages = []
 		;
 		
+		console.log(data.length);
+		
 		while(i--){
 			(function(i){
 				var
-					thisData = data[i],
+					thisData = data[i];
+				var
 					
 					listItemVars = {
-						headline : thisData.Title + '#' +(i+1),
-						publishDate : 'n/a' ,
-						addedDate : new Date( parseInt( thisData.clipDate.replace(/\D+/g,'') ) ),
+						headline : thisData.Title,
+						publishDate : 'N/A' ,
+						addedDate : new Date( parseInt(  thisData.clipDate.replace(/\D+/g,'') ) ),
 						pageNumber : i+1
 					},
 					dateObj = listItemVars.addedDate,
@@ -125,7 +146,7 @@ function initApp(){
 				;
 				
 				listItemVars.addedDate = [dateObj.getMonth()+1,dateObj.getDate(),dateObj.getFullYear()].join('-');
-					
+				
 				for(var x in listItemVars){
 					articleListItem = articleListItem.replace( new RegExp('{{'+x+'}}','g'), listItemVars[x] );
 				}
@@ -268,9 +289,5 @@ function initApp(){
 		}
 	
 	}
-
-	
-	//$('#test_messages').load('http://www.erikreppen.com');
 	
 };
-
