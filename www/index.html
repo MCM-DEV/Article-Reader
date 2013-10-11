@@ -37,9 +37,10 @@
 </head>
 
 <body>
-
+<!-- LOGIN -->
 <div id="login">
-	<h1>AAP Gateway Reader</h1>
+	<div id="logoWrapper">
+	<!--<h1>AAP Gateway Reader</h1>-->
 	<form id="login_form" data-ajax="false" action="http://stabitha.123fakestreet.com" method="POST">
 		<label for="uname">User Name</label>
 		<input id="uname" type="text" />
@@ -50,25 +51,27 @@
 	<span id="loading_msg">ZOMG it's loading!</span>
 	
 	<div id="test_messages"></div>
+    </div>
 </div>
-
+<!-- END LOGIN -->
 
 
 <div id="content_viewer">
 
 	<div id="content_navigation" class="blue_bar">
-		<button class="back">&lt;--</button>
-		<button class="show_article_list_btn">Select an Article</button>
-		<button class="forward">--&gt;</button>
+		<!--<button class="back">&lt;--</button>-->
+		<button class="show_article_list_btn">Back to Article List</button>
+		<!--<button class="forward">--&gt;</button>-->
 	</div>
 	
 	<div id="slider">
 	</div>
 </div> <!-- end content viewer -->
 
+
 <div id="article_list">
 	<div class="header blue_bar">
-		<img class="aap_header_logo" src="" alt="aap gateway logo" />
+		<img class="aap_header_logo" src="img/gatewayLogo.png" alt="AAP Gateway Logo" />
 		<h3><span>Article List</span></h3>
 		<button class="history">History</button>
 	</div>
