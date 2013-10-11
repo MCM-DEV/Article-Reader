@@ -155,12 +155,11 @@ margin: 20px 0 0 2px;
 	height:100%; width:3em;
 }
 #content_navigation .show_article_list_btn {
-	position:absolute;
+	position:absolute; top:3px;
 	box-sizing:border-box;
-	height:90%; width:3em;
+	height:90%; width:12em;
+	margin:0px auto;
 }
-
-.show_article_list_btn { position:relative; display:block; width:12em; margin:0px auto; }
 
 #content_navigation .forward {
 	right:0px;
