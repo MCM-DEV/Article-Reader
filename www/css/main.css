@@ -142,7 +142,7 @@ margin: 20px 0 0 2px;
 #content_viewer {
 	position:relative;
 	top:20px; /* content to display below iOS7 status bar */
-	height:100%;
+	height:5000px;
 	background-color:#ddd;
 	overflow-x:hidden;
 }
