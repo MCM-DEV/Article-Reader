@@ -142,7 +142,7 @@ margin: 20px 0 0 2px;
 #content_viewer {
 	position:relative;
 	top:20px; /* content to display below iOS7 status bar */
-	height:5000px;
+	height:100%;
 	background-color:#ddd;
 	overflow-x:hidden;
 }
@@ -201,6 +201,8 @@ button.history {
 	
 	box-sizing:border-box;
 	border-top:solid 3em transparent;
+	overflow:scroll;
+	-webkit-overflow-scrolling:touch;
 	
 	/*overflow:auto;*/
 }
