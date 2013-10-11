@@ -153,7 +153,6 @@ margin: 20px 0 0 2px;
 	top:20px; /* content to display below iOS7 status bar */
 	height:100%;
 	background-color:#ddd;
-	overflow-x:hidden;
 }
 
 #content_navigation { position:absolute; height:3em; width:100%; z-index:10; }
