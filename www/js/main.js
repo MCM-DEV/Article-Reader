@@ -201,7 +201,7 @@ function initApp(){
 		$_window.resize( function(){ gotoPage(currentPage + 1); } );
 
 		//Enable swiping...
-		/*$_slider.swipe( {
+		$_slider.swipe( {
 			//Generic swipe handler for all directions
 			swipeLeft:function(event, direction, distance, duration, fingerCount) {
 				if(duration < 350){
@@ -214,8 +214,8 @@ function initApp(){
 				}
 			},
 			allowPageScroll:'auto'
-		});*/
-		
+		});
+		/*
 		$_slider.swipeleft( function(e) {
 			gotoPage( { target:$_slider[0], direction:'left' } );
 		} );
@@ -223,7 +223,7 @@ function initApp(){
 		$_slider.swiperight( function(e) {
 			gotoPage( { target:$_slider[0], direction:'right' } );
 		} );
-		
+		*/
 		$_showArticleListBtn.click( function(){ $_articleList.show(); } );
 
 		function gotoPage(e){
