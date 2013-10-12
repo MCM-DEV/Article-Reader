@@ -13,6 +13,12 @@ body {
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:16px;
 }
+
+.ios7 body {
+	box-sizing:border-box;
+	border-top:solid 20px #ddd;
+}
+
 /*@media (max-width: 858px) {
     body {
         font-size: 15px;
@@ -63,7 +69,7 @@ div { margin:0px; padding:0px; }
 
 /* LOGIN SCREEN */
 #login {
-	position:absolute; top:0px; left:0px;
+	position:relative;
 	height:100%; width:100%;
 	z-index:30;
 	background-color: #d9d9d9;
@@ -150,7 +156,6 @@ margin: 20px 0 0 2px;
 /* HEADER AREA */
 #content_viewer {
 	position:relative;
-	top:20px; /* content to display below iOS7 status bar */
 	height:100%;
 	background-color:#ddd;
 }
@@ -228,7 +233,7 @@ button.history {
 
 /* ARTICLE LIST HEADER */
 #article_list {
-	position:absolute; top:20px; left:0px;
+	position:relative;
 	height:100%; width:100%;
 	z-index:20;
 	background-color:#fff;
@@ -249,7 +254,10 @@ button.history {
 		line-height:3em;
 }
 
-
+.article_count {
+	position:absolute; top:.2em; right:4em;
+	font-size:2em;
+}
 
 
 #article_list > ul {

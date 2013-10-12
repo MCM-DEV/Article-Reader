@@ -8,6 +8,10 @@ else{
 function initApp(){
 	'use strict';
 	
+	if( /(iPad|iPhone);.*CPU.*OS 7_\d/i.test(navigator.userAgent) || /testos=ios7/.test(location.href.split('?')[1]) ){
+		$('html').addClass('ios7');
+	}
+	
 	if(/cleardata\=true/.test(location.href.split('?')[1])){
 		delete localStorage.creds;
 		delete localStorage.data;
@@ -45,11 +49,13 @@ function initApp(){
 		creds = getCreds(),
 	
 		articleListTemplate = [
-			'<li>',
-			'<h4>{{headline}}</h4>',
-			'<b>Published: </b><span>{{publishDate}}</span>',
-			'<b class="added_label">Added: </b><span>{{addedDate}}</span>',
-			'<button class="select_article_btn" data-page="{{pageNumber}}">&gt;</button>',
+			'<li data-page="{{pageNumber}}">',
+				'<h4>{{headline}}</h4>',
+				'<p class="listDate">',
+					'<b>Published: </b><span>{{publishDate}}</span>',
+					'<b class="added_label">Added: </b><span>{{addedDate}}</span>',
+				'</p>',
+				'<span class="go_to_article_icon">&gt;</span>',
 			'</li>'
 		],
 	
@@ -163,7 +169,7 @@ function initApp(){
 		$('#slider').html(contentPages.join(''));
 		
 		$('#login').hide();
-		$('#article_list, #content_viewer').show();
+		$('#article_list').show();
 		
 		behaviorInit();
 		
@@ -177,9 +183,10 @@ function initApp(){
 			$_window = $(window),
 		
 			$_articleList = $('#article_list'),
-				$_selectArticleBtn = $('#article_list button.select_article_btn'),
+				$_selectArticleBtn = $('#article_list li'),
 			
-			$_contentNavigation = $('#content_navigation'),
+			$_contentViewer = $('#content_viewer'),
+				$_contentNavigation = $('#content_navigation'),
 				$_forwardBackBtns =  $_contentNavigation.find('.forward, .back'),
 				$_forwardBtn =  $_contentNavigation.find('.forward'),
 				$_backBtn = $_contentNavigation.find('.back'),
@@ -192,8 +199,10 @@ function initApp(){
 
 
 		$_selectArticleBtn.click( function(){
-			gotoPage( parseInt( $(this).data('page') ) );
+			console.log('not hallucinating');
 			$_articleList.hide();
+			$_contentViewer.show();
+			gotoPage( parseInt( $(this).data('page') ) );
 		} );
 
 		$_forwardBackBtns.on('click', gotoPage );
@@ -224,14 +233,15 @@ function initApp(){
 			gotoPage( { target:$_slider[0], direction:'right' } );
 		} );
 		*/
-		$_showArticleListBtn.click( function(){ $_articleList.show(); } );
+		$_showArticleListBtn.click( function(){ $_contentViewer.hide(); $_articleList.show(); } );
 
 		function gotoPage(e){
+			
+			var sliderLimit = ($_slider.find('.page').size() - 1);
 			
 			if(typeof e === 'object'){ //slide if object, set to page w no animation if number
 
 				var
-					sliderLimit = ($_slider.find('.page').size() - 1),
 					sliderPos = currentPage,//Math.round( $_slider[0] !== 0 ? $_slider[0].scrollLeft / $(window).width() : 0 );
 					isLeft = true;
 					
@@ -286,6 +296,8 @@ function initApp(){
 			else {
 				$_backBtn.show();
 			}
+			
+			$_contentNavigation.find('.article_count').text( (currentPage + 1) + '/' + (sliderLimit + 1) );
 		}
 	
 	}
