@@ -1,3 +1,5 @@
+/* Module css declaration styles  for settting module related icons in article list are added via JS. See "MODULE_IMG_MAP" at top of main.js" */
+
 /* helps with finicky scrolling apparently */
 
 .content * {
@@ -287,6 +289,8 @@ button.history {
 #article_list li {
 	position:relative;
 	padding:0.8em 3em; border-bottom:solid 1px #000;
+	background:no-repeat left 50%;
+	background-size:100%;
 }
 
 #article_list li > .select_article_btn {
@@ -295,6 +299,17 @@ button.history {
 }
 
 #article_list li > * { margin:.1em;}
+
+#article_list li > .go_to_article_icon {
+	position: absolute;
+	right: .2em;
+	height: 100%;
+	font-size: 2.5em;
+	vertical-align: middle;
+	top: 0px;
+	padding: 0px;
+	margin: 0px;
+}
 
 #article_list h4 {
 	font-weight: normal;

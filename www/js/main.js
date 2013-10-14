@@ -2,13 +2,58 @@
 
 'use strict';
 
+/*
+	Original Author's style conventions
+	
+	naming:
+	
+	HARD_CODED_VALUE_YOU_MIGHT_WANT_TO_CHANGE_AT_SOME_POINT
+	ObjectConstructor
+	hasVerbSoFunction
+	noVerbSoVar
+	$_jquerySelection
+	
+	
+	structure: "What matters? What does it do? How does it work?"
+	
+	Most vars declared at top of whatever scope they need to be in
+	Invocation in the middle
+	Most functions declared at bottom of whatever scope they need to be in
+*/	
+
 var
-	//configurables - yes, yes, I know we don't have constants in JS.
+	//configurables 
 	AAP_GATEWAY_ROOT = 'http://66.9.140.53:801/',
+	
 	USER_ALERTS = {
 		missingLoginFields:'Please fill in user name and password',
 		deviceNotSupported:'AAP Gateway Reader is not supported for this device.'
+	},
+	
+	MODULE_IMG_MAP = {
+		
+		//these are used to set module classes that map the corresponding images as icons for article_list
+		
+		//SO:
+		//"AAP Grand Rounds":"tn-AAPGrandRounds.png"
+		
+		//BECOMES:
+		//.aap_grand_rounds { background-image:url('images/tn-AAPGrandRounds.png') no-repeat left 50%; }
+		
+		"AAP Grand Rounds":"tn-AAPGrandRounds.png",
+		"AAP News":"tn-AAPNews.png",
+		"AAP Policy":"tn-AAPPolicy.png",
+		"Hospital Pediatrics":"tn-HospitalPediatrics.png",
+		"Neo Reviews":"tn-NeoReviews.png",
+		"Pediatrics":"tn-Pediatrics.png",
+		"Pediatrics Digest":"tn-PediatricsDigest.png",
+		"Pediatrics in Review":"tn-PediatricsInReview.png",
+		"PREP Audio":"tn-PREPAudio.png",
+		"PREP Reference":"tn-PREPReference.png",
+		"Red Book":"tn-RedBook.png",
+		"Streaming Media":"tn-StreamingMedia.png"
 	}
+;
 	
 if(!/Chrome\/\d\d\.\d/.test(navigator.userAgent)){
 	document.addEventListener("deviceready", initApp, false);
@@ -16,6 +61,8 @@ if(!/Chrome\/\d\d\.\d/.test(navigator.userAgent)){
 else{
 	initApp();
 }
+
+
 
 function initApp(){
 	
@@ -38,7 +85,7 @@ function initApp(){
 		creds = getCreds(),
 	
 		articleListTemplate = [
-			'<li data-page="{{pageNumber}}">',
+			'<li class="{{moduleClass}}" data-page="{{pageNumber}}">',
 				'<h4>{{headline}}</h4>',
 				'<p class="listDate">',
 					'<b>Published: </b><span>{{publishDate}}</span>',
@@ -53,29 +100,19 @@ function initApp(){
 			$_loginForm = $('#login_form'),
 			$_uname = $('#uname'),
 			$_pword = $('#pword'),
-			$_loadingMsg = $('#loading_msg')
+			$_loadingMsg = $('#loading_msg'),
+			
+		$_articleList = $('#article_list'),
+			$_selectArticleBtn = $('#article_list li'),
+		
+		$_contentViewer = $('#content_viewer'),
+			$_contentNavigation = $('#content_navigation'),
+			$_forwardBackBtns =  $_contentNavigation.find('.forward, .back'),
+			$_forwardBtn =  $_contentNavigation.find('.forward'),
+			$_backBtn = $_contentNavigation.find('.back'),
+			$_slider = $('#slider'),
+			$_showArticleListBtn = $('#content_navigation > .show_article_list_btn')
 	;
-	
-	function supports_html5_storage() {
-		try {
-			return 'localStorage' in window && window['localStorage'] !== null;
-		} catch (e) {
-			return false;
-		}
-	}
-	
-	function stashCreds(u,p){
-		localStorage['creds'] = JSON.stringify({uname:u,pword:p});
-	}
-	
-	function getCreds(){
-		if(localStorage['creds']){
-			return JSON.parse(localStorage['creds']);
-		}
-		else {
-			return false;
-		}
-	}
 	
 	if(!creds){
 	
@@ -128,6 +165,8 @@ function initApp(){
 		
 		stashCreds( creds );
 		
+		$('head').append( buildModuleStyleDecs(MODULE_IMG_MAP) );
+		
 		if(typeof data === 'string'){
 			localStorage['data'] = data;
 			data = JSON.parse(data);
@@ -152,6 +191,7 @@ function initApp(){
 					
 					listItemVars = {
 						headline : thisData.Title,
+						moduleClass:thisData.SourceModule.replace(/ /g,'_').toLowerCase(),
 						publishDate : 'N/A' ,
 						addedDate : new Date( parseInt(  thisData.clipDate.replace(/\D+/g,'') ) ),
 						pageNumber : i+1
@@ -190,23 +230,9 @@ function initApp(){
 		var
 			currentPage = 0,
 			
-			$_window = $(window),
-		
-			$_articleList = $('#article_list'),
-				$_selectArticleBtn = $('#article_list li'),
-			
-			$_contentViewer = $('#content_viewer'),
-				$_contentNavigation = $('#content_navigation'),
-				$_forwardBackBtns =  $_contentNavigation.find('.forward, .back'),
-				$_forwardBtn =  $_contentNavigation.find('.forward'),
-				$_backBtn = $_contentNavigation.find('.back'),
-				$_slider = $('#slider'),
-				$_showArticleListBtn = $('#content_navigation > .show_article_list_btn')
+			$_window = $(window)
 			
 		;//end initial vars
-		
-		
-
 
 		$_selectArticleBtn.click( function(){
 			console.log('not hallucinating');
@@ -311,6 +337,40 @@ function initApp(){
 		}
 	
 	} //end behaviorInit
+	
+	function supports_html5_storage() {
+		try {
+			return 'localStorage' in window && window['localStorage'] !== null;
+		} catch (e) {
+			return false;
+		}
+	}
+	
+	function stashCreds(u,p){
+		localStorage['creds'] = JSON.stringify({uname:u,pword:p});
+	}
+	
+	function getCreds(){
+		if(localStorage['creds']){
+			return JSON.parse(localStorage['creds']);
+		}
+		else {
+			return false;
+		}
+	}
+	
+	function buildModuleStyleDecs(map){
+		var
+			stylesArr = [],
+			buildStyle = function(moduleName,imgSrc){
+				return ('\t#article_list .' + moduleName.replace(/ /g,'_').toLowerCase() +' { background-image:url(\'img/'+imgSrc+'\'); }\n' );
+			}
+		;
+		for(var x in map){
+			stylesArr.push( buildStyle(x,map[x]) );
+		}
+		return '<style>\n' + stylesArr.join('') + '</style>';
+	}
 	
 };
 
