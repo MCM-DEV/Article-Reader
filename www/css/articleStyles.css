@@ -377,6 +377,11 @@ div.graphic div.graphic-inline img {
   padding-top: 20px;
   min-height: 670px;
 }
+
+#ExpandedContent ul {
+  list-style-type:none;
+}
+
 #ExpandedContent div.graphic {
   width: 510px;
   padding: 20px;
