@@ -283,8 +283,8 @@ button.history {
 	display:block; box-sizing:border-box; height:100%; width:100%; border-top:solid 3em transparent; margin:0px;
 	list-style:none;
 	padding:0px;
-	overflow-y:scroll;
-	-webkit-overflow-scrolling-y:touch;
+	overflow:scroll;
+	-webkit-overflow-scrolling:touch;
 }
 
 #article_list li {
