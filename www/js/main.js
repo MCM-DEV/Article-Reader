@@ -1,3 +1,15 @@
+(function(){
+
+'use strict';
+
+var
+	//configurables - yes, yes, I know we don't have constants in JS.
+	AAP_GATEWAY_ROOT = 'http://66.9.140.53:801/',
+	USER_ALERTS = {
+		missingLoginFields:'Please fill in user name and password',
+		deviceNotSupported:'AAP Gateway Reader is not supported for this device.'
+	}
+	
 if(!/Chrome\/\d\d\.\d/.test(navigator.userAgent)){
 	document.addEventListener("deviceready", initApp, false);
 }
@@ -6,7 +18,6 @@ else{
 }
 
 function initApp(){
-	'use strict';
 	
 	if( /(iPad|iPhone);.*CPU.*OS 7_\d/i.test(navigator.userAgent) || /testos=ios7/.test(location.href.split('?')[1]) ){
 		$('html').addClass('ios7');
@@ -17,34 +28,12 @@ function initApp(){
 		delete localStorage.data;
 	}
 	
-		function supports_html5_storage() {
-			try {
-				return 'localStorage' in window && window['localStorage'] !== null;
-			} catch (e) {
-				return false;
-			}
-		}
-		
-		function stashCreds(u,p){
-			localStorage['creds'] = JSON.stringify({uname:u,pword:p});
-		}
-		
-		function getCreds(){
-			if(localStorage['creds']){
-				return JSON.parse(localStorage['creds']);
-			}
-			else {
-				return false;
-			}
-		}
-	
 	if( !supports_html5_storage() ){
-		alert('AAP Gateway Reader is not supported for this device.');
+		alert(USER_ALERTS.deviceNotSupported);
 		return false;
 	}
 	
 	var
-		AAP_GATEWAY_ROOT = 'http://66.9.140.53:801/',
 		
 		creds = getCreds(),
 	
@@ -66,6 +55,27 @@ function initApp(){
 			$_pword = $('#pword'),
 			$_loadingMsg = $('#loading_msg')
 	;
+	
+	function supports_html5_storage() {
+		try {
+			return 'localStorage' in window && window['localStorage'] !== null;
+		} catch (e) {
+			return false;
+		}
+	}
+	
+	function stashCreds(u,p){
+		localStorage['creds'] = JSON.stringify({uname:u,pword:p});
+	}
+	
+	function getCreds(){
+		if(localStorage['creds']){
+			return JSON.parse(localStorage['creds']);
+		}
+		else {
+			return false;
+		}
+	}
 	
 	if(!creds){
 	
@@ -101,7 +111,7 @@ function initApp(){
 				});
 			}
 			else {
-				alert('At least one, perhaps both form fields are empty. This validator will leave what needs to happen next to your imagination.');
+				alert(USER_ALERTS.missingLoginFields);
 			}
 			return false;
 		} );
@@ -300,6 +310,8 @@ function initApp(){
 			$_contentNavigation.find('.article_count').text( (currentPage + 1) + '/' + (sliderLimit + 1) );
 		}
 	
-	}
+	} //end behaviorInit
 	
 };
+
+})();//end 'use strict'; wrapper func

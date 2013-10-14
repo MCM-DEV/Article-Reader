@@ -1,3 +1,5 @@
+/* helps with finicky scrolling apparently */
+
 .content * {
 	margin:0px; padding:0px;
     -webkit-user-select:html;
@@ -9,15 +11,29 @@
 
 html, body { height:100%; padding:0px; margin:0px; }
 
+/*
+set EM values for all fonts BUT the body
+I'm a little bit of an em-noob but I'm also setting widths/heights in some places that seem
+to scale appropriately. Make sure you test at different screen sizes when altering these.
+Best thing is to avoid explicit heights/widths altogether as much as possible IMO. - Erik
+*/
+
 body {
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:16px;
 }
 
+/* test in desktop chrome browser by adding paramater testos=ios7 */
 .ios7 body {
 	box-sizing:border-box;
 	border-top:solid 20px #ddd;
 }
+
+/*
+media queries allow us to scale by setting just one font-size in body
+Please note that these are pretty much arbitratry. I grabbed a list from 
+stackOverflow and fiddled from there.
+*/
 
 /*@media (max-width: 858px) {
     body {
