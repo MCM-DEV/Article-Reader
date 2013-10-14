@@ -269,7 +269,7 @@ button.history {
 }
 .header > h3 > span {
 		vertical-align:middle;
-		line-height:3em;
+		line-height:2.5em;
 }
 
 .article_count {
@@ -283,14 +283,15 @@ button.history {
 	display:block; box-sizing:border-box; height:100%; width:100%; border-top:solid 3em transparent; margin:0px;
 	list-style:none;
 	padding:0px;
-	overflow:auto;
+	overflow-y:scroll;
+	-webkit-overflow-scrolling-y:touch;
 }
 
 #article_list li {
 	position:relative;
-	min-height:5em; padding:0.8em 3em .8em 5.5em; border-bottom:solid 1px #000;
-	background:no-repeat .5em 50%;
-	background-size:4.5em;
+	min-height:5em; padding:0.8em 5em .8em 6.5em; border-bottom:solid 1px #000;
+	background:no-repeat .25em 50%;
+	background-size:auto 90%;
 }
 
 #article_list li > .select_article_btn {
@@ -304,7 +305,7 @@ button.history {
 	position: absolute;
 	right: .2em;
 	height: 100%;
-	font-size: 2.5em;
+	font-size: 6em;
 	vertical-align: middle;
 	top: 0px;
 	padding: 0px;
