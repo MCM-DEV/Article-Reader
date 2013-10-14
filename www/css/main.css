@@ -15,7 +15,7 @@ Overflow styles requiring "scroll" for touch-mobile devices are set to auto unde
     user-select:html;
 }
 
-html, body { height:100%; padding:0px; margin:0px; }
+html, body { height:100%; padding:0px; margin:0px; background-color:#fff;}
 
 /*
 set EM values for all fonts BUT the body
@@ -179,7 +179,6 @@ margin: 20px 0 0 2px;
 #content_viewer {
 	position:relative;
 	height:100%;
-	background-color:#ddd;
 }
 
 #content_navigation { position:absolute; height:3em; width:100%; z-index:10; }
@@ -253,7 +252,6 @@ button.history {
 #content_viewer .content {
 	box-sizing:border-box;
 	min-height:100%; padding:15px 25px;
-	background-color:#fff;
 }
 /* END SLIDER */
 
@@ -266,7 +264,6 @@ button.history {
 	position:relative;
 	height:100%; width:100%;
 	z-index:20;
-	background-color:#fff;
 	overflow:hidden;
 }
 #article_list > .header {
