@@ -1,4 +1,8 @@
-/* Module css declaration styles  for settting module related icons in article list are added via JS. See "MODULE_IMG_MAP" at top of main.js" */
+/*
+Module css declaration styles  for settting module related icons in article list are added via JS. See "MODULE_IMG_MAP" at top of main.js"
+
+Overflow styles requiring "scroll" for touch-mobile devices are set to auto under a desktop_chrome override class that makes appearance the same on desktop.
+*/
 
 /* helps with finicky scrolling apparently */
 
@@ -221,6 +225,11 @@ button.history {
 	overflow-x:hidden;
 }
 
+/* for workign on layout in dev */
+.desktop_chrome #content_viewer #slider{
+	overflow:hidden;
+}
+
 #slider * { white-space:normal; }
 
 #content_viewer  #slider .page {
@@ -234,8 +243,11 @@ button.history {
 	border-top:solid 3em transparent;
 	overflow:scroll;
 	-webkit-overflow-scrolling:touch;
-	
-	/*overflow:auto;*/
+}
+
+/* for workign on layout in dev */
+.desktop_chrome #content_viewer  #slider .page {
+	overflow:auto;
 }
 
 #content_viewer .content {
@@ -285,6 +297,11 @@ button.history {
 	padding:0px;
 	overflow:scroll;
 	-webkit-overflow-scrolling:touch;
+}
+
+/* for layout in dev */
+.desktop_chrome #article_list > ul {
+	overflow:auto;
 }
 
 #article_list li {

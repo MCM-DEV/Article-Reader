@@ -59,6 +59,7 @@ if(!/Chrome\/\d\d\.\d/.test(navigator.userAgent)){
 	document.addEventListener("deviceready", initApp, false);
 }
 else{
+	$('body').addClass('desktop_chrome');
 	initApp();
 }
 
