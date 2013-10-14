@@ -288,9 +288,9 @@ button.history {
 
 #article_list li {
 	position:relative;
-	padding:0.8em 3em; border-bottom:solid 1px #000;
-	background:no-repeat left 50%;
-	background-size:100%;
+	min-height:5em; padding:0.8em 3em .8em 5.5em; border-bottom:solid 1px #000;
+	background:no-repeat .5em 50%;
+	background-size:4.5em;
 }
 
 #article_list li > .select_article_btn {

@@ -103,7 +103,6 @@ function initApp(){
 			$_loadingMsg = $('#loading_msg'),
 			
 		$_articleList = $('#article_list'),
-			$_selectArticleBtn = $('#article_list li'),
 		
 		$_contentViewer = $('#content_viewer'),
 			$_contentNavigation = $('#content_navigation'),
@@ -230,7 +229,9 @@ function initApp(){
 		var
 			currentPage = 0,
 			
-			$_window = $(window)
+			$_window = $(window),
+			
+			$_selectArticleBtn = $('#article_list li')
 			
 		;//end initial vars
 
