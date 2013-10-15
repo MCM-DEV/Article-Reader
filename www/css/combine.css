@@ -7050,7 +7050,7 @@ s .Topics {
 
 /* Begin: For responive, use #content_viewer instead of #content-view */
 #content_viewer {
-  margin: 20px 25px 0 36px;
+  margin: 0;
 
 }
 
