@@ -52,18 +52,31 @@ var
 		"PREP Reference":"tn-PREPReference.png",
 		"Red Book":"tn-RedBook.png",
 		"Streaming Media":"tn-StreamingMedia.png"
+	},
+	
+	//class added to body mapped to regEx used for test of navigator.userAgent
+	USER_AGENT_MAP = {
+		desktop_chrome:/Chrome\/\d\d\.\d/,
+		ios7:/(iPad|iPhone);.*CPU.*OS 7_\d/i,
+		android_lt_3:/Android [12]\./
 	}
 ;
+
+for(var x in USER_AGENT_MAP){
+	if( USER_AGENT_MAP[x].test(navigator.userAgent) ){
+		$('body').addClass(x);
+		break;
+	}
+}
 	
-if(!/Chrome\/\d\d\.\d/.test(navigator.userAgent)){
+if( !$('body').hasClass('desktop_chrome') ){
 	document.addEventListener("deviceready", initApp, false);
 }
 else{
-	$('body').addClass('desktop_chrome');
 	initApp();
 }
 
-
+$('body').addClass('android_lt_3');
 
 function initApp(){
 	
@@ -272,6 +285,10 @@ function initApp(){
 		} );
 		*/
 		$_showArticleListBtn.click( function(){ $_contentViewer.hide(); $_articleList.show(); } );
+		
+		if( $(document.body).hasClass('desktop_chrome') ){
+			$('.stupid_android_lt3_button_up, .stupid_android_lt3_button_down').mousedown( scrollContent );
+		}
 
 		function gotoPage(e){
 			
@@ -336,6 +353,59 @@ function initApp(){
 			}
 			
 			$_contentNavigation.find('.article_count').text( (currentPage + 1) + '/' + (sliderLimit + 1) );
+		}
+		
+		function scrollContent(){
+			
+			function scrollAdjustUp(increment){
+				pagePos = pagePos - increment;
+				return pagePos;
+			}
+			
+			function scrollAdjustDown(increment){
+				pagePos = pagePos + increment;
+				return pagePos;
+			}
+			
+			var
+				$_this =  $(this),
+				$_page = $('.page').eq(currentPage),
+				pagePos = $_page[0].scrollTop,
+				pageHeight = $_page.innerHeight(),
+				holdScroll = false,
+				pageScroller,
+				scrollAdjust
+			;
+			
+			if( $_this.hasClass('stupid_android_lt3_button_up') ){
+				scrollAdjust = scrollAdjustUp;
+			}
+			else {
+				scrollAdjust = scrollAdjustDown;
+			}
+			
+			var scrollTimer = setTimeout( function(){
+				holdScroll = true;
+				pageScroller = setInterval( function(){
+					$_page.scrollTop( scrollAdjust(pageHeight/8) );
+				}, 30 );
+			}, 350);
+			
+			$(this).off('mouseup').mouseup( function(){
+				
+				clearTimeout(scrollTimer);
+			
+				clearInterval(pageScroller);
+				
+				if(!holdScroll){
+					
+					console.log(pagePos);
+					$_page.animate( { scrollTop:scrollAdjust(pageHeight) + 'px' } );
+				
+				}
+				
+			} );
+				
 		}
 	
 	} //end behaviorInit
