@@ -20,7 +20,9 @@
 	<script src="cordova_plugins.js"></script>
 	
 	<script>
-
+	function onDeviceReady() {
+        navigator.splashscreen.hide();
+    }
 	/*document.addEventListener("deviceready", onDeviceReady, false);
 
 	// PhoneGap is ready
