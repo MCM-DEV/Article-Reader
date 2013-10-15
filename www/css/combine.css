@@ -546,30 +546,7 @@ body {
   font-size: 14px;
   color: #048bc9;
   background-image: url("../../images/wrapperBg.jpg");
-  background: #f4f4f4;
-  /* Old browsers */
-
-  background: -moz-linear-gradient(top, #f4f4f4 0%, #c0bdb8 100%);
-  /* FF3.6+ */
-
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #c0bdb8));
-  /* Chrome,Safari4+ */
-
-  background: -webkit-linear-gradient(top, #f4f4f4 0%, #c0bdb8 100%);
-  /* Chrome10+,Safari5.1+ */
-
-  background: -o-linear-gradient(top, #f4f4f4 0%, #c0bdb8 100%);
-  /* Opera 11.10+ */
-
-  background: -ms-linear-gradient(top, #f4f4f4 0%, #c0bdb8 100%);
-  /* IE10+ */
-
-  background: linear-gradient(to bottom, #f4f4f4 0%, #c0bdb8 100%);
-  /* W3C */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#c0bdb8', GradientType=0);
-  /* IE6-9 */
-
+  background: #fff;
   color: #333;
   background-attachment: fixed;
 }
@@ -7070,46 +7047,27 @@ s .Topics {
 /* -------------------------------------------------- */
 /* Begin: AAP Pediatrics Article */
 /* -------------------------------------------------- */
-/* Begin: #content-block */
-#content-block {
+
+/* Begin: For responive, use #content_viewer instead of #content-view */
+#content_viewer {
   margin: 20px 25px 0 36px;
-  /* Begin: .ref-list Styling */
-
-  /* -------------------------------------------------- */
-
-  /* need to override for cit-pub-id spans which *should* be displayed! */
-
-  /* don't display metadata items when they duplicate a display block */
-
-  /* put this back in to make citation sprinkles appear on their own line */
-
-  /*
-    div.ref-list div.cit-extra {
-    display: block;
-    }
-    */
-
-  /* Fix for IE rendering bug */
-
-  /* End: .ref-list Styling */
-
-  /* Begin: .responses-list  */
 
 }
-#content-block.barBlue {
+
+#content_viewer.barBlue {
   border-top: 6px solid #048bc9;
 }
-#content-block.barGreen {
+#content_viewer.barGreen {
   border-top: 6px solid #39c208;
 }
-#content-block.barRed {
+#content_viewer.barRed {
   border-top: 6px solid #d94e17;
 }
-#content-block .titleImg {
+#content_viewer .titleImg {
   margin: 10px 0;
   display: block;
 }
-#content-block #glossary-1 {
+#content_viewer #glossary-1 {
   padding-top: 5px;
   border-top: 1px solid #999999;
   list-style-type: none;
@@ -7121,10 +7079,10 @@ s .Topics {
   margin-top: 5px;
   margin-bottom: 20px;
 }
-#content-block #glossary-1 dl dt {
+#content_viewer #glossary-1 dl dt {
   font-weight: 400;
 }
-#content-block #article-title-1 {
+#content_viewer #article-title-1 {
   font-family: "Noticia Text";
   font-size: 24px;
   color: #666666;
@@ -7133,9 +7091,9 @@ s .Topics {
   line-height: 26px;
   margin: 0;
 }
-#content-block #article-title-2,
-#content-block #article-title-3,
-#content-block #article-title-4 {
+#content_viewer #article-title-2,
+#content_viewer #article-title-3,
+#content_viewer #article-title-4 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
   color: #666666;
@@ -7143,8 +7101,8 @@ s .Topics {
   margin: 5px 0;
   font-weight: normal;
 }
-#content-block .article .section p,
-#content-block .article .subsection p {
+#content_viewer .article .section p,
+#content_viewer .article .subsection p {
   font-family: "Noticia Text";
   font-size: 14px;
   color: #666666;
@@ -7153,12 +7111,12 @@ s .Topics {
   line-height: 22px;
   margin: 0 0 10px;
 }
-#content-block .article .section p strong,
-#content-block .article .subsection p strong {
+#content_viewer .article .section p strong,
+#content_viewer .article .subsection p strong {
   font-weight: 700;
   color: #000;
 }
-#content-block .article .keywords {
+#content_viewer .article .keywords {
   padding-top: 5px;
   border-top: none;
   list-style-type: none;
@@ -7171,14 +7129,14 @@ s .Topics {
   margin-top: 5px;
   margin-bottom: 20px;
 }
-#content-block sup,
-#content-block sub {
+#content_viewer sup,
+#content_viewer sub {
   line-height: 10px;
 }
-#content-block xref-table {
+#content_viewer xref-table {
   line-height: 10px;
 }
-#content-block .subject-headings li {
+#content_viewer .subject-headings li {
   font-family: "Noticia Text";
   font-size: 14px;
   color: #666666;
@@ -7187,8 +7145,8 @@ s .Topics {
   line-height: 16px;
   margin-bottom: 20px;
 }
-#content-block .related-btn,
-#content-block .view-large-btn {
+#content_viewer .related-btn,
+#content_viewer .view-large-btn {
   display: inline-block;
   padding: 2px 10px;
   line-height: normal;
@@ -7205,61 +7163,69 @@ s .Topics {
   background-repeat: no-repeat;
   margin: 10px 0px;
 }
-#content-block .related-btn.btn-label-sansserif,
-#content-block .view-large-btn.btn-label-sansserif {
+#content_viewer .related-btn.btn-label-sansserif,
+#content_viewer .view-large-btn.btn-label-sansserif {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
   color: #666666;
   text-shadow: rgba(255, 255, 255, 0.901961) 0px 1px;
 }
-#content-block .related-btn.btn-label-sansserif:hover,
-#content-block .view-large-btn.btn-label-sansserif:hover {
+#content_viewer .related-btn.btn-label-sansserif:hover,
+#content_viewer .view-large-btn.btn-label-sansserif:hover {
   background-color: #99d8f2;
   background-image: none;
   cursor: pointer;
   -webkit-user-select: none;
   background-repeat: no-repeat;
 }
-#content-block ol.contributor-list li,
-#content-block ol.affiliation-list li {
+#content_viewer ol.contributor-list li,
+#content_viewer ol.affiliation-list li {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11px;
   color: #999999;
   display: inline-block;
 }
-#content-block ol.contributor-list li a,
-#content-block ol.affiliation-list li a {
+#content_viewer ol.contributor-list li a,
+#content_viewer ol.affiliation-list li a {
   color: #999999;
   text-decoration: none;
 }
-#content-block ol.contributor-list li a:hover,
-#content-block ol.affiliation-list li a:hover {
+#content_viewer ol.contributor-list li a:hover,
+#content_viewer ol.affiliation-list li a:hover {
   text-decoration: underline;
 }
-#content-block ol.contributor-list li address,
-#content-block ol.affiliation-list li address {
+#content_viewer ol.contributor-list li address,
+#content_viewer ol.affiliation-list li address {
   font-style: normal;
 }
-#content-block .affiliation-list-reveal {
+#content_viewer .affiliation-list-reveal {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11px;
   color: #048bc9;
 }
-#content-block .affiliation-list-reveal:hover {
+#content_viewer .affiliation-list-reveal:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-#content-block .affiliation-list {
+#content_viewer .affiliation-list {
   padding-left: 20px;
   margin-top: 0;
 }
-#content-block .affiliation-list li {
+#content_viewer .affiliation-list li {
   line-height: 16px;
 }
-#content-block .section-nav {
+#content_viewer .section-nav {
   display: none;
 }
-#content-block h2 {
+
+
+#content_viewer .content h1 {text-align:left;}
+#content_viewer .content ol {
+  list-style-position:inside;
+}
+
+
+#content_viewer h2 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
   color: #333333;
@@ -7267,8 +7233,8 @@ s .Topics {
   margin: 30px 0 10px;
   font-weight: normal;
 }
-#content-block h3,
-#content-block h4 {
+#content_viewer h3,
+#content_viewer h4 {
   font-family: "Noticia Text";
   font-size: 16px;
   color: #333333;
@@ -7276,14 +7242,14 @@ s .Topics {
   font-weight: 700;
   margin: 10px 0px 0px;
 }
-#content-block h4 {
+#content_viewer h4 {
   font-style: italic;
 }
-#content-block .section.abstract {
+#content_viewer .section.abstract {
   padding-bottom: 20px;
   border-bottom: 1px solid #999999;
 }
-#content-block .kwd-group-title {
+#content_viewer .kwd-group-title {
   display: inline-block;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -7293,7 +7259,7 @@ s .Topics {
   font-style: normal;
   font-weight: 700;
 }
-#content-block .kwd-group {
+#content_viewer .kwd-group {
   margin-bottom: 10px;
   font-family: "Noticia Text";
   font-size: 14px;
@@ -7301,22 +7267,22 @@ s .Topics {
   font-style: normal;
   font-weight: 700;
 }
-#content-block .kwd-group li a:hover {
+#content_viewer .kwd-group li a:hover {
   text-decoration: underline;
 }
-#content-block #def-list-1 dd {
+#content_viewer #def-list-1 dd {
   font-family: "Noticia Text";
   font-size: 14px;
   color: #666666;
   font-style: normal;
   font-weight: 400;
 }
-#content-block .boxed-text {
+#content_viewer .boxed-text {
   padding: 5px 15px;
   background: #e0f3fb;
   margin-bottom: 20px;
 }
-#content-block .boxed-text .subsection h4 {
+#content_viewer .boxed-text .subsection h4 {
   font-family: "Noticia Text";
   font-size: 14px;
   color: #666666;
@@ -7324,18 +7290,17 @@ s .Topics {
   font-weight: 700;
   margin: 5px 0px;
 }
-#content-block .boxed-text .subsection p {
+#content_viewer .boxed-text .subsection p {
   color: #666666;
 }
-#content-block .table.pos-float {
+#content_viewer .table.pos-float {
   border: solid 1px #3399CC;
   padding: 10px;
   overflow: hidden;
-  float: left;
   display: block;
   margin-bottom: 20px;
 }
-#content-block .fig.pos-float {
+#content_viewer .fig.pos-float {
   border: solid 1px #3399CC;
   padding: 10px;
   overflow: hidden;
@@ -7344,7 +7309,7 @@ s .Topics {
   display: block;
   margin-bottom: 20px;
 }
-#content-block .fig-inline {
+#content_viewer .fig-inline {
   width: 260px;
   /*height:260px; float:left;*/
 
@@ -7352,13 +7317,13 @@ s .Topics {
   margin-top: 10px;
   float: left;
 }
-#content-block .fig-inline a {
+#content_viewer .fig-inline a {
   position: relative;
   width: 243px;
   top: 0;
   left: 10px;
 }
-#content-block .table-inline {
+#content_viewer .table-inline {
   width: 260px;
   height: 260px;
   overflow: hidden;
@@ -7366,51 +7331,51 @@ s .Topics {
   margin-top: 10px;
   float: left;
 }
-#content-block .table-inline a {
+#content_viewer .table-inline a {
   position: relative;
   width: 243px;
   top: 0;
   left: 10px;
 }
-#content-block .table-caption {
+#content_viewer .table-caption {
   width: 255px;
   float: left;
   margin: 10px 0 0 10px;
   height: 200px;
   position: relative;
 }
-#content-block .fig-caption {
+#content_viewer .fig-caption {
   width: 255px;
   float: left;
   margin: 10px 0 0 10px;
 }
-#content-block .callout {
+#content_viewer .callout {
   display: none;
 }
-#content-block .table-label,
-#content-block .fig-label {
+#content_viewer .table-label,
+#content_viewer .fig-label {
   font-family: "Noticia Text";
   font-size: 14px;
   color: #666666;
   font-style: normal;
   font-weight: 700;
 }
-#content-block .table-inline img {
+#content_viewer .table-inline img {
   width: 260px;
 }
-#content-block .table-inline .tableEnlarge {
+#content_viewer .table-inline .tableEnlarge {
   display: inline-block;
 }
-#content-block .disp-formula .inline-graphic,
-#content-block .inline-formula .inline-graphic {
+#content_viewer .disp-formula .inline-graphic,
+#content_viewer .inline-formula .inline-graphic {
   display: block;
   padding: 15px 0;
   margin: 0 auto;
 }
-#content-block #fn-group-1 ul {
+#content_viewer #fn-group-1 ul {
   margin-left: 0;
 }
-#content-block #fn-group-1 ul li {
+#content_viewer #fn-group-1 ul li {
   list-style-type: none;
   border-bottom: 1px dotted #999999;
   padding-bottom: 10px;
@@ -7421,19 +7386,19 @@ s .Topics {
   font-style: normal;
   font-weight: 400;
 }
-#content-block #fn-group-1 ul li p {
+#content_viewer #fn-group-1 ul li p {
   font-family: "Noticia Text";
   font-size: 14px;
   color: #666666;
   font-style: normal;
   font-weight: 400;
 }
-#content-block #fn-group-1 ul ul.history-list {
+#content_viewer #fn-group-1 ul ul.history-list {
   margin: 0 0 10px 0;
   border-bottom: 1px dotted #999999;
   padding-bottom: 10px;
 }
-#content-block #fn-group-1 ul ul.history-list li {
+#content_viewer #fn-group-1 ul ul.history-list li {
   font-family: "Noticia Text";
   font-size: 14px;
   color: #666666;
@@ -7444,7 +7409,7 @@ s .Topics {
   padding-bottom: 0;
   margin-bottom: 0;
 }
-#content-block ol.cit-list {
+#content_viewer ol.cit-list {
   list-style: decimal outside;
   margin-left: 0;
   padding-left: 20px;
@@ -7454,22 +7419,22 @@ s .Topics {
   font-style: normal;
   font-weight: 400;
 }
-#content-block ol.cit-list li {
+#content_viewer ol.cit-list li {
   padding: .3em 0;
   display: list-item;
 }
-#content-block ol.cit-list li,
-#content-block ol.cit-list div,
-#content-block ol.cit-list span,
-#content-block ol.cit-list a {
+#content_viewer ol.cit-list li,
+#content_viewer ol.cit-list div,
+#content_viewer ol.cit-list span,
+#content_viewer ol.cit-list a {
   line-height: 10px;
 }
-#content-block ol.cit-list div.ref-other {
+#content_viewer ol.cit-list div.ref-other {
   font-size: 10px;
   line-height: 16px;
   color: #999;
 }
-#content-block ol.cit-list div.ref-other em {
+#content_viewer ol.cit-list div.ref-other em {
   font-family: "Noticia Text";
   font-size: 10px;
   color: #999999;
@@ -7478,23 +7443,23 @@ s .Topics {
   font-weight: normal;
   font-style: italic;
 }
-#content-block ol.ref-use-labels {
+#content_viewer ol.ref-use-labels {
   list-style: none;
   margin-left: .5em;
 }
-#content-block div.ref-cit .cit-metadata li {
+#content_viewer div.ref-cit .cit-metadata li {
   display: inline;
   color: #999;
 }
-#content-block div.ref-cit .cit-metadata .duplicate,
-#content-block div.ref-cit .cit-metadata span.cit-pub-id-sep,
-#content-block div.ref-cit .cit-metadata span.cit-pub-id {
+#content_viewer div.ref-cit .cit-metadata .duplicate,
+#content_viewer div.ref-cit .cit-metadata span.cit-pub-id-sep,
+#content_viewer div.ref-cit .cit-metadata span.cit-pub-id {
   display: none;
 }
-#content-block div.ref-cit .cit-metadata div.duplicate {
+#content_viewer div.ref-cit .cit-metadata div.duplicate {
   display: none;
 }
-#content-block div.ref-list a.rev-xref-ref {
+#content_viewer div.ref-list a.rev-xref-ref {
   font-size: .694em;
   /* 2 sizes smaller */
 
@@ -7502,24 +7467,24 @@ s .Topics {
   background-color: #CCC;
   padding: 2px;
 }
-#content-block div.ref-list .rev-xref-ref,
-#content-block div.ref-list .rev-xref-ref:link {
+#content_viewer div.ref-list .rev-xref-ref,
+#content_viewer div.ref-list .rev-xref-ref:link {
   text-decoration: none;
 }
-#content-block ol.cit-list li div.ref-confproc div.unstructured {
+#content_viewer ol.cit-list li div.ref-confproc div.unstructured {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
   color: #999999;
   color: #999;
 }
-#content-block span.cit-etal {
+#content_viewer span.cit-etal {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
   color: #999999;
   font-weight: bold;
 }
-#content-block div.ref-cit div.cit-extra a,
-#content-block span.inline-cit.ref-journal .cit-extra a {
+#content_viewer div.ref-cit div.cit-extra a,
+#content_viewer span.inline-cit.ref-journal .cit-extra a {
   font-size: 88%;
   margin-left: .3em;
   padding-left: 9px;
@@ -7530,69 +7495,69 @@ s .Topics {
   white-space: nowrap;
   display: inline-block;
 }
-#content-block span.inline-cit.ref-journal .cit-extra a {
+#content_viewer span.inline-cit.ref-journal .cit-extra a {
   display: inline;
   white-space: normal;
 }
-#content-block span.inline-cit.ref-journal .cit-extra span span {
+#content_viewer span.inline-cit.ref-journal .cit-extra span span {
   font-size: 1em;
 }
-#content-block div.ref-cit div.cit-extra a:hover,
-#content-block span.inline-cit.ref-journal .cit-extra a:hover {
+#content_viewer div.ref-cit div.cit-extra a:hover,
+#content_viewer span.inline-cit.ref-journal .cit-extra a:hover {
   border-bottom: 0px none;
 }
-#content-block div.ref-cit div.cit-extra a.cit-ref-sprinkles-open-url-has-image,
-#content-block span.inline-cit.ref-journal .cit-extra a.cit-ref-sprinkles-open-url-has-image {
+#content_viewer div.ref-cit div.cit-extra a.cit-ref-sprinkles-open-url-has-image,
+#content_viewer span.inline-cit.ref-journal .cit-extra a.cit-ref-sprinkles-open-url-has-image {
   background-image: none;
   padding-left: 0.1em;
 }
-#content-block div.ref-cit div.cit-extra a.cit-ref-sprinkles-open-url-has-image span,
-#content-block span.inline-cit.ref-journal .cit-extra a.cit-ref-sprinkles-open-url-has-image span {
+#content_viewer div.ref-cit div.cit-extra a.cit-ref-sprinkles-open-url-has-image span,
+#content_viewer span.inline-cit.ref-journal .cit-extra a.cit-ref-sprinkles-open-url-has-image span {
   display: none;
 }
-#content-block div.ref-cit div.cit-extra a.cit-ref-sprinkles-open-url-has-image img,
-#content-block span.inline-cit.ref-journal .cit-extra a.cit-ref-sprinkles-open-url-has-image img {
+#content_viewer div.ref-cit div.cit-extra a.cit-ref-sprinkles-open-url-has-image img,
+#content_viewer span.inline-cit.ref-journal .cit-extra a.cit-ref-sprinkles-open-url-has-image img {
   vertical-align: text-bottom;
 }
-#content-block div.ref-cit cite {
+#content_viewer div.ref-cit cite {
   font-style: normal;
 }
-#content-block div.ref-cit cite span.cit-source,
-#content-block div.ref-cit cite abbr.cit-jnl-abbrev,
-#content-block div.ref-cit cite span.cit-conf-name,
-#content-block div.ref-cit cite .ie6-abbr-wrap {
+#content_viewer div.ref-cit cite span.cit-source,
+#content_viewer div.ref-cit cite abbr.cit-jnl-abbrev,
+#content_viewer div.ref-cit cite span.cit-conf-name,
+#content_viewer div.ref-cit cite .ie6-abbr-wrap {
   margin-right: .1em;
   font-style: italic;
 }
-#content-block div.ref-cit .cit-vol {
+#content_viewer div.ref-cit .cit-vol {
   font-weight: bolder;
 }
-#content-block div.ref-cit,
-#content-block .ref-cit div,
-#content-block .ref-cit cite,
-#content-block .ref-cit ol,
-#content-block .ref-cit li {
+#content_viewer div.ref-cit,
+#content_viewer .ref-cit div,
+#content_viewer .ref-cit cite,
+#content_viewer .ref-cit ol,
+#content_viewer .ref-cit li {
   margin-left: 0;
   margin-right: 0;
   padding-left: 0;
   padding-right: 0;
   display: inline;
 }
-#content-block div.ref-cit.no-rev-xref,
-#content-block span.inline-cit.ref-journal.no-rev-xref {
+#content_viewer div.ref-cit.no-rev-xref,
+#content_viewer span.inline-cit.ref-journal.no-rev-xref {
   display: block;
   padding-top: 1px;
   margin-top: 0;
 }
-#content-block .ref-use-labels div.ref-cit.no-rev-xref {
+#content_viewer .ref-use-labels div.ref-cit.no-rev-xref {
   display: inline;
 }
-#content-block ul.responses-list,
-#content-block ul.cit-views {
+#content_viewer ul.responses-list,
+#content_viewer ul.cit-views {
   margin: 0;
   padding: 0;
 }
-#content-block .cit {
+#content_viewer .cit {
   list-style-type: none;
   padding: 0;
   font-family: "Noticia Text";
@@ -7602,17 +7567,17 @@ s .Topics {
   font-weight: 400;
   margin-bottom: 10px;
 }
-#content-block .cit ul.cit-auth-list {
+#content_viewer .cit ul.cit-auth-list {
   margin: 0;
 }
-#content-block .cit li {
+#content_viewer .cit li {
   list-style-type: none;
 }
-#content-block .cit .digest {
+#content_viewer .cit .digest {
   color: #333333;
   margin-bottom: 10px;
 }
-#content-block .cit .cit-title {
+#content_viewer .cit .cit-title {
   font-family: "Noticia Text";
   font-size: 16px;
   color: #333333;
@@ -7620,18 +7585,18 @@ s .Topics {
   font-weight: 400;
   margin: 5px 0 10px 0;
 }
-#content-block .cit .cit-title a:hover {
+#content_viewer .cit .cit-title a:hover {
   color: #39c;
   text-decoration: none;
 }
-#content-block .cit h3 {
+#content_viewer .cit h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   color: #666666;
   font-weight: bold;
   margin: .3em 0 .1em 0;
 }
-#content-block .cit h6 {
+#content_viewer .cit h6 {
   font-family: "Noticia Text";
   font-size: 11px;
   color: #999999;
@@ -7639,13 +7604,13 @@ s .Topics {
   font-weight: 400;
   margin-bottom: .1em;
 }
-#content-block .cit a {
+#content_viewer .cit a {
   color: #39c;
 }
-#content-block .cit .topic-header {
+#content_viewer .cit .topic-header {
   line-height: 16px;
 }
-#content-block .cit .cit-auth {
+#content_viewer .cit .cit-auth {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
   color: #999999;
@@ -7653,8 +7618,8 @@ s .Topics {
   line-height: 13px;
   margin-bottom: 10px;
 }
-#content-block .cit cite,
-#content-block .cit .cit-online-date {
+#content_viewer .cit cite,
+#content_viewer .cit .cit-online-date {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
   color: #999999;
@@ -7662,7 +7627,7 @@ s .Topics {
   margin-bottom: 3px;
   font-style: normal;
 }
-#content-block #ad300x250Wrapper {
+#content_viewer #ad300x250Wrapper {
   border-top: 1px solid #d9d9d9;
   border-bottom: 1px solid #d9d9d9;
   height: 360px;
@@ -7671,25 +7636,29 @@ s .Topics {
   margin: 0 auto;
   text-align: center;
 }
-#content-block #ad300x250Wrapper p {
+#content_viewer #ad300x250Wrapper p {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
   color: #666666;
   margin: 43px 0 0 0;
 }
-#content-block #ad300x250Wrapper p a {
+#content_viewer #ad300x250Wrapper p a {
   color: #666;
   text-decoration: none;
 }
-#content-block #ad300x250Wrapper #ad300x250 {
+#content_viewer #ad300x250Wrapper #ad300x250 {
   position: relative;
   width: 300px;
   height: 250px;
   margin: 0 auto;
   background-color: #d9d9d9;
 }
-/* End: #content-block */
+
+/* End: For responive, use #content_viewer instead of #content-view */
+
+
+
 /* -------------------------------------------------- */
 /* pop over */
 /* -------------------------------------------------- */
@@ -9406,7 +9375,7 @@ s .Topics {
   padding: 0;
   margin: 0;
 }
-#mainContent_AAPExpand .centerContentWrapper #moduleAAPNewsExpanded #content-block .fig-inline a {
+#mainContent_AAPExpand .centerContentWrapper #moduleAAPNewsExpanded #content_viewer .fig-inline a {
   left: 0;
 }
 #mainContent_AAPExpand .centerContentWrapper #moduleAAPNewsExpanded #WrapperAAPNews #graphic-1.graphic,
@@ -12831,7 +12800,7 @@ s .Topics {
   /* End: Policy Article Styling */
 
 }
-#policyMainContent #colWrapper #policyArticleWrapper #policyArticle #content-block h1#article-title-1 {
+#policyMainContent #colWrapper #policyArticleWrapper #policyArticle #content_viewer h1#article-title-1 {
   text-align: left;
 }
 #policyMainContent #colWrapper #policyArticleWrapper .cit-metadata.unstructured {
@@ -12841,8 +12810,8 @@ s .Topics {
   font-style: normal;
   font-weight: 400;
 }
-#policyMainContent #colWrapper #policyArticleWrapper #policyArticle #content-block .table-caption,
-#policyMainContent #colWrapper #policyArticleWrapper #policyArticle #content-block .fig-caption {
+#policyMainContent #colWrapper #policyArticleWrapper #policyArticle #content_viewer .table-caption,
+#policyMainContent #colWrapper #policyArticleWrapper #policyArticle #content_viewer .fig-caption {
   width: 220px;
 }
 #policyMainContent #colWrapper #policyArticleWrapper #policyArticle span.kwd-group-title {
