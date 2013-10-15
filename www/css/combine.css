@@ -7310,12 +7310,12 @@ s .Topics {
   margin-bottom: 20px;
 }
 #content_viewer .fig-inline {
-  width: 260px;
-  /*height:260px; float:left;*/
-
+  /*width: 260px;
+  height:260px; float:left;
+  float: left;
+  */
   position: relative;
   margin-top: 10px;
-  float: left;
 }
 #content_viewer .fig-inline a {
   position: relative;
@@ -7345,7 +7345,7 @@ s .Topics {
   position: relative;
 }
 #content_viewer .fig-caption {
-  width: 255px;
+  /* width: 255px; */
   float: left;
   margin: 10px 0 0 10px;
 }
