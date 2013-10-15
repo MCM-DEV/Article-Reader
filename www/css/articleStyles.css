@@ -365,17 +365,6 @@ div.graphic div.graphic-inline img {
   color: #048bc9;
 }
 
-/* Begin: KF CSS Adjustments for RESPONSIVE Main Article Styling */
-
-.content ul {
-  list-style-type:none;
-}
-
-.section {
-  margin-top:15px;
-}
-/* Begin: KF CSS Adjustments for RESPONSIVE Main Article Styling */
-
 
 .subject-headings li {
   font-family: Arial, Helvetica, sans-serif;
@@ -617,3 +606,31 @@ div.graphic div.graphic-inline img {
   font-size: 16px;
   line-height: 24px;
 }
+
+
+
+/* Begin: KF CSS Adjustments for RESPONSIVE Main Article Styling */
+
+.content ul {
+  list-style-type:none;
+}
+
+.section {
+  margin-top:15px;
+}
+
+.content .section .subsection {
+
+}
+
+.content .section .subsection  span.disp-formula {
+  width:100%;
+}
+
+.content .section .subsection  span.disp-formula img{
+  width:100%;
+}
+
+
+/* Begin: KF CSS Adjustments for RESPONSIVE Main Article Styling */
+
