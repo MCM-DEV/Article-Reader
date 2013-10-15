@@ -76,7 +76,7 @@ else{
 	initApp();
 }
 
-$('body').addClass('android_lt_3');
+//$('body').addClass('android_lt_3');
 
 function initApp(){
 	
