@@ -14,11 +14,11 @@
 	$_jquerySelection
 	
 	
-	structure: "What matters? What does it do? How does it work?"
+	structure: Typically in order of: "What matters? What does it do? How does it work?"
 	
 	Most vars declared at top of whatever scope they need to be in
-	Invocation in the middle
-	Most functions declared at bottom of whatever scope they need to be in
+	Invocation/jquery event handler set in the middle
+	Most functions declared at bottom of whatever scope they need to be in (js functions hoist)
 */	
 
 var
@@ -39,6 +39,7 @@ var
 		
 		//BECOMES:
 		//.aap_grand_rounds { background-image:url('images/tn-AAPGrandRounds.png') no-repeat left 50%; }
+		//and the article li in #article_list gets class="aap_grand_rounds" if its module name is "AAP Grand Rounds"
 		
 		"AAP Grand Rounds":"tn-AAPGrandRounds.png",
 		"AAP News":"tn-AAPNews.png",
@@ -55,6 +56,7 @@ var
 	},
 	
 	//class added to body mapped to regEx used for test of navigator.userAgent
+	//add whatever you need here and the name becomes a body class if the value is found in the user agents
 	USER_AGENT_MAP = {
 		desktop_chrome:/Chrome\/\d\d\.\d/,
 		ios7:/(iPad|iPhone);.*CPU.*OS 7_\d/i,
@@ -76,14 +78,13 @@ else{
 	initApp();
 }
 
-//$('body').addClass('android_lt_3');
-
 function initApp(){
 	
 	if( /(iPad|iPhone);.*CPU.*OS 7_\d/i.test(navigator.userAgent) || /testos=ios7/.test(location.href.split('?')[1]) ){
 		$('html').addClass('ios7');
 	}
 	
+	//unneeded in production
 	if(/cleardata\=true/.test(location.href.split('?')[1])){
 		delete localStorage.creds;
 		delete localStorage.data;
@@ -129,42 +130,7 @@ function initApp(){
 	
 	if(!creds){
 	
-		$_loginForm.submit( function(e){
-			e.preventDefault();
-			
-			var
-				isValid = true,
-				creds = {
-					uname:$_uname.val(),
-					pword:$_pword.val()
-				}
-			;
-				
-			if( !creds.uname ){
-				isValid = false;
-			}
-			if( !creds.pword ){
-				isValid = false;
-			}
-			
-			if(isValid){
-				$_loadingMsg.toggle();
-				var loadingTimer = setInterval( function(){ $_loadingMsg.toggle(); },500 ),
-				url =/Chrome\/\d\d\.\d/.test(navigator.userAgent) ? 'https://dl.dropboxusercontent.com/u/28072275/data.txt' : AAP_GATEWAY_ROOT + 'sendtodata/getdata?uid='+creds.uname+'&pwd='+creds.pword+'&duid=12345&dname=CaptainPlanetsjPhoney&os=jos20';//'&duid='+device.uuid+'&dname='+device.name+'&os='+device.platform,
-				$.getJSON(
-					url,
-					buildContent
-				)
-				.fail(function(e){ console.log(e); })
-				.always(function(){
-					clearInterval(loadingTimer);
-				});
-			}
-			else {
-				alert(USER_ALERTS.missingLoginFields);
-			}
-			return false;
-		} );
+		$_loginForm.submit( handleLogin );
 		
 		$_login.show();
 	}
@@ -173,8 +139,44 @@ function initApp(){
 		buildContent( JSON.parse(localStorage['data']) );
 	}
 	
-	function buildContent(data){
+	function handleLogin(e){
+		e.preventDefault();
 		
+		var
+			isValid = true,
+			creds = {
+				uname:$_uname.val(),
+				pword:$_pword.val()
+			}
+		;
+			
+		if( !creds.uname ){
+			isValid = false;
+		}
+		if( !creds.pword ){
+			isValid = false;
+		}
+		
+		if(isValid){
+			$_loadingMsg.toggle();
+			var loadingTimer = setInterval( function(){ $_loadingMsg.toggle(); },500 ),
+			url = $('body').hasClass('desktop_chrome') ? 'https://dl.dropboxusercontent.com/u/28072275/data2.txt' : AAP_GATEWAY_ROOT + 'sendtodata/getdata?uid='+creds.uname+'&pwd='+creds.pword+'&duid=12345&dname=CaptainPlanetsjPhoney&os=jos20&callback=?';//'&duid='+device.uuid+'&dname='+device.name+'&os='+device.platform,
+			$.getJSON(
+				url,
+				buildContent
+			)
+			.fail(function(jqXHR,status,err){ console.log(status+', '+err); })
+			.always(function(){
+				clearInterval(loadingTimer);
+			});
+		}
+		else {
+			alert(USER_ALERTS.missingLoginFields);
+		}
+		return false;
+	}
+	
+	function buildContent(data){
 		
 		stashCreds( creds );
 		
@@ -199,8 +201,7 @@ function initApp(){
 		while(i--){
 			(function(i){
 				var
-					thisData = data[i];
-				var
+					thisData = data[i],
 					
 					listItemVars = {
 						headline : thisData.Title,
@@ -222,6 +223,7 @@ function initApp(){
 				
 				thisData.Content = thisData.Content.replace(/(id|xmlns)="[^"]+"\s+/g,'');
 				thisData.Content = thisData.Content.replace(/src="\//g,'src="' + AAP_GATEWAY_ROOT);
+				thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/, '<button class="converted_link" rel="$1">$2</button>');
 				
 				contentPages.unshift('<div class="page"><div class="content">' + thisData.Content + '</div></div>');
 				articleListLIs.unshift(articleListItem);
@@ -289,7 +291,12 @@ function initApp(){
 		if( $(document.body).hasClass('desktop_chrome') ){
 			$('.stupid_android_lt3_button_up, .stupid_android_lt3_button_down').mousedown( scrollContent );
 		}
-
+		
+		$('.converted_link').click( function(e) {
+			e.preventDefault();
+			loadURL( this[0].href );
+		});
+		
 		function gotoPage(e){
 			
 			var sliderLimit = ($_slider.find('.page').size() - 1);
@@ -407,7 +414,12 @@ function initApp(){
 			} );
 				
 		}
-	
+
+		function loadURL(url){
+		    navigator.app.loadUrl(url, { openExternal:true });
+		    return false;
+		} 
+		
 	} //end behaviorInit
 	
 	function supports_html5_storage() {
