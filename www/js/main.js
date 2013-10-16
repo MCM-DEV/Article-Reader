@@ -83,14 +83,14 @@ for(var x in USER_AGENT_MAP){
 if( !$('body').hasClass('desktop_chrome') ){
 	document.addEventListener("deviceready", initApp, false);
 }
-/*else{
+else{
 	var device = { //fake device object for debug
 		uuid:12345,
 		name:'CaptainPlanetsjPhoney',
 		platform:'jos20'
 	};
 	initApp();
-}*/
+}
 
 function initApp(){
 	
