@@ -45,7 +45,7 @@ var
 		"AAP News":"tn-AAPNews.png",
 		"AAP Policy":"tn-AAPPolicy.png",
 		"Hospital Pediatrics":"tn-HospitalPediatrics.png",
-		"Neo Reviews":"tn-NeoReviews.png",
+		"NeoReviews":"tn-NeoReviews.png",
 		"Pediatrics":"tn-Pediatrics.png",
 		"Pediatrics Digest":"tn-PediatricsDigest.png",
 		"Pediatrics in Review":"tn-PediatricsInReview.png",
@@ -64,24 +64,53 @@ var
 	}
 ;
 
+var img_cache = [];
+
+
+for(var x in MODULE_IMG_MAP){
+	img_cache.unshift(new Image());
+	img_cache[0].src = 'img/' + MODULE_IMG_MAP[x];
+}
+
 for(var x in USER_AGENT_MAP){
 	if( USER_AGENT_MAP[x].test(navigator.userAgent) ){
 		$('body').addClass(x);
 		break;
 	}
 }
+
 	
 if( !$('body').hasClass('desktop_chrome') ){
 	document.addEventListener("deviceready", initApp, false);
 }
-else{
+/*else{
+	var device = { //fake device object for debug
+		uuid:12345,
+		name:'CaptainPlanetsjPhoney',
+		platform:'jos20'
+	};
 	initApp();
-}
+}*/
 
 function initApp(){
+	alert(device.uuid);
+	var dcCnt = 0;
+	(function deviceCheck(){
+		if(!device || dcCnt +=1 >= 25){
+			if(dcCnt >=25){
+				alert('device object load timed out');
+				return false;
+			}
+			else {
+				alert('device freakin loaded');
+				return true;
+			}
+			setTimeout( deviceCheck, 200);
+		}
+	});
 	
-	if( /(iPad|iPhone);.*CPU.*OS 7_\d/i.test(navigator.userAgent) || /testos=ios7/.test(location.href.split('?')[1]) ){
-		$('html').addClass('ios7');
+	if( /testos=ios7/.test(location.href.split('?')[1]) ){
+		$('body').addClass('ios7');
 	}
 	
 	//unneeded in production
@@ -158,17 +187,20 @@ function initApp(){
 		}
 		
 		if(isValid){
-			$_loadingMsg.toggle();
-			var loadingTimer = setInterval( function(){ $_loadingMsg.toggle(); },500 ),
-			url = $('body').hasClass('desktop_chrome') ? 'https://dl.dropboxusercontent.com/u/28072275/data2.txt' : AAP_GATEWAY_ROOT + 'sendtodata/getdata?uid='+creds.uname+'&pwd='+creds.pword+'&duid=12345&dname=CaptainPlanetsjPhoney&os=jos20&callback=?';//'&duid='+device.uuid+'&dname='+device.name+'&os='+device.platform,
-			$.getJSON(
-				url,
-				buildContent
-			)
-			.fail(function(jqXHR,status,err){ console.log(status+', '+err); })
-			.always(function(){
-				clearInterval(loadingTimer);
-			});
+			
+			var
+				url = /*$('body').hasClass('desktop_chrome') ? 'https://dl.dropboxusercontent.com/u/28072275/data2.txt' : */ (AAP_GATEWAY_ROOT + 'sendtodata/getdata' +
+				[
+					'?uid='+creds.uname,
+					'&pwd='+creds.pword,
+					'&duid='+device.uuid,
+					'&dname='+device.name,
+					'&os=' + device.platform,
+					localStorage.lastClipDate ? '&lastClipDate=' + localStorage.lastClipDate : ''
+				].join(''))
+			;
+				
+			getData(url, buildContent);
 		}
 		else {
 			alert(USER_ALERTS.missingLoginFields);
@@ -176,9 +208,39 @@ function initApp(){
 		return false;
 	}
 	
-	function buildContent(data){
+	function getData(url, callBack){
 		
-		stashCreds( creds );
+		$_loadingMsg.toggle();
+		
+		var
+			loadingTimer = setInterval( function(){ $_loadingMsg.toggle(); },500 ),
+			fullData = [],
+			count = 0
+		;
+		
+		( function getDataChunk(data){
+			fullData = fullData.concat(data.data);
+			var newUrl = url + '&start=' + count;
+			if(count < data.Count){
+				count += 5;
+				$.getJSON(
+					newUrl,
+					getDataChunk
+				)
+				.fail(function(jqXHR,status,err){ console.log(status+', '+err); })
+				.always(function(){
+					
+				});
+			}
+			else { //data load success
+				clearInterval(loadingTimer);
+				stashCreds( creds );
+				callBack(fullData);
+			}
+		} )({Count:1, data:[]});
+	}
+	
+	function buildContent(data){
 		
 		$('head').append( buildModuleStyleDecs(MODULE_IMG_MAP) );
 		
@@ -223,7 +285,7 @@ function initApp(){
 				
 				thisData.Content = thisData.Content.replace(/(id|xmlns)="[^"]+"\s+/g,'');
 				thisData.Content = thisData.Content.replace(/src="\//g,'src="' + AAP_GATEWAY_ROOT);
-				thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/, '<button class="converted_link" rel="$1">$2</button>');
+				thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/, '<button class="converted_link" data-link="http://www.google.com">$2</button>');
 				
 				contentPages.unshift('<div class="page"><div class="content">' + thisData.Content + '</div></div>');
 				articleListLIs.unshift(articleListItem);
@@ -237,7 +299,7 @@ function initApp(){
 		$('#article_list').show();
 		
 		behaviorInit();
-		
+	
 	}
 	
 	function behaviorInit(){
@@ -294,11 +356,11 @@ function initApp(){
 		
 		$('.converted_link').click( function(e) {
 			e.preventDefault();
-			loadURL( this[0].href );
+			loadURL( $(this).data('link') );
 		});
 		
 		function gotoPage(e){
-			
+			console.log('goto');
 			var sliderLimit = ($_slider.find('.page').size() - 1);
 			
 			if(typeof e === 'object'){ //slide if object, set to page w no animation if number
@@ -416,8 +478,13 @@ function initApp(){
 		}
 
 		function loadURL(url){
-		    navigator.app.loadUrl(url, { openExternal:true });
-		    return false;
+			if(navigator && navigator.app){
+				navigator.app.loadUrl(url, { openExternal:true } );
+			}
+			else {
+				console.log(url);
+				location.href = url;
+			}
 		} 
 		
 	} //end behaviorInit
