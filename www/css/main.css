@@ -350,7 +350,7 @@ button.history {
 	padding: 0.8em 5em .8em 6.5em;
 	border-bottom: solid 1px #999;
 	background: no-repeat .5em 50%;
-	background-size: auto 78%;
+	background-size: auto 5em;
 }
 #article_list li > .select_article_btn {
 	position: absolute;
