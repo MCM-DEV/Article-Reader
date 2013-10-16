@@ -94,6 +94,8 @@ if( !$('body').hasClass('desktop_chrome') ){
 
 function initApp(){
 	
+	alert('deviceready2: initApp');
+	
 	var dcCnt = 0;
 	(function deviceCheck(){
 		if(!device || dcCnt +=1 >= 25){

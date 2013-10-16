@@ -11,13 +11,16 @@
 	<title>AAP Gateway Reader</title>
 	<link rel="stylesheet" href="css/main.css" />
 	<link rel="stylesheet" href="css/articleStyles.css" />
-	
+
+	<script src="cordova.js"></script>
+	<script src="cordova_plugins.js"></script>
 	
 	<script>
 	function onDeviceReady() {
 		if(navigator && navigator.splashScreen){
 			navigator.splashscreen.hide();
 		}
+		alert('deviceready1: navigator.spashscreen check');
 	}
 	document.addEventListener("deviceready", onDeviceReady, false);
 	
@@ -87,9 +90,6 @@
 </div>
 
 <!--JavaScript Files -->
-
-<script src="cordova.js"></script>
-<script src="cordova_plugins.js"></script>
 <!--<script src="js/zepto.min.js"></script>-->
 <script src="js/jquery-1.8.3.min.js"></script>
 <!---->
