@@ -345,9 +345,9 @@ button.history {
 	position: absolute;
 	right: .2em;
 	height: 100%;
-	font-size: 6em;
+	font-size: 3em;
 	vertical-align: middle;
-	top: 0px;
+	top: 0.6em;
 	padding: 0px;
 	margin: 0px;
 }
