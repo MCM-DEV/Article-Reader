@@ -93,7 +93,7 @@ if( !$('body').hasClass('desktop_chrome') ){
 }*/
 
 function initApp(){
-	alert(device.uuid);
+	
 	var dcCnt = 0;
 	(function deviceCheck(){
 		if(!device || dcCnt +=1 >= 25){
@@ -102,7 +102,7 @@ function initApp(){
 				return false;
 			}
 			else {
-				alert('device freakin loaded');
+				alert('device loaded after deviceready');
 				return true;
 			}
 			setTimeout( deviceCheck, 200);
@@ -221,7 +221,7 @@ function initApp(){
 		( function getDataChunk(data){
 			fullData = fullData.concat(data.data);
 			var newUrl = url + '&start=' + count;
-			if(count < data.Count){
+			if(count < 10 /*data.Count*/){ //ARBITRARILY LIMITING TO FIRST 10 CHOICES - THIS NEEDS TO CHANGE
 				count += 5;
 				$.getJSON(
 					newUrl,
