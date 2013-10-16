@@ -30,7 +30,7 @@ p.last {
 h2 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 24px;
+  font-size: 1.5em;
   color: #333333;
   padding: 0;
   margin: 0;
@@ -54,15 +54,16 @@ ul {
 }
 .fig-inline img {
   height: 108px;
+  margin-top: 1.2em;
 }
 /*correct p!*/
 p,
 li {
   font-family: "noticia text", "Times New Roman", Times, serif;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 1.2em;
   color: #333333;
-  line-height: 22px;
+  line-height: 1.5em;
 }
 p em,
 li em {
@@ -81,7 +82,7 @@ li em {
 h2 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 24px;
+  font-size: 1.5em;
   color: #333333;
   padding: 0;
   margin: 0;
@@ -181,7 +182,7 @@ h2 {
 }
 #contentWrapper2ColIssue h2 {
   font-family: "Noticia Text";
-  font-size: 16px;
+  font-size: 1.5em;
   color: #333333;
   font-style: normal;
   font-weight: 700;
@@ -286,7 +287,6 @@ h2 {
 div.graphic,
 div.mediaPreview,
 div.imagePreview {
-  width: 510px;
   padding: 20px;
   background-color: #ededed;
   margin-bottom: 20px;
@@ -322,11 +322,11 @@ div.imagePreview p.link {
   margin-bottom: 15px;
 }
 div.graphic {
-  width: 465px;
+  /*width: 465px;*/
   background-color: #e0f3fb;
 }
 div.graphic div.graphic-inline {
-  height: 100px;
+  /*height: 100px;*/
 }
 div.graphic div.graphic-inline img {
   height: 100%;
@@ -519,7 +519,7 @@ div.graphic div.graphic-inline img {
   line-height: 24px;
 }
 .smallFont #content-block h2 {
-  font-size: 20px;
+  font-size: 1.5em;
 }
 .smallFont #content-block h3,
 .smallFont #content-block h4 {
@@ -563,7 +563,7 @@ div.graphic div.graphic-inline img {
   font-size: 14px;
 }
 .smallFont #WrapperPedsInReview h2.subtitle {
-  font-size: 14px;
+  font-size: 1.5em;
 }
 .smallFont #article-title-1 {
   font-size: 20px;
@@ -620,7 +620,7 @@ div.graphic div.graphic-inline img {
 }
 
 .content .section div.graphic {
-  width:100%;
+  /*width:100%;*/
 }
 .content .section div.graphic img{
   width:100%;
@@ -635,7 +635,7 @@ div.graphic div.graphic-inline img {
 }
 
 .content .section .subsection span.disp-formula img{
-  width:100%;
+  /*width:100%;*/
 }
 
 .content .section .subsection .pos-float {
