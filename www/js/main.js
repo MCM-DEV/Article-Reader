@@ -81,12 +81,7 @@ for(var x in USER_AGENT_MAP){
 
 	
 if( !$('body').hasClass('desktop_chrome') ){
-	if( !window.isDeviceReady ){
 		document.addEventListener("deviceready", initApp);
-	}
-	else {
-		initApp();
-	}
 }
 else{
 	if(!window.device){
@@ -100,9 +95,7 @@ else{
 }
 
 function initApp(){
-	//$(document).ready( function(){
-		alert('initApp uuid: '+device.uuid);
-		var dcCnt = 0;
+		/*var dcCnt = 0;
 		(function deviceCheck(){
 			if(!device || dcCnt +=1 >= 25){
 				if(dcCnt >=25){
@@ -115,9 +108,9 @@ function initApp(){
 				}
 				setTimeout( deviceCheck, 200);
 			}
-		});
+		});*/
 		
-		if( /testos=ios7/.test(location.href.split('?')[1]) ){
+		if( /testos\=ios7/.test(location.href.split('?')[1]) ){
 			$('body').addClass('ios7');
 		}
 		
