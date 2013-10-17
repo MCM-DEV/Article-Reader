@@ -451,7 +451,7 @@ h2 {
 
 /* Begin: Responsive edits */
 
-#content_viewer .content .section {
+#content_viewer .content .article .section {
   float:left;
 }
 
@@ -461,7 +461,7 @@ h2 {
   float: left;
 }
 
-#content_viewer .content .section p {
+#content_viewer .content .article .section p {
 position: relative;
 float: left;
 color: #000;
@@ -469,7 +469,11 @@ width: 100%;
 margin: 0;
 }
 
-#content_viewer .content .section ol li p {
+#content_viewer .content .article .section ol {
+	fo
+}
+
+#content_viewer .content .article .section ol li p {
   position: relative;
   width: 100%;
   margin: 0;
@@ -479,7 +483,7 @@ margin: 0;
   color: #000;
 }
 
-#content_viewer .content .section div.graphic {
+#content_viewer .content .article .section div.graphic {
   background-color: #e0f3fb;
   width: 100%;
   margin: 10px 0;
@@ -653,6 +657,7 @@ margin: 0;
   font-weight: bolder;
   background-color: #CCC;
   padding: 2px;
+  display:none;
 }
 #content_viewer div.ref-list .rev-xref-ref,
 #content_viewer div.ref-list .rev-xref-ref:link {
