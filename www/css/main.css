@@ -84,14 +84,14 @@ font-size: 14px;
  color: #FC0 /*yellow, MarcGalaxyIIIs, iPad4, iPod*/
 }
 }
-@media (min-resolution: 320dpi) and (min-width: 720px) {
+/*@media (min-resolution: 320dpi) and (min-width: 720px) {
  body {
 font-size: 24px;
  font-family: arial, sans-serif;
- color: #cc3333; /*cna red*/
+ color: #cc3333; /*cna red
 }
-}
-@media (min-resolution: 326dpi) {
+}*/
+@media (min-resolution: 326dpi) and (min-width: 640px) {
  body {
 font-size: 24px;
  font-family: arial, sans-serif;
