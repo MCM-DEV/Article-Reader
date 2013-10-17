@@ -7,20 +7,16 @@ Overflow styles requiring "scroll" for touch-mobile devices are set to auto unde
 /* helps with finicky scrolling apparently */
 
 .content * {
-	margin: 0px;
-	padding: 0px;
-	-webkit-user-select: html;
-	-khtml-user-select: html;
-	-moz-user-select: html;
-	-ms-user-select: html;
-	user-select: html;
+	margin:0px; padding:0px;
+    -webkit-user-select:html;
+    -khtml-user-select:html;
+    -moz-user-select:html;
+    -ms-user-select:html;
+    user-select:html;
 }
-html, body {
-	height: 100%;
-	padding: 0px;
-	margin: 0px;
-	background-color: #fff;
-}
+
+html, body { height:100%; padding:0px; margin:0px; background-color:#fff;}
+
 /*
 set EM values for all fonts BUT the body
 I'm a little bit of an em-noob but I'm also setting widths/heights in some places that seem
@@ -29,13 +25,14 @@ Best thing is to avoid explicit heights/widths altogether as much as possible IM
 */
 
 body {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
 }
+
 /* test in desktop chrome browser by adding paramater testos=ios7 */
 .ios7 body {
-	box-sizing: border-box;
-	border-top: solid 20px #ddd;
+	box-sizing:border-box;
+	border-top:solid 20px #ddd;
 }
 
 /*
@@ -56,120 +53,103 @@ stackOverflow and fiddled from there.
     }
 } */
 
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi), (min-resolution: 1), (-o-min-device-pixel-ratio: 4/4) {
- body {
-font-size: 14px;
- font-family: arial, sans-serif;
- color:#0F0; /*green, nook*/
+@media
+(-webkit-min-device-pixel-ratio: 1),
+(min-resolution: 96dpi),
+(min-resolution: 1),
+(-o-min-device-pixel-ratio: 4/4){
+	body {font-size: 12px;
+		font-family: arial, sans-serif;}
 }
+@media
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi),
+(min-resolution: 1.25),
+(-o-min-device-pixel-ratio: 5/4){
+	body {font-size: 12px;
+		font-family: arial, sans-serif;}
 }
-@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25), (-o-min-device-pixel-ratio: 5/4) {
- body {
-font-size: 12px;
- font-family: arial, sans-serif;
- color: #F0F; /*magenta*/
+@media
+(-webkit-min-device-pixel-ratio: 1.5),
+(min-resolution: 220dpi),
+(min-resolution: 1.5),
+(-o-min-device-pixel-ratio: 3/2){
+	body {font-size: 18px;
+		font-family: arial, sans-serif;}
 }
-}
-@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 220dpi), (min-resolution: 1.5), (-o-min-device-pixel-ratio: 3/2) {
- body {
-font-size: 18px;
- font-family: arial, sans-serif;
- color: #C3C; /*purple, Kevin's*/ 
-}
-}
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi), (min-resolution: 2), (-o-min-device-pixel-ratio: 2/1) {
- body {
-font-size: 14px;
- font-family: arial, sans-serif;
- color: #FC0 /*yellow, MarcGalaxyIIIs*/
-}
-}
-@media (min-resolution: 320dpi) and (min-width: 720px) {
- body {
-font-size: 24px;
- font-family: arial, sans-serif;
- color: #cc3333; /*cna red*/
-}
-}
-@media (min-width: 1000px) {
- body {
-font-size: 18px;
- font-family: arial, sans-serif;
- color: #0CF; /*light blue*/
-}
+@media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 300dpi),
+(min-resolution: 2),
+(-o-min-device-pixel-ratio: 2) {
+	body {font-size: 18px;
+		font-family: arial, sans-serif;}
 }
 
 
+div { margin:0px; padding:0px; }
 
-
-div {
-	margin: 0px;
-	padding: 0px;
-}
 /* LOGIN SCREEN */
 #login {
-	position: relative;
-	height: 100%;
-	width: 100%;
-	z-index: 30;
+	position:relative;
+	height:100%; width:100%;
+	z-index:30;
 	background-color: #d9d9d9;
 }
-#logoWrapper {
-	width: 23em;
-	height: 23em;
+#logoWrapper{
+	width: 300px;
+	height: 300px;
 	margin: 0 auto;
 	position: relative;
 	top: 100px;
 	background: url('../img/gatewayLogo.png') center top no-repeat #d9d9d9;
 }
-#logoWrapper h1 {
+#logoWrapper h1{
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
-	font-size: 1em;
+	font-size: 14px;
 	color: #333333;
 	line-height: 22px;
 	position: relative;
 	top: 160px;
 }
-#logoWrapper #login_form {
+#logoWrapper #login_form{
 	position: relative;
 	top: 150px;
-	margin: 0 5em;
+	margin: 0 40px;	
 }
-#logoWrapper span#loading_msg {
-	display: none;
+
+#logoWrapper #loading_msg { 
+	display:none; 
 	position: relative;
 	top: 170px;
-	left: 6.5em;
-	/*text-align: center;*/
+	text-align: center;
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
-	font-size: 1em;
-	color: #cc3333;
+	font-size: 12px;
+	color: #333333;
 	line-height: 22px;
-}
+	}
 #logoWrapper #login_form label {
-	display: block;
+	display:block;
 	margin-left: 4px;
 	padding-top: 10px;
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
-	font-size: 1.2em;
+	font-size: 12px;
 	color: #333333;
 	line-height: 22px;
 }
 #logoWrapper #login_form input {
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
-	font-size: 1em;
+	font-size: 18px;
 }
 #logoWrapper input[type="submit"] {
-	margin: 20px 0 0 2px;
+margin: 20px 0 0 2px;
 }
-#uname {
-}
-#pword {
-}
+#uname {}
+#pword {}
 /* END LOGIN SCREEN */
 
 /* ARTICLE LIST SCREEN */
@@ -181,59 +161,49 @@ div {
 	background: -o-linear-gradient(top, #3b8bc9 0%, #02599c 100%);
 	background: -ms-linear-gradient(top, #3b8bc9 0%, #02599c 100%);
 	background: linear-gradient(to bottom, #3b8bc9 0%, #02599c 100%);
-	font-family: Arial, Helvetica, sans-serif;
-	color: #fff;
+	
+	font-family:Arial, Helvetica, sans-serif;
+	color:#fff;
 }
 /* END ARTICLE LIST SCREEN */
 
 
 
 #login, #content_viewer, #article_list {
-	display: none;
+	display:none;
 }
+
 /* HEADER AREA */
 #content_viewer {
-	position: relative;
-	height: 100%;
+	position:relative;
+	height:100%;
 }
-#content_navigation {
-	position: absolute;
-	height: 3em;
-	width: 100%;
-	z-index: 10;
-}
+
+#content_navigation { position:absolute; height:3em; width:100%; z-index:10; }
+
 #content_navigation .back, #content_navigation .forward {
-	position: absolute;
-	top: 0px;
-	box-sizing: border-box;
-	height: 100%;
-	width: 3em;
+	position:absolute; top:0px;
+	box-sizing:border-box;
+	height:100%; width:3em;
 }
 #content_navigation .show_article_list_btn {
-	position: relative;
-	top: .2em;
-	box-sizing: border-box;
-	height: 85%;
-	width: 12em;
-	margin: 0px auto;
+	position:relative; top:.2em;
+	box-sizing:border-box;
+	height:85%; width:12em;
+	margin:0px auto;
 }
+
 #content_navigation .forward {
-	right: 0px;
+	right:0px;
 }
 .aap_header_logo {
-	position: absolute;
-	top: 0px;
-	left: 0.5em;
-	height: 3em;
-	width: 6em;
+		position:absolute; top:0px; left:20px;
+		height:3em;
+		width:6em;
 }
 button.history {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	display: inline-block;
-	height: 100%;
-	width: 5em;
+		position:absolute; top:0px; right:0px;
+		display:inline-block; height:100%; width:5em;
 }
 /* END HEADER AREA */
 
@@ -241,67 +211,73 @@ button.history {
 /* SLIDER */
 #slider {
 	-webkit-transform: translate3d(0, 0, 0);
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	height: 100%;
-	width: 100%;
-	z-index: 5;
-	white-space: nowrap;
-	min-height: 100%;
-	overflow-x: hidden;
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+	z-index:5;
+	white-space:nowrap;
+	min-height:100%;
+	overflow-x:hidden;
 }
+
 /* for workign on layout in dev */
-.desktop_chrome #content_viewer #slider {
-	overflow: hidden;
+.desktop_chrome #content_viewer #slider{
+	overflow:hidden;
 }
-#slider * {
-	white-space: normal;
-}
-#content_viewer #slider .page {
+
+#slider * { white-space:normal; }
+
+#content_viewer  #slider .page {
 	-webkit-transform: translate3d(0, 0, 0);
-	top: 0px;
-	display: inline-block;
-	width: 100%;
-	height: 100%;
-	box-sizing: border-box;
-	border: solid transparent;
-	border-width: 3em 0 0 0;
-	overflow: scroll;
-	-webkit-overflow-scrolling: touch;
+	top:0px;
+	display:inline-block;
+	width:100%;
+	height:100%;
+	
+	box-sizing:border-box;
+	border:solid transparent;
+	border-width:3em 0 0 0;
+	overflow:scroll;
+	-webkit-overflow-scrolling:touch;
 }
-.android_lt_3 #content_viewer #slider .page {
-	overflow: hidden;
-	border-width: 6em 0 3em;
+
+.android_lt_3 #content_viewer  #slider .page {
+	overflow:hidden;
+	border-width:6em 0 3em;
 }
+
 .stupid_android_lt3_button_up, .stupid_android_lt3_button_down {
-	position: absolute;
-	left: 0;
-	z-index: 30;
-	display: none;
-	width: 100%;
-	height: 3em;
+	position:absolute; left:0; z-index:30;
+	display:none;
+	width:100%; height:3em;
 }
+
 .stupid_android_lt3_button_up {
-	top: 3em;
+	top:3em;
 }
+
 .stupid_android_lt3_button_down {
-	bottom: 0em;
+	bottom:0em;
 }
+
 .android_lt_3 .stupid_android_lt3_button_down, .android_lt_3 .stupid_android_lt3_button_up {
-	display: inline-block;
+	display:inline-block;
 }
+
 /* for workign on layout in dev */
-.desktop_chrome #content_viewer #slider .page {
-	overflow: auto;
+.desktop_chrome #content_viewer  #slider .page {
+	overflow:auto;
 }
-.android_lt_3 #content_viewer #slider .page {
-	overflow: hidden;
+
+.android_lt_3 #content_viewer  #slider .page {
+	overflow:hidden;
 }
+
 #content_viewer .content {
-	box-sizing: border-box;
-	min-height: 100%;
-	padding: 15px 25px;
+	box-sizing:border-box;
+	min-height:100%; padding:15px 25px;
 }
 /* END SLIDER */
 
@@ -311,106 +287,93 @@ button.history {
 
 /* ARTICLE LIST HEADER */
 #article_list {
-	position: relative;
-	height: 100%;
-	width: 100%;
-	z-index: 20;
-	overflow: hidden;
+	position:relative;
+	height:100%; width:100%;
+	z-index:20;
+	overflow:hidden;
 }
 #article_list > .header {
-	position: relative;
-	z-index: 20;
-	height: 3em;
-	vertical-align: middle;
+		position:relative; z-index:20;
+		height:3em;
+		vertical-align:middle;
 }
 .header h3 {
-	box-sizing: border-box;
-	display: inline-block;
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	text-align: center;
+		box-sizing:border-box;
+		display:inline-block; height:100%; width:100%; margin:0;
+		text-align:center;
 }
 .header > h3 > span {
-	vertical-align: middle;
-	line-height: 2.5em;
+		vertical-align:middle;
+		line-height:2.5em;
 }
+
 .article_count {
-	position: absolute;
-	top: .35em;
-	right: 1em;
-	font-size: 1.5em;
+	position:absolute; top:.2em; right:4em;
+	font-size:2em;
 }
+
+
 #article_list > ul {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	z-index: 10;
-	display: block;
-	box-sizing: border-box;
-	height: 100%;
-	width: 100%;
-	border-top: solid 3em transparent;
-	margin: 0px;
-	list-style: none;
-	padding: 0px;
-	overflow: scroll;
-	-webkit-overflow-scrolling: touch;
+	position:absolute; top:0px; left:0px; z-index:10;
+	display:block; box-sizing:border-box; height:100%; width:100%; border-top:solid 3em transparent; margin:0px;
+	list-style:none;
+	padding:0px;
+	overflow:scroll;
+	-webkit-overflow-scrolling:touch;
 }
+
 /* for layout in dev */
 .desktop_chrome #article_list > ul {
-	overflow: auto;
+	overflow:auto;
 }
+
 #article_list li {
-	position: relative;
-	min-height: 5em;
-	padding: 0.8em 5em .8em 6.5em;
-	border-bottom: solid 1px #999;
-	background: no-repeat .5em 50%;
-	background-size: auto 5em;
+	position:relative;
+	min-height:5em; padding:0.8em 5em .8em 6.5em; border-bottom:solid 1px #000;
+	background:no-repeat .25em 50%;
+	background-size:auto 90%;
 }
+
 #article_list li > .select_article_btn {
-	position: absolute;
-	top: 50%;
-	right: 1em;
-	width: 3em;
-	height: 3em;
-	margin-top: -1.5em;
+	position:absolute; top:50%; right: 1em;
+	width:3em; height:3em; margin-top: -1.5em;
 }
-#article_list li > * {
-	margin: .1em;
-}
+
+#article_list li > * { margin:.1em;}
+
 #article_list li > .go_to_article_icon {
 	position: absolute;
 	right: .2em;
 	height: 100%;
-	font-size: 3em;
+	font-size: 6em;
 	vertical-align: middle;
-	top: 0.6em;
-	color: #ccc;
+	top: 0px;
 	padding: 0px;
 	margin: 0px;
 }
+
 #article_list h4 {
 	font-weight: normal;
 	color: #333333;
 	line-height: 1.6em;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
 	font-size: 1.2em;
 }
-.added_label {
-	margin-left: .5em;
-}
+
+.added_label { margin-left:.5em; }
+
 .listDate {
-	font-size: 0.8em;
-}
+	font-size: 0.8em;}
+
 /* General Classes */
 
 button {
-	font-size: 1em;
-	font-weight: bold;
+	font-size:1em;
+	font-weight:bold;
+	
 }
 
 /* styling classes */
+
