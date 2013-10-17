@@ -58,34 +58,50 @@ stackOverflow and fiddled from there.
 
 @media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi), (min-resolution: 1), (-o-min-device-pixel-ratio: 4/4) {
  body {
-font-size: 12px;
+font-size: 14px;
  font-family: arial, sans-serif;
+ color:#0F0; /*green, nook*/
 }
 }
 @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25), (-o-min-device-pixel-ratio: 5/4) {
  body {
 font-size: 12px;
  font-family: arial, sans-serif;
+ color: #F0F; /*magenta*/
 }
 }
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 220dpi), (min-resolution: 1.5), (-o-min-device-pixel-ratio: 3/2) {
  body {
 font-size: 18px;
  font-family: arial, sans-serif;
+ color: #C3C; /*purple, Kevin's*/ 
 }
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi), (min-resolution: 2), (-o-min-device-pixel-ratio: 2/1) {
  body {
 font-size: 14px;
  font-family: arial, sans-serif;
+ color: #FC0 /*yellow, MarcGalaxyIIIs*/
 }
 }
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi) and (min-width: 1000px), (min-resolution: 2), (-o-min-device-pixel-ratio: 2/1) {
+@media (min-resolution: 320dpi) and (min-width: 720px) {
+ body {
+font-size: 24px;
+ font-family: arial, sans-serif;
+ color: #cc3333; /*cna red*/
+}
+}
+@media (min-width: 1000px) {
  body {
 font-size: 18px;
  font-family: arial, sans-serif;
+ color: #0CF; /*light blue*/
 }
 }
+
+
+
+
 div {
 	margin: 0px;
 	padding: 0px;
@@ -99,8 +115,8 @@ div {
 	background-color: #d9d9d9;
 }
 #logoWrapper {
-	width: 300px;
-	height: 300px;
+	width: 23em;
+	height: 23em;
 	margin: 0 auto;
 	position: relative;
 	top: 100px;
@@ -109,7 +125,7 @@ div {
 #logoWrapper h1 {
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
-	font-size: 14px;
+	font-size: 1em;
 	color: #333333;
 	line-height: 22px;
 	position: relative;
@@ -118,17 +134,18 @@ div {
 #logoWrapper #login_form {
 	position: relative;
 	top: 150px;
-	margin: 0 40px;
+	margin: 0 5em;
 }
-#logoWrapper #loading_msg {
+#logoWrapper span#loading_msg {
 	display: none;
 	position: relative;
 	top: 170px;
-	text-align: center;
+	left: 6.5em;
+	/*text-align: center;*/
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
-	font-size: 12px;
-	color: #333333;
+	font-size: 1em;
+	color: #cc3333;
 	line-height: 22px;
 }
 #logoWrapper #login_form label {
@@ -137,14 +154,14 @@ div {
 	padding-top: 10px;
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
-	font-size: 12px;
+	font-size: 1.2em;
 	color: #333333;
 	line-height: 22px;
 }
 #logoWrapper #login_form input {
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
-	font-size: 18px;
+	font-size: 1em;
 }
 #logoWrapper input[type="submit"] {
 	margin: 20px 0 0 2px;
