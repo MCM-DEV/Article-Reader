@@ -60,7 +60,7 @@ stackOverflow and fiddled from there.
  body {
 font-size: 14px;
  font-family: arial, sans-serif;
- color:#0F0; /*green, nook*/
+ color:#0F0; /*green, nook, iPad2*/
 }
 }
 @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25), (-o-min-device-pixel-ratio: 5/4) {
@@ -81,7 +81,7 @@ font-size: 18px;
  body {
 font-size: 14px;
  font-family: arial, sans-serif;
- color: #FC0 /*yellow, MarcGalaxyIIIs*/
+ color: #FC0 /*yellow, MarcGalaxyIIIs, iPad4, iPod*/
 }
 }
 @media (min-resolution: 320dpi) and (min-width: 720px) {
@@ -89,6 +89,13 @@ font-size: 14px;
 font-size: 24px;
  font-family: arial, sans-serif;
  color: #cc3333; /*cna red*/
+}
+}
+@media (min-resolution: 326dpi) and (min-width: 640px) {
+ body {
+font-size: 24px;
+ font-family: arial, sans-serif;
+ color: #963; /*brown*/
 }
 }
 @media (min-width: 1000px) {
