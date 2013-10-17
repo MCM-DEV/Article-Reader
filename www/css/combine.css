@@ -17,6 +17,14 @@ li {
 }
 /* End Section: Resets */
 
+
+/*common for portal and cms*/
+
+
+
+/* -------------------------------------------------- */
+/* highwire.less */
+/* -------------------------------------------------- */
 .articleTitle {
   font-family: "Noticia Text";
   font-size: 24px;
