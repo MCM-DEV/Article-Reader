@@ -949,7 +949,7 @@ div.imagePreview {
 div.graphic img,
 div.mediaPreview img,
 div.imagePreview img {
-  max-width: 510px;
+  /*max-width: 510px;*/
   height: auto;
 }
 div.graphic p,
@@ -984,7 +984,7 @@ div.graphic div.graphic-inline {
   /*height: 100px;*/
 }
 div.graphic div.graphic-inline img {
-  height: 100%;
+  width: 100%;
 }
 #mplayer {
   margin: 0 auto;
@@ -1268,7 +1268,7 @@ div.graphic div.graphic-inline img {
 
 .content .article .graphic-inline {width:100%;}
 .content .article .graphic-inline img {
-	width:auto;
+	width:100%;
 }
 
 

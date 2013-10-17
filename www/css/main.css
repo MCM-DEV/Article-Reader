@@ -125,7 +125,7 @@ div {
 #logoWrapper h1 {
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
-	font-size: 14px;
+	font-size: 1em;
 	color: #333333;
 	line-height: 22px;
 	position: relative;
@@ -136,15 +136,16 @@ div {
 	top: 150px;
 	margin: 0 5em;
 }
-#logoWrapper #loading_msg {
+#logoWrapper span#loading_msg {
 	display: none;
 	position: relative;
 	top: 170px;
-	text-align: center;
+	left: 6.5em;
+	/*text-align: center;*/
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
-	font-size: 12px;
-	color: #333333;
+	font-size: 1em;
+	color: #cc3333;
 	line-height: 22px;
 }
 #logoWrapper #login_form label {
