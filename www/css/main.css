@@ -80,12 +80,22 @@ font-size: 14px;
  font-family: arial, sans-serif;
 }
 }
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 320dpi) and (min-width: 720px), (min-resolution: 2), (-o-min-device-pixel-ratio: 2/1) {
+ body {
+font-size: 24px;
+ font-family: arial, sans-serif;
+}
+}
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 300dpi) and (min-width: 1000px), (min-resolution: 2), (-o-min-device-pixel-ratio: 2/1) {
  body {
 font-size: 18px;
  font-family: arial, sans-serif;
 }
 }
+
+
+
+
 div {
 	margin: 0px;
 	padding: 0px;
