@@ -22,7 +22,7 @@ p.last {
 .contributor-list li {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 11px;
+    /*font-size: 11px;*/
   color: #333333;
   list-style: none;
   line-height: 16px;
@@ -47,7 +47,7 @@ ul {
 .contributor-list li {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 11px;
+  /*font-size: 11px;*/
   color: #333333;
   list-style: none;
   line-height: 16px;
@@ -61,7 +61,7 @@ p,
 li {
   font-family: "noticia text", "Times New Roman", Times, serif;
   font-weight: normal;
-  font-size: 1.2em;
+  /*font-size: 1.2em;*/
   color: #333333;
   line-height: 1.5em;
 }
@@ -69,14 +69,14 @@ p em,
 li em {
   font-family: "noticia text", "Times New Roman", Times, serif;
   font-weight: normal;
-  font-size: 13px;
+  /*font-size: 13px;*/
   color: #666666;
   font-style: italic;
 }
 .fig-caption .first-child {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 13px;
+  /*font-size: 13px;*/
   color: #333333;
 }
 h2 {
@@ -97,7 +97,7 @@ h2 {
 .list-unord li {
   font-family: "noticia text", "Times New Roman", Times, serif;
   font-weight: normal;
-  font-size: 13px;
+  /*font-size: 13px;*/
   color: #333333;
   line-height: 20px;
   padding: 0;
@@ -110,7 +110,7 @@ h2 {
 .boxed-text h4 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 16px;
+  /*font-size: 16px;*/
   color: #333333;
   padding: 0;
   margin: 0;
@@ -118,17 +118,17 @@ h2 {
 .boxed-text a {
   cursor: pointer;
 }
-/*
+
 #contentWrapper2ColIssue .cit-first-element,
 #contentWrapper2ColIssue cite {
   font-family: "noticia text", "Times New Roman", Times, serif;
   font-weight: normal;
-  font-size: 12px;
+  /*font-size: 12px;*/
   color: #333333;
 }
 #contentWrapper2ColIssue h4 {
   font-family: "Noticia Text";
-  font-size: 16px;
+  /*font-size: 16px;*/
   color: #333333;
   font-style: normal;
   font-weight: 700;
@@ -147,7 +147,7 @@ h2 {
 #contentWrapper2ColIssue ul.cit-views li.first-item a {
   font-family: "noticia text", "Times New Roman", Times, serif;
   font-weight: normal;
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #5481cc;
 }
 #contentWrapper2ColIssue ul.cit-views li.last-item {
@@ -156,7 +156,7 @@ h2 {
 #contentWrapper2ColIssue ul.cit-views li.last-item a {
   font-family: "noticia text", "Times New Roman", Times, serif;
   font-weight: normal;
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #5481cc;
 }
 #contentWrapper2ColIssue ul.cit-views li {
@@ -175,7 +175,7 @@ h2 {
 #contentWrapper2ColIssue abbr {
   font-family: "noticia text", "Times New Roman", Times, serif;
   font-weight: normal;
-  font-size: 12px;
+  /*font-size: 12px;*/
   color: #333333;
   border-bottom: none;
   margin: 0;
@@ -192,7 +192,7 @@ h2 {
   /*text-transform: capitalize;
 
 }
-*/
+
 
 
 /* Begin: For responive, use #content_viewer .content .article instead of #content-view */
@@ -219,7 +219,7 @@ h2 {
   border-top: 1px solid #999999;
   list-style-type: none;
   font-family: "Noticia Text";
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   font-style: normal;
   font-weight: 700;
@@ -231,7 +231,7 @@ h2 {
 }
 #content_viewer .content .article #article-title-1 {
   font-family: "Noticia Text";
-  font-size: 24px;
+  /*font-size: 24px;*/
   /*color: #666666;*/
   font-style: normal;
   font-weight: 400;
@@ -242,7 +242,7 @@ h2 {
 #content_viewer .content .article #article-title-3,
 #content_viewer .content .article #article-title-4 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
+  /*font-size: 18px;*/
   color: #666666;
   line-height: 20px;
   margin: 5px 0;
@@ -251,7 +251,7 @@ h2 {
 #content_viewer .content .article .article .section p,
 #content_viewer .content .article .article .subsection p {
   font-family: "Noticia Text";
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   font-style: normal;
   font-weight: 400;
@@ -268,7 +268,7 @@ h2 {
   border-top: none;
   list-style-type: none;
   font-family: "Noticia Text";
-  font-size: 14px;
+ /* font-size: 14px;*/
   color: #666666;
   font-style: normal;
   font-weight: 400;
@@ -285,7 +285,7 @@ h2 {
 }
 #content_viewer .content .article .subject-headings li {
   font-family: "Noticia Text";
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   font-style: normal;
   font-weight: 400;
@@ -313,7 +313,7 @@ h2 {
 #content_viewer .content .article .related-btn.btn-label-sansserif,
 #content_viewer .content .article .view-large-btn.btn-label-sansserif {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  /*font-size: 10px;*/
   color: #666666;
   text-shadow: rgba(255, 255, 255, 0.901961) 0px 1px;
 }
@@ -328,7 +328,7 @@ h2 {
 #content_viewer .content .article ol.contributor-list li,
 #content_viewer .content .article ol.affiliation-list li {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 11px;
+  /*font-size: 11px;*/
   color: #999999;
   display: inline-block;
 }
@@ -347,7 +347,7 @@ h2 {
 }
 #content_viewer .content .article .affiliation-list-reveal {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 11px;
+  /*font-size: 11px;*/
   color: #048bc9;
 }
 #content_viewer .content .article .affiliation-list-reveal:hover {
@@ -374,7 +374,7 @@ h2 {
 
 #content_viewer .content .article h2 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
+  /*font-size: 24px;*/
   color: #333333;
   border-bottom: 1px dotted #999999;
   margin: 30px 0 10px;
@@ -383,7 +383,7 @@ h2 {
 #content_viewer .content .article h3,
 #content_viewer .content .article h4 {
   font-family: "Noticia Text";
-  font-size: 16px;
+  /*font-size: 16px;*/
   color: #333333;
   font-style: normal;
   font-weight: 700;
@@ -409,7 +409,7 @@ h2 {
 #content_viewer .content .article .kwd-group {
   margin-bottom: 10px;
   font-family: "Noticia Text";
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   font-style: normal;
   font-weight: 700;
@@ -419,7 +419,7 @@ h2 {
 }
 #content_viewer .content .article #def-list-1 dd {
   font-family: "Noticia Text";
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   font-style: normal;
   font-weight: 400;
@@ -432,7 +432,7 @@ h2 {
 }
 #content_viewer .content .article .boxed-text .subsection h4 {
   font-family: "Noticia Text";
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   font-style: normal;
   font-weight: 700;
@@ -546,7 +546,7 @@ margin: 0;
 #content_viewer .content .article .table-label,
 #content_viewer .content .article .fig-label {
   font-family: "Noticia Text";
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   font-style: normal;
   font-weight: 700;
@@ -572,14 +572,14 @@ margin: 0;
   padding-bottom: 10px;
   margin-bottom: 10px;
   font-family: "Noticia Text";
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   font-style: normal;
   font-weight: 400;
 }
 #content_viewer .content .article #fn-group-1 ul li p {
   font-family: "Noticia Text";
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   font-style: normal;
   font-weight: 400;
@@ -591,7 +591,7 @@ margin: 0;
 }
 #content_viewer .content .article #fn-group-1 ul ul.history-list li {
   font-family: "Noticia Text";
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   font-style: normal;
   font-weight: 400;
@@ -605,7 +605,7 @@ margin: 0;
   margin-left: 0;
   padding-left: 20px;
   font-family: "Noticia Text";
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   font-style: normal;
   font-weight: 400;
@@ -621,13 +621,13 @@ margin: 0;
   line-height: 10px;
 }
 #content_viewer .content .article ol.cit-list div.ref-other {
-  font-size: 10px;
+  /*font-size: 10px;*/
   line-height: 16px;
   color: #999;
 }
 #content_viewer .content .article ol.cit-list div.ref-other em {
   font-family: "Noticia Text";
-  font-size: 10px;
+  /*font-size: 10px;*/
   color: #999999;
   font-style: normal;
   font-weight: 400;
@@ -665,19 +665,19 @@ margin: 0;
 }
 #content_viewer .content .article ol.cit-list li div.ref-confproc div.unstructured {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  /*font-size: 10px;*/
   color: #999999;
   color: #999;
 }
 #content_viewer .content .article span.cit-etal {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  /*font-size: 10px;*/
   color: #999999;
   font-weight: bold;
 }
 #content_viewer .content .article div.ref-cit div.cit-extra a,
 #content_viewer .content .article span.inline-cit.ref-journal .cit-extra a {
-  font-size: 88%;
+  /*font-size: 88%;*/
   margin-left: .3em;
   padding-left: 9px;
   background-image: url(../../shared/img/misc/rightchevron.gif);
@@ -753,7 +753,7 @@ margin: 0;
   list-style-type: none;
   padding: 0;
   font-family: "Noticia Text";
-  font-size: 12px;
+  /*font-size: 12px;*/
   color: #666666;
   font-style: normal;
   font-weight: 400;
@@ -771,7 +771,7 @@ margin: 0;
 }
 #content_viewer .content .article .cit .cit-title {
   font-family: "Noticia Text";
-  font-size: 16px;
+  /*font-size: 16px;*/
   color: #333333;
   font-style: normal;
   font-weight: 400;
@@ -783,14 +783,14 @@ margin: 0;
 }
 #content_viewer .content .article .cit h3 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  /*font-size: 12px;*/
   color: #666666;
   font-weight: bold;
   margin: .3em 0 .1em 0;
 }
 #content_viewer .content .article .cit h6 {
   font-family: "Noticia Text";
-  font-size: 11px;
+  /*font-size: 11px;*/
   color: #999999;
   font-style: normal;
   font-weight: 400;
@@ -804,7 +804,7 @@ margin: 0;
 }
 #content_viewer .content .article .cit .cit-auth {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  /*font-size: 10px;*/
   color: #999999;
   font-weight: bold;
   line-height: 13px;
@@ -813,7 +813,7 @@ margin: 0;
 #content_viewer .content .article .cit cite,
 #content_viewer .content .article .cit .cit-online-date {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  /*font-size: 10px;*/
   color: #999999;
   line-height: 12px;
   margin-bottom: 3px;
@@ -831,7 +831,7 @@ margin: 0;
 #content_viewer .content .article #ad300x250Wrapper p {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  /*font-size: 10px;*/
   color: #666666;
   margin: 43px 0 0 0;
 }
@@ -859,7 +859,7 @@ margin: 0;
   float: left;
   font-family: "noticia text", "Times New Roman", Times, serif;
   font-weight: normal;
-  font-size: 18px;
+  /*font-size: 18px;*/
   color: #666666;
 }
 #CommentList {
@@ -867,7 +867,7 @@ margin: 0;
   border: solid 1px #ccc;
   font-family: "noticia text", "Times New Roman", Times, serif;
   font-weight: normal;
-  font-size: 13px;
+  /*font-size: 13px;*/
   color: #333333;
 }
 #CommentList .comments-name {
@@ -878,13 +878,13 @@ margin: 0;
   color: #999;
 }
 #CommentList .comments-body {
-  font-size: 12px;
+  /*font-size: 12px;*/
   padding: 15px 0 15px 0;
   border-bottom: dotted 1px #39c;
   margin: 0 15px 0 15px;
 }
 #CommentList .comments-body-last {
-  font-size: 12px;
+  /*font-size: 12px;*/
   padding: 15px 0 15px 0;
   margin: 0 15px 0 15px;
 }
@@ -903,7 +903,7 @@ margin: 0;
 #CommentPostBtn,
 #SubmitCommentBtn {
   font-family: "Noticia Text", Times New Roman;
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666;
   text-shadow: rgba(255, 255, 255, 0.901961) 0px 1px;
   float: right;
@@ -938,7 +938,7 @@ margin: 0;
   font-weight: bold;
 }
 .box-figure .figure-body {
-  font-size: 12px;
+  /*font-size: 12px;*/
   padding: 15px;
 }
 .articlePolicy .ui-tabs .ui-tabs-panel {
@@ -976,7 +976,7 @@ div.mediaPreview p.link,
 div.imagePreview p.link {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 14;
+  /*font-size: 14;*/
   color: #333333;
   line-height: 18px;
   margin-bottom: 15px;
@@ -999,7 +999,7 @@ div.graphic div.graphic-inline img {
 .subject-headings li {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 12px;
+  /*font-size: 12px;*/
   color: #999999;
   list-style: none;
   margin: 0;
@@ -1047,21 +1047,21 @@ div.graphic div.graphic-inline img {
 .redbookMain .article ul.redbookSectionMarker li:first-child {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 16px;
+  /*font-size: 16px;*/
   color: #333333;
   padding-bottom: 20px;
 }
 .redbookMain .article ul.redbookSectionMarker li:nth-child(2) {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   padding-bottom: 0;
 }
 .redbookMain .article ul.redbookSectionMarker li:nth-child(3) {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 14px;
+  /*font-size: 14px;*/
   color: #666666;
   padding-bottom: 0;
   position: relative;
