@@ -232,7 +232,7 @@ h2 {
 #content_viewer #article-title-1 {
   font-family: "Noticia Text";
   font-size: 24px;
-  color: #666666;
+  /*color: #666666;*/
   font-style: normal;
   font-weight: 400;
   line-height: 26px;
