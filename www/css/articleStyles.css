@@ -1266,6 +1266,12 @@ div.graphic div.graphic-inline img {
 
 /* Begin: KF CSS Adjustments for RESPONSIVE Main Article Styling */
 
+.content .article .graphic-inline {width:100%;}
+.content .article .graphic-inline img {
+	width:100%;
+}
+
+
 .content ul {
   list-style-type:none;
 }
