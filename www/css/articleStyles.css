@@ -1280,10 +1280,10 @@ div.graphic div.graphic-inline img {
   margin-top:15px;
 }
 
-.content .section div.graphic {
-  /*width:100%;*/
+.content .section div.graphic-inline {
+  width:100%;
 }
-.content .section div.graphic img{
+.content .section div.graphic-inline img{
   width:100%;
 }
 
