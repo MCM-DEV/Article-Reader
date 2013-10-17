@@ -1268,7 +1268,7 @@ div.graphic div.graphic-inline img {
 
 .content .article .graphic-inline {width:100%;}
 .content .article .graphic-inline img {
-	width:100%;
+	width:auto;
 }
 
 
