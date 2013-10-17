@@ -161,14 +161,14 @@ div {
 	padding-top: 10px;
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
-	font-size: 1.4em;
+	font-size: 1.2em;
 	color: #333333;
 	line-height: 22px;
 }
 #logoWrapper #login_form input {
 	font-family: "noticia text", "Times New Roman", Times, serif;
 	font-weight: normal;
-	font-size: 1em;
+	font-size: 1.2em;
 }
 #logoWrapper #login_form input[type="submit"] {
 	margin: 20px 0 0 2px;
