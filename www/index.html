@@ -12,30 +12,13 @@
 	<link rel="stylesheet" href="css/main.css" />
 	<link rel="stylesheet" href="css/articleStyles.css" />
 	
+	<script src="cordova.js"></script>
+	<script src="cordova_plugins.js"></script>
 	
 	<script>
-	function onDeviceReady() {
-		if(navigator && navigator.splashScreen){
-			navigator.splashscreen.hide();
-		}
-	}
-	document.addEventListener("deviceready", onDeviceReady, false);
-	
-	/*
-	// PhoneGap is ready
-	//
-	function onDeviceReady() {
-		var infoString = 'Device Name: ' + device.name + '<br />' + 
-	    'Device PhoneGap: ' + device.phonegap + '<br />' + 
-	    'Device Platform: ' + device.platform + '<br />' + 
-	    'Device UUID: '     + device.uuid     + '<br />' + 
-	    'Device Version: '  + device.version  + '<br />';
-	    
-		//window.addEventListener( 'load', function(){ var el = document.getElementById('test_messages'); el.innerHTML = infoString; }, false );
-	} */
-	
-	
+		document.addEventListener('deviceready',function(){ window.device = device; window.isDeviceReady = true; alert('initial deviceReady uuid: ' + device.uuid); });
 	</script>
+	
 </head>
 
 <body>
@@ -88,8 +71,7 @@
 
 <!--JavaScript Files -->
 
-<script src="cordova.js"></script>
-<script src="cordova_plugins.js"></script>
+
 <!--<script src="js/zepto.min.js"></script>-->
 <script src="js/jquery-1.8.3.min.js"></script>
 <!---->
@@ -98,6 +80,8 @@
 <!--
 <script src="js/jquery.mobile.custom.min.js"></script>
 -->
+
+	
 
 <script src="js/main.js"></script>
 <!--/JavaScript files -->
