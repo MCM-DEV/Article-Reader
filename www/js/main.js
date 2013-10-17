@@ -101,7 +101,7 @@ else{
 
 function initApp(){
 	//$(document).ready( function(){
-			
+		alert('initApp uuid: '+device.uuid);
 		var dcCnt = 0;
 		(function deviceCheck(){
 			if(!device || dcCnt +=1 >= 25){

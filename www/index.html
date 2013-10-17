@@ -16,7 +16,7 @@
 	<script src="cordova_plugins.js"></script>
 	
 	<script>
-		document.addEventListener('deviceready',function(){ window.device = device; window.isDeviceReady = true; });
+		document.addEventListener('deviceready',function(){ window.device = device; window.isDeviceReady = true; alert('initial deviceReady uuid: ' + device.uuid); });
 	</script>
 	
 </head>
