@@ -9,7 +9,7 @@ p.last {
 #article-title-1 {
   font-family: "noticia text", "Times New Roman", Times, serif;
   font-weight: normal;
-  font-size: 24px;
+      /*font-size: 24px;*/
   /*color: #333333;*/
   margin: 0;
   padding: 0;
