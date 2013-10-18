@@ -658,7 +658,7 @@
 
 #content_viewer .content .article .section div.graphic {
   background-color: #e0f3fb;
-  width: 100%;
+  /*width: 100%;*/
   margin: 10px 0;
 }
 #content_viewer .content .article .section ol li p {
