@@ -21,7 +21,19 @@
 /* Begin: ARTICLE Styling */
 #content_viewer .content .article {
   color:#333;
+  font-family: "Noticia Text";  
 }
+
+#content_viewer .content .article ul.copyright-statement {
+  position:relative;
+  float:left;
+  margin-top:15px;
+  width:100%;
+}
+#content_viewer .content .article ul.copyright-statement li {
+  text-align:center;
+}
+
 
 #content_viewer .content .article #article-title-1 {
   font-family: "Noticia Text";
@@ -60,6 +72,19 @@
 #content_viewer .content .article ol.affiliation-list li address {
   font-style: normal;
 }
+
+#content_viewer .content .article .boxed-text {
+  padding: 5px 15px;
+  background: none;
+  margin: 10px 0;
+}
+#content_viewer .content .article .boxed-text .subsection h4 {
+  margin: 5px 0
+}
+#content_viewer .content .article .boxed-text .subsection p {
+/*  color: #666666;*/
+}
+
 #content_viewer .content .article .affiliation-list-reveal {
   font-family: Arial, Helvetica, sans-serif;
   /*font-size: 11px;*/
@@ -114,6 +139,15 @@
 #content_viewer .content .article .section .subsection p strong {
   font-weight: 700;
 /*  color: #333;*/
+}
+
+#content_viewer .content .article .section p button {
+  font-family: "Noticia Text";   
+  background: none;
+  border: none;
+  font-weight: normal;
+  text-align: left;
+  margin:10px 0;
 }
 
 #content_viewer .content .article .section .titleImg {
@@ -298,22 +332,6 @@
   font-style: normal;
   font-weight: 400;
 }
-#content_viewer .content .article .section .boxed-text {
-  padding: 5px 15px;
-  background: none;
-  margin-bottom: 20px;
-}
-#content_viewer .content .article .section .boxed-text .subsection h4 {
-  font-family: "Noticia Text";
-  /*font-size: 14px;*/
-/*  color: #666666;*/
-  font-style: normal;
-  font-weight: 700;
-  margin: 5px 0px;
-}
-#content_viewer .content .article .section .boxed-text .subsection p {
-/*  color: #666666;*/
-}
 
 #content_viewer .content .article .section .fig.pos-anchor {
   width: 100%;
@@ -453,7 +471,7 @@
   display: none;
 }
 
-#content_viewer .content .article .section div.ref-list a.rev-xref-ref {
+#content_viewer .content .article .section a.rev-xref-ref {
   font-size: .694em;
   font-weight: bolder;
   background-color: #CCC;
@@ -622,9 +640,7 @@
   font-family: Arial, Helvetica, sans-serif;
   /*font-size: 10px;*/
 /*  color: #999999;*/
-  line-height: 12px;
-  margin-bottom: 3px;
-  font-style: normal;
+  line-height: 1.25em;
 }
 
 
@@ -673,7 +689,13 @@
 }
 /* End: SUBsection Styling */
 
+#content_viewer .content .article .response {
+  margin:0 15px;
+}
 
+#content_viewer .content .article .response p a.xref-bibr {
+  color:red;
+}
 
 /* MISC Stylings */
 
