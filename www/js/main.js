@@ -82,6 +82,7 @@ for(var x in USER_AGENT_MAP){
 	}
 }
 
+dataStorage = new DesktopData();
 	
 if( !$('body').hasClass('desktop_chrome') ){
 		document.addEventListener("deviceready", onDeviceReady, function(){alert('fs fail');} );
@@ -94,9 +95,16 @@ else{
 			platform:'jos20'
 		};
 	}
-	dataStorage = new DesktopData();
 	
 	initApp();
+}
+
+
+function onDeviceReady() {
+		/*dataStorage = new ( function MobileStorage(){
+			
+		} );*/
+		initApp();
 }
 
 function initApp(){
@@ -235,7 +243,7 @@ function initApp(){
 				console.log(typeof dataStorage.data() );
 				dataStorage.data( { Count:data.Count, data:dataStorage.data().data.concat(data.data) } );
 				var newUrl = url + '&start=' + count;
-				if( count < dataStorage.data().Count ){
+				if( count < 10/*dataStorage.data().Count*/ ){
 					count += 5;
 					$.getJSON(
 						newUrl,
@@ -594,13 +602,6 @@ function DesktopData(){
 		} );
 	};
 	
-}
-
-function onDeviceReady() {
-		/*dataStorage = new ( function MobileStorage(){
-			
-		} );*/
-		initApp();
 }
 
 })();//end 'use strict'; wrapper func
