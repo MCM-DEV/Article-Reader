@@ -151,7 +151,7 @@ function initApp(){
 						'<b class="added_label">Added: </b><span>{{addedDate}}</span>',
 					'</p>',
 					'<span class="go_to_article_icon">&gt;</span>',
-					'<button class="delete_article">X</span>',
+					'<button class="delete_article">&times;</span>',
 				'</li>'
 			],
 		
@@ -301,7 +301,7 @@ function initApp(){
 					thisData.Content = thisData.Content.replace(/src="\//g,'src="' + AAP_GATEWAY_ROOT);
 					thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/, '<button class="converted_link" data-link="http://www.google.com">$2</button>');
 					
-					contentPages.unshift('<div class="page"><div class="content">' + thisData.Content + '</div></div>');
+					contentPages.unshift('<div class="page"><div class="content module_'+listItemVars.moduleClass+'">' + thisData.Content + '</div></div>');
 					articleListLIs.unshift(articleListItem);
 				})(i);
 			}
@@ -333,6 +333,14 @@ function initApp(){
 			
 			$('#normal_mode_toggle').click( function(){
 				$_articleList.removeClass('edit_mode').trigger('normalmode');
+			} );
+			
+			$('.delete_button').click( function(){
+				
+				var index = $(this).index();
+				$('.page').eq(index).remove();
+				dataStorage.data().Count--;
+				dataStorage.data().data=dataStorage.data().splice(index,1);
 			} );
 			
 			articleSelectOn();
