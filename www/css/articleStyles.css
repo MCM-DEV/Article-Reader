@@ -15,8 +15,6 @@
 
 
 #content_viewer .content  p {
-  font-family: "Noticia Text";  
-  font-weight:200;
   position: relative;
   font-style: normal;  
   line-height: 22px;  
@@ -40,7 +38,6 @@
 /* Begin: ARTICLE Styling */
 #content_viewer .content .article {
   color:#333;
-  font-family: "Noticia Text";  
 }
 
 #content_viewer .content .article ul.copyright-statement {
@@ -55,11 +52,10 @@
 
 
 #content_viewer .content .article #article-title-1 {
-  font-family: "Noticia Text";
+  font-family: Arial, Helvetica, sans-serif;
   /*font-size: 24px;*/
   /*color: #666666;*/
-  font-style: normal;
-  font-weight: 400;
+
   line-height: 26px;
   margin: 0;
 }
@@ -144,7 +140,6 @@
 }
 
 #content_viewer .content .article .section p button {
-  font-family: "Noticia Text";   
   background: none;
   border: none;
   font-weight: normal;
@@ -255,7 +250,6 @@
 }
 #content_viewer .content .article .section h3,
 #content_viewer .content .article .section h4 {
-  font-family: "Noticia Text";
   /*font-size: 16px;*/
 /*  color: #333333;*/
   font-style: normal;
@@ -265,6 +259,7 @@
 #content_viewer .content .article .section h4 {
   font-style: italic;
 }
+
 #content_viewer .content .article .section ol {
   list-style-position:inside;
 }

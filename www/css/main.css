@@ -139,7 +139,7 @@ div {
 	background: url('../img/gatewayLogo.png') center top no-repeat #d9d9d9;
 }
 #logoWrapper h1 {
-	font-family: "noticia text", "Times New Roman", Times, serif;
+	font-family: "Times New Roman", Times, serif;
 	font-weight: normal;
 	font-size: 1em;
 	color: #333333;
@@ -158,7 +158,7 @@ div {
 	top: 170px;
 	left: 6.5em;
 	/*text-align: center;*/
-	font-family: "noticia text", "Times New Roman", Times, serif;
+	font-family: "Times New Roman", Times, serif;
 	font-weight: normal;
 	font-size: 1em;
 	color: #3C9;
@@ -168,14 +168,14 @@ div {
 	display: block;
 	margin-left: 4px;
 	padding-top: 10px;
-	font-family: "noticia text", "Times New Roman", Times, serif;
+	font-family: "Times New Roman", Times, serif;
 	font-weight: normal;
 	font-size: 1.2em;
 	color: #333333;
 	line-height: 22px;
 }
 #logoWrapper #login_form input {
-	font-family: "noticia text", "Times New Roman", Times, serif;
+	font-family: "Times New Roman", Times, serif;
 	font-weight: normal;
 	font-size: 1.2em;
 }
