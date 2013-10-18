@@ -37,7 +37,9 @@ body {
 	box-sizing: border-box;
 	border-top: solid 20px #ddd;
 }
-
+h1{
+	font-weight: normal;	
+}
 /*
 media queries allow us to scale by setting just one font-size in body
 Please note that these are pretty much arbitratry. I grabbed a list from 
