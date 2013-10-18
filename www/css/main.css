@@ -81,14 +81,22 @@ font-size: 18px;
  body {
 font-size: 14px;
  font-family: arial, sans-serif;
- color: #963; /*brown*/
+ color: #963; /*brown iPad4, iPhone-iPodTouch4th*/
 }
 }
-@media (min-resolution: 300dpi) {
+@media (min-resolution: 192dpi) and (min-width: 640px){
  body {
 font-size: 14px;
  font-family: arial, sans-serif;
- color: #FC0; /*yellow, MarcGalaxyIIIs, iPad4, iPod*/
+ color:#F00; /*red */
+}
+}
+
+@media (min-resolution: 300dpi){
+ body {
+font-size: 14px;
+ font-family: arial, sans-serif;
+ color: #FC0; /*yellow, MarcGalaxy s III, */
 }
 }
 /*@media (min-resolution: 320dpi) and (min-width: 720px) {
