@@ -347,6 +347,13 @@ button.history {
 	margin: 0;
 	text-align: center;
 }
+#edit_mode_toggle, #normal_mode_toggle  {
+	position:absolute;
+	top:.2em;
+	right:.2em;
+}
+#normal_mode_toggle { display:none; }
+
 .header > h3 > span {
 	vertical-align: middle;
 	line-height: 2.5em;
@@ -416,6 +423,21 @@ button.history {
 	text-overflow: ellipsis;
 	font-size: 1.2em;
 }
+
+#article_list .delete_article{
+	display:none;
+	position:absolute; top:.2em; right:.2em;
+	width:2.5em;	height:2.5em;
+}
+
+#article_list.edit_mode .go_to_article_icon, .edit_mode #edit_mode_toggle {
+	display:none;
+}
+
+#article_list.edit_mode .delete_article, .edit_mode #normal_mode_toggle {
+	display:inline-block;
+}
+
 .added_label {
 	margin-left: .5em;
 }
