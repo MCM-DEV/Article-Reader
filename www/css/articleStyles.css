@@ -73,7 +73,8 @@
 }
 
 #content_viewer .content .article ol.contributor-list li,
-#content_viewer .content .article ol.affiliation-list li {
+#content_viewer .content .article ol.affiliation-list li,
+#content_viewer .content .article ol.corresp-list li {
   font-family: Arial, Helvetica, sans-serif;
   /*font-size: 11px;*/
   display: inline-block;
@@ -81,15 +82,18 @@
   font-size:0.85em;
 }
 #content_viewer .content .article ol.contributor-list li a,
-#content_viewer .content .article ol.affiliation-list li a {
+#content_viewer .content .article ol.affiliation-list li a, 
+#content_viewer .content .article ol.corresp-list li a {
   text-decoration: none;
 }
 #content_viewer .content .article ol.contributor-list li a:hover,
-#content_viewer .content .article ol.affiliation-list li a:hover {
+#content_viewer .content .article ol.affiliation-list li a:hover, 
+#content_viewer .content .article ol.corresp-list li a:hover {
   text-decoration: underline;
 }
 #content_viewer .content .article ol.contributor-list li address,
-#content_viewer .content .article ol.affiliation-list li address {
+#content_viewer .content .article ol.affiliation-list li address,
+#content_viewer .content .article ol.corresp-list li address {
   font-style: normal;
 }
 
@@ -114,9 +118,9 @@
   text-decoration: underline;
   cursor: pointer;
 }
-#content_viewer .content .article .affiliation-list {
+#content_viewer .content .article .affiliation-list, #content_viewer .content .article .corresp-list {
   padding-left: 20px;
-  margin-top: 0;
+  margin-top: 20px;
 }
 #content_viewer .content .article .affiliation-list li {
   line-height: 16px;
@@ -171,7 +175,7 @@
 }
 
 #content_viewer .content .article #def-list-1 dd {
-	margin-left:2em;
+	margin-left:4.5em;
 }
 
 /* End: ARTICLE Styling */
@@ -356,10 +360,12 @@
   margin-bottom: 20px;
 }
 #content_viewer .content .article .section .fig.pos-float .fig-inline {
-  width: 260px;
-  float: left;
-  position: relative;
-  margin-top: 10px;
+	width: 260px;
+	height: 260px;
+	overflow: hidden;
+	position: relative;
+	margin-top: 10px;
+	float: left;
 }
 #content_viewer .content .article .section .fig.pos-float .fig-inline a {
   position: relative;
@@ -369,13 +375,13 @@
 }
 #content_viewer .content .article .section .fig.pos-float .fig.pos-anchor .fig-inline img{
   float:left;
-  width: 243px;
+  width: 100%;
 }
-#con
-#content_viewer .content .article .section .fig.pos-float .fig.pos-anchor .fig-caption {
-  /* width: 255px; */
+
+#content_viewer .content .article .section .fig.pos-float .fig-caption {
+  width: 255px; 
   float: left;
-  margin: 10px 0 0 10px;
+  margin: 10px 0 0 20px;
 }
 #content_viewer .content .article .section .table-inline {
   width: 260px;
