@@ -428,6 +428,7 @@ button.history {
 	display:none;
 	position:absolute; top:.2em; right:.2em;
 	width:2.5em;	height:2.5em;
+	color:red;
 }
 
 #article_list.edit_mode .go_to_article_icon, .edit_mode #edit_mode_toggle {

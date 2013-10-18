@@ -421,11 +421,7 @@
 }
 #content_viewer .content .article .section .table-label,
 #content_viewer .content .article .section .fig-label {
-  font-family: "Noticia Text";
-  /*font-size: 14px;*/
-/*  color: #666666;*/
-  font-style: normal;
-  font-weight: 700;
+
 }
 
 #content_viewer .content .article .section .disp-formula .inline-graphic,
