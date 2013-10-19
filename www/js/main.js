@@ -82,7 +82,7 @@ for(var x in USER_AGENT_MAP){
 	}
 }
 
-dataStorage = new DesktopData();
+
 	
 if( !$('body').hasClass('desktop_chrome') ){
 		document.addEventListener("deviceready", onDeviceReady, function(){alert('fs fail');} );
@@ -95,16 +95,159 @@ else{
 			platform:'jos20'
 		};
 	}
-	
+	dataStorage = new DesktopData();
 	initApp();
 }
 
 
 function onDeviceReady() {
-		/*dataStorage = new ( function MobileStorage(){
+	dataStorage = new DesktopData();
+	initApp();
+	/*
+	function onSuccess(fileSystem) {
+		console.log(fileSystem.name);
+		console.log(fileSystem.root.name);
+		
+		
+		
+		dataStorage = new ( function MobileStorage(){
 			
-		} );*/
-		initApp();
+			var
+				thisObj = this,
+				_data = null,
+				_creds = null,
+				_clipDate = null
+			;
+			
+			fileSystem.root.getFile('data.txt', { create:true, exclusive:false }, createDataInterface, function(e){ alert(e); });
+			fileSystem.root.getFile('creds.txt', { create:true, exclusive:false }, createCredsInterface, function(e){ alert(e); });
+			fileSystem.root.getFile('clipDate.txt', { create:true, exclusive:false }, createClipDateInterface, function(e){ alert(e); });
+			
+			function createDataInterface(fileEntry){
+				_data=new FileInterface(fileEntry);
+			}
+			
+			function createCredsInterface(fileEntry){
+				_creds=new FileInterface(fileEntry);
+			}
+			
+			function createClipDateInterface(fileEntry){
+				_clipDate=new FileInterface(fileEntry);
+			}
+			
+			$(thisObj).on('interfaceready', function(){
+				
+				if(_data && _creds && _clipDate){
+			
+					thisObj.data = function(arg){
+						if(arg !== undefined){
+							_data.write(arg);
+							alert('write: '+_data.read());
+						}
+						else {
+							alert('read: '+_data.read());
+							return _data.read();
+						}
+					};
+					
+					thisObj.creds = function(arg){
+						if(arg !== undefined){
+							_creds.write(arg);
+						}
+						else {
+							return _creds.read();
+						}
+					};
+					
+					thisObj.lastClipDate = function(arg){
+						if(arg !== undefined){
+							_clipDate.write(arg);
+						}
+						else {
+							return _clipDate.read();
+						}
+					};
+					
+					
+					this.download = function(url, target){
+						$.getJSON( url, function(data){
+							localStorage[target] = data;
+						} );
+					};
+					
+					$(thisObj).trigger('dataStorageReady');
+				
+				}
+			} );
+			
+			function FileInterface(fileEntry){
+				var
+					reader = new FileReader(),
+					locked=true,
+					value
+				;
+				
+				value = reader.readAsText(fileEntry);
+				
+				reader.onloadend = function(evt){
+					value=evt.target.result;
+					locked = false;
+					$(thisObj).trigger('interfaceready');
+				}
+				
+				this.write = function(content){
+					if(typeof content !== 'string'){
+						if(typeof content === 'object'){
+							content = JSON.stringify(content);
+						}
+						else {
+							content=content.toString();
+						}
+					}
+					locked = true;
+					value=content;
+					
+					fileEntry.createWriter( function(writer){
+						writer.onwrite = function(e){
+							locked = false;
+						};
+						
+						function writeIt(){
+							writer.write(content);
+							writer.abort();
+						}
+						
+						waitForIt(writeIt);
+					} );
+					
+				},
+				
+				this.read = function(){
+					return value;
+				};
+				
+				
+				function waitForIt(handler){
+					if(!locked){
+						handler();
+					}
+					else {
+						var lockCheck = setInterval( function(){
+							if(!locked){ clearInterval(lockCheck); handler(); }
+						},200 );
+					}
+				}
+			}
+			
+		} );
+		
+		
+		$(dataStorage).on('dataStorageReady', initApp );
+		
+	} */
+
+	// request the persistent file system
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onSuccess, null); 
 }
 
 function initApp(){
@@ -181,7 +324,7 @@ function initApp(){
 		}
 		else {
 			//compareData(creds, function(){ buildContent(localStore['data']); });
-			buildContent( dataStorage.data() );
+			buildContent( dataStorage.data().data );
 		}
 		
 		function handleLogin(e){
@@ -335,12 +478,19 @@ function initApp(){
 				$_articleList.removeClass('edit_mode').trigger('normalmode');
 			} );
 			
-			$('.delete_button').click( function(){
+			$('#article_list .delete_article').click( function(){
+				var
+					index = parseInt( $(this).parent().data('page') ) - 1,
+					data = dataStorage.data()
+				;
 				
-				var index = $(this).index();
+				console.log(index);
+				$('#article_list li').eq(index).fadeOut( function(){
+					$(this).remove(); 
+					$('#article_list li').each( function(i){ $(this).data('page',i+1); } )
+				} );
 				$('.page').eq(index).remove();
-				dataStorage.data().Count--;
-				dataStorage.data().data=dataStorage.data().splice(index,1);
+				data.data = data.data.splice(index,1);
 			} );
 			
 			articleSelectOn();
