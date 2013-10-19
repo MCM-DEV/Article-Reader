@@ -62,7 +62,7 @@ stackOverflow and fiddled from there.
  body {
 	font-size: 16px;
 	font-family: arial, sans-serif;
-	color:#0F0; /*green, nook, iPad2*/
+	color:#333; /*green, nook, iPad2*/
 }
 }
 @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25), (-o-min-device-pixel-ratio: 5/4) {
@@ -351,7 +351,7 @@ button.history {
 }
 #edit_mode_toggle, #normal_mode_toggle  {
 	position:absolute;
-	top:.2em;
+	top:.6em;
 	right:.2em;
 }
 #normal_mode_toggle { display:none; }
@@ -428,7 +428,7 @@ button.history {
 
 #article_list .delete_article{
 	display:none;
-	position:absolute; top:.2em; right:.2em;
+	position:absolute; top:.8em; right:.2em;
 	width:2.5em;	height:2.5em;
 	color:red;
 }
