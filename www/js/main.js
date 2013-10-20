@@ -1,7 +1,7 @@
 (function(){
 
 'use strict';
-
+console.log('app starting');
 /*
 	Original Author's style conventions
 	
@@ -85,7 +85,8 @@ for(var x in USER_AGENT_MAP){
 
 	
 if( !$('body').hasClass('desktop_chrome') ){
-		document.addEventListener("deviceready", onDeviceReady, function(){alert('fs fail');} );
+	console.log('setting deviceready listener');
+	document.addEventListener("deviceready", onDeviceReady, function(){alert('fs fail');} );
 }
 else{
 	if(!window.device){
@@ -101,14 +102,10 @@ else{
 
 
 function onDeviceReady() {
-	dataStorage = new DesktopData();
-	initApp();
-	/*
+	
+	console.log('device ready');
+	
 	function onSuccess(fileSystem) {
-		console.log(fileSystem.name);
-		console.log(fileSystem.root.name);
-		
-		
 		
 		dataStorage = new ( function MobileStorage(){
 			
@@ -121,7 +118,7 @@ function onDeviceReady() {
 			
 			fileSystem.root.getFile('data.txt', { create:true, exclusive:false }, createDataInterface, function(e){ alert(e); });
 			fileSystem.root.getFile('creds.txt', { create:true, exclusive:false }, createCredsInterface, function(e){ alert(e); });
-			fileSystem.root.getFile('clipDate.txt', { create:true, exclusive:false }, createClipDateInterface, function(e){ alert(e); });
+			fileSystem.root.getFile('clipDate.txt', { create:true, exclusive:false }, createClipDateInterface, function(e){ alert(e);});
 			
 			function createDataInterface(fileEntry){
 				_data=new FileInterface(fileEntry);
@@ -137,34 +134,56 @@ function onDeviceReady() {
 			
 			$(thisObj).on('interfaceready', function(){
 				
-				if(_data && _creds && _clipDate){
+				if( _data.isReady && _creds.isReady && _clipDate.isReady ){
 			
 					thisObj.data = function(arg){
 						if(arg !== undefined){
+							console.log('data set');
 							_data.write(arg);
-							alert('write: '+_data.read());
 						}
 						else {
-							alert('read: '+_data.read());
-							return _data.read();
+							console.log('data get');
+							var retVal = _data.read();
+							if(!retVal || retVal === 'undefined'){
+								return false;
+							}
+							else {
+								return JSON.parse(_data.read());
+							}
 						}
 					};
 					
 					thisObj.creds = function(arg){
 						if(arg !== undefined){
+							console.log('creds set');
 							_creds.write(arg);
 						}
 						else {
-							return _creds.read();
+							console.log('creds get');
+							var retVal = _creds.read();
+							if(!retVal || retVal === 'undefined'){
+								return false;
+							}
+							else {
+								return JSON.parse(_creds.read());
+							}
 						}
 					};
 					
 					thisObj.lastClipDate = function(arg){
 						if(arg !== undefined){
+							console.log('clipDate set');
 							_clipDate.write(arg);
 						}
 						else {
-							return _clipDate.read();
+							console.log('clipDate get');
+							var retVal = _clipDate.read();
+							if(!retVal || retVal === 'undefined'){
+								return false;
+							}
+							else {
+								return _clipDate.read();
+							}
 						}
 					};
 					
@@ -181,19 +200,48 @@ function onDeviceReady() {
 			} );
 			
 			function FileInterface(fileEntry){
+			
 				var
-					reader = new FileReader(),
+					reader=new FileReader(),
+					thisInterface = this,
+					fileObj,
 					locked=true,
+					firstRead = true,
 					value
 				;
 				
-				value = reader.readAsText(fileEntry);
+				this.isReady=false;
 				
-				reader.onloadend = function(evt){
-					value=evt.target.result;
-					locked = false;
-					$(thisObj).trigger('interfaceready');
-				}
+				fileEntry.file( function(file){
+					
+					console.log('file obj available');
+					
+					fileObj = file;
+					
+					reader.onload = function(evt){
+						console.log('reader onload firing');
+						value=evt.target.result;
+						console.log('read value: ' + value);
+						locked = false;
+						
+						console.log('reader onload done');
+						if(firstRead){
+							firstRead = false;
+							thisInterface.isReady = true;
+							$(thisObj).trigger('interfaceready');
+						}
+					};
+					
+					reader.onerror = function(){
+						alert('read failed');
+					};
+					
+					reader.onloadend = function(){ console.log('loadend'); }	
+					
+					console.log('reading as text');
+					reader.readAsText(fileObj);
+				
+				}, function(){ alert('file obj create failed'); });
 				
 				this.write = function(content){
 					if(typeof content !== 'string'){
@@ -207,18 +255,19 @@ function onDeviceReady() {
 					locked = true;
 					value=content;
 					
-					fileEntry.createWriter( function(writer){
-						writer.onwrite = function(e){
-							locked = false;
-						};
-						
-						function writeIt(){
-							writer.write(content);
-							writer.abort();
-						}
-						
-						waitForIt(writeIt);
-					} );
+					function writeIt(){
+						fileEntry.createWriter(function(writer){
+					
+							writer.onwrite = function(e){
+								locked = false;
+							};
+							
+							writer.truncate(0);
+							writer.write(value);
+						}, function(){ console.log('writer fail'); });
+					}
+					
+					waitForIt(writeIt);
 					
 				},
 				
@@ -244,7 +293,7 @@ function onDeviceReady() {
 		
 		$(dataStorage).on('dataStorageReady', initApp );
 		
-	} */
+	}
 
 	// request the persistent file system
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onSuccess, null); 
@@ -319,7 +368,6 @@ function initApp(){
 		if(!creds){
 		
 			$_loginForm.submit( handleLogin );
-			
 			$_login.show();
 		}
 		else {
@@ -339,7 +387,7 @@ function initApp(){
 			;
 			
 			dataStorage.creds( creds );
-				
+			
 			if( !creds.uname ){
 				isValid = false;
 			}
@@ -379,14 +427,14 @@ function initApp(){
 			
 			var
 				loadingTimer = setInterval( function(){ $_loadingMsg.toggle(); },500 ),
-				count = 0
+				count = 0,
+				fullData = []
 			;
 			
 			( function getDataChunk(data){
-				console.log(typeof dataStorage.data() );
-				dataStorage.data( { Count:data.Count, data:dataStorage.data().data.concat(data.data) } );
+				fullData = fullData.concat(data.data);
 				var newUrl = url + '&start=' + count;
-				if( count < 10/*dataStorage.data().Count*/ ){
+				if( count < data.Count ){
 					count += 5;
 					$.getJSON(
 						newUrl,
@@ -399,7 +447,8 @@ function initApp(){
 				}
 				else { //data load success
 					clearInterval(loadingTimer);
-					dataStorage.creds( creds );
+					dataStorage.data( { Count:data.Count, data:fullData } );
+					alert('setting '+dataStorage.data().data.length + ' items.');
 					callBack(dataStorage.data().data);
 				}
 			} )(dataStorage.data());
@@ -414,8 +463,6 @@ function initApp(){
 				articleListLIs = [],
 				contentPages = []
 			;
-			
-			console.log(data.length);
 			
 			while(i--){
 				(function(i){
@@ -484,7 +531,6 @@ function initApp(){
 					data = dataStorage.data()
 				;
 				
-				console.log(index);
 				$('#article_list li').eq(index).fadeOut( function(){
 					$(this).remove(); 
 					$('#article_list li').each( function(i){ $(this).data('page',i+1); } )
@@ -500,7 +546,6 @@ function initApp(){
 			
 			function articleSelectOn(){
 				$_selectArticleBtn.on('click.mode_toggled', function(){
-					console.log('not hallucinating');
 					$_articleList.hide();
 					$_contentViewer.show();
 					gotoPage( parseInt( $(this).data('page') ) );
@@ -551,7 +596,6 @@ function initApp(){
 			});
 			
 			function gotoPage(e){
-				console.log('goto');
 				var sliderLimit = ($_slider.find('.page').size() - 1);
 				
 				if(typeof e === 'object'){ //slide if object, set to page w no animation if number
@@ -566,7 +610,6 @@ function initApp(){
 						}
 					}
 					else{
-						console.log(e);
 						if( e.direction === 'left' ){
 							isLeft = false;
 						}
@@ -574,7 +617,6 @@ function initApp(){
 						
 					if( isLeft ){
 						sliderPos -= 1;
-						//console.log(sliderPos +' : '+sliderLimit);
 						if(sliderPos >= 0){
 							$_slider.animate({scrollLeft:sliderPos * $_window.width()}, 250);
 							currentPage = sliderPos;
@@ -582,7 +624,6 @@ function initApp(){
 					}
 					else {
 						sliderPos+=1;
-						console.log(sliderPos +' : '+sliderLimit);
 						if(sliderPos <= sliderLimit){
 							$_slider.animate({scrollLeft:sliderPos * $_window.width()}, 250);
 							currentPage = sliderPos;
@@ -597,7 +638,6 @@ function initApp(){
 				}
 				
 				//show/hide buttons
-				console.log(currentPage + ':' + sliderLimit);
 				if(currentPage === sliderLimit){
 					$_forwardBtn.hide();
 				}
@@ -659,7 +699,6 @@ function initApp(){
 					
 					if(!holdScroll){
 						
-						console.log(pagePos);
 						$_page.animate( { scrollTop:scrollAdjust(pageHeight) + 'px' } );
 					
 					}
@@ -673,7 +712,6 @@ function initApp(){
 					navigator.app.loadUrl(url, { openExternal:true } );
 				}
 				else {
-					console.log(url);
 					location.href = url;
 				}
 			} 
@@ -719,15 +757,16 @@ function initApp(){
 };
 
 function DesktopData(){
-	localStorage.data = false;
-	localStorage.clipDate = new Date(0).getTime();
 	
 	this.creds = function(arg){
 		if(arg !== undefined){
-			localStorage.creds = arg;
+			localStorage.creds = JSON.stringify(arg);
+		}
+		else if(localStorage.creds !== undefined) {
+			return JSON.parse(localStorage.creds);
 		}
 		else {
-			return localStorage.creds;
+			return null;
 		}
 	};
 	
@@ -740,7 +779,7 @@ function DesktopData(){
 				return JSON.parse( localStorage.data );
 			}
 			else {
-				return localStorage.data;
+				return null;
 			}
 		}
 	};
