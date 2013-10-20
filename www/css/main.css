@@ -60,7 +60,7 @@ stackOverflow and fiddled from there.
 
 @media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi), (min-resolution: 1), (-o-min-device-pixel-ratio: 4/4) {
  body {
-	font-size: 16px;
+	font-size: 18px;
 	font-family: arial, sans-serif;
 	color:#333; /*green, nook, iPad2*/
 }
@@ -81,7 +81,7 @@ font-size: 18px;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2), (-o-min-device-pixel-ratio: 2/1) {
  body {
-font-size: 14px;
+font-size: 18px;
  font-family: arial, sans-serif;
  color: #963; /*brown iPad4, iPhone-iPodTouch4th*/
 }
