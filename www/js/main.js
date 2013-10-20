@@ -85,7 +85,6 @@ for(var x in USER_AGENT_MAP){
 
 	
 if( !$('body').hasClass('desktop_chrome') ){
-	console.log('setting deviceready listener');
 	document.addEventListener("deviceready", onDeviceReady, function(){alert('fs fail');} );
 }
 else{
@@ -103,12 +102,9 @@ else{
 
 function onDeviceReady() {
 	
-	console.log('device ready');
-	
 	function onSuccess(fileSystem) {
 		
 		dataStorage = new ( function MobileStorage(){
-			console.log('data storage');
 			var
 				thisObj = this,
 				_data = null,
@@ -140,7 +136,6 @@ function onDeviceReady() {
 			
 			function fileExists(fileEntry){
 				filesExist = true;
-				console.log('existing file: ' + fileEntry.name);
 				fileOptions = null;
 				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e); });
 				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e); });
@@ -148,7 +143,6 @@ function onDeviceReady() {
 			}
 			
 			function noFiles(){
-				console.log('no file');
 				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e); });
 				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e); });
 				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e);});
@@ -271,14 +265,11 @@ function onDeviceReady() {
 					
 					
 					reader.onload = function(evt){
-						console.log('reader onload firing');
 						value= evt.target.result;
 						thisInterface.write(value);
 						
-						console.log('read value type: ' + typeof value);
 						locked = false;
 						
-						console.log('reader onload done');
 						if(firstRead){
 							firstRead = false;
 							locked = true;
@@ -288,7 +279,6 @@ function onDeviceReady() {
 									fileObj = e;
 									$(thisObj).trigger('interfaceready');
 								}
-								console.log(value);
 								initWriter.write(value);
 							});
 						}
@@ -298,7 +288,6 @@ function onDeviceReady() {
 						alert('read failed');
 					};
 					
-					console.log('reading as text');
 					reader.readAsText(e);
 				
 				}, function(){ alert('file obj create failed'); });
@@ -392,7 +381,6 @@ function initApp(){
 				$_slider = $('#slider'),
 				$_showArticleListBtn = $('#content_navigation > .show_article_list_btn')
 		;
-		alert(dataStorage.creds());
 		if(!creds){
 		
 			$_loginForm.submit( handleLogin );
@@ -437,7 +425,6 @@ function initApp(){
 				
 				
 				dataStorage.creds( creds );
-				console.log( 'login creds:' + typeof dataStorage.creds() );
 				
 				getData(url, buildContent);
 			}
@@ -478,7 +465,6 @@ function initApp(){
 				else { //data load success
 					clearInterval(loadingTimer);
 					dataStorage.data( { Count:data.Count, data:fullData } );
-					alert('setting '+dataStorage.data().data.length + ' items.');
 					callBack(dataStorage.data().data);
 				}
 			} )(dataStorage.data());
