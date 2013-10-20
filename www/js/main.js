@@ -505,9 +505,9 @@ function initApp(){
 					
 					thisData.Content = thisData.Content.replace(/(id|xmlns)="[^"]+"\s+/g,'');
 					thisData.Content = thisData.Content.replace(/src="\//g,'src="' + AAP_GATEWAY_ROOT);
-					thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/, '<button class="converted_link" data-link="http://www.google.com">$2</button>');
+					thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/, '<button class="converted_link" data-link="$1">Visit Link</button>');
 					
-					contentPages.unshift('<div class="page"><div class="content module_'+listItemVars.moduleClass+'">' + thisData.Content + '</div></div>');
+					contentPages.unshift('<div class="page"><div class="content module_'+listItemVars.moduleClass+'"><h4 class="module_name>'+ (thisData.SourceModule !== 'NeoReview' ?  thisData.SourceModule : 'Neo Review') +'</h4>' + thisData.Content + '</div></div>');
 					articleListLIs.unshift(articleListItem);
 				})(i);
 			}
