@@ -108,17 +108,51 @@ function onDeviceReady() {
 	function onSuccess(fileSystem) {
 		
 		dataStorage = new ( function MobileStorage(){
-			
+			console.log('data storage');
 			var
 				thisObj = this,
 				_data = null,
 				_creds = null,
-				_clipDate = null
+				_clipDate = null,
+				fileOptions = { create:true, exclusive:false },
+				testReader = new FileReader(),
+				filesExist = false
 			;
+			/*
+			testReader.onloadend = function(evt){
+				console.log('loadend for testReader fires');
+				if(evt.target.result === null){
+					console.log('need to create new file');
+					fileOptions = null;
+				}
+				else {
+					console.log('file already exists');
+				}
+				
+				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e); });
+				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e); });
+				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e);});
+			}
+			*/
 			
-			fileSystem.root.getFile('data.txt', { create:true, exclusive:false }, createDataInterface, function(e){ alert(e); });
-			fileSystem.root.getFile('creds.txt', { create:true, exclusive:false }, createCredsInterface, function(e){ alert(e); });
-			fileSystem.root.getFile('clipDate.txt', { create:true, exclusive:false }, createClipDateInterface, function(e){ alert(e);});
+			fileSystem.root.getFile('creds.txt',{create:false},fileExists, noFiles);
+
+			
+			function fileExists(fileEntry){
+				filesExist = true;
+				console.log('existing file: ' + fileEntry.name);
+				fileOptions = null;
+				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e); });
+				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e); });
+				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e);});
+			}
+			
+			function noFiles(){
+				console.log('no file');
+				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e); });
+				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e); });
+				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e);});
+			}
 			
 			function createDataInterface(fileEntry){
 				_data=new FileInterface(fileEntry);
@@ -148,14 +182,14 @@ function onDeviceReady() {
 								return false;
 							}
 							else {
-								return JSON.parse(_data.read());
+								return JSON.parse(retVal);
 							}
 						}
 					};
 					
 					thisObj.creds = function(arg){
 						if(arg !== undefined){
-							console.log('creds set');
+							console.log('creds set: ' + typeof arg === 'object' ? arg.toString(): arg.toString() );
 							_creds.write(arg);
 						}
 						else {
@@ -165,7 +199,7 @@ function onDeviceReady() {
 								return false;
 							}
 							else {
-								return JSON.parse(_creds.read());
+								return JSON.parse(retVal);
 							}
 						}
 					};
@@ -182,7 +216,7 @@ function onDeviceReady() {
 								return false;
 							}
 							else {
-								return _clipDate.read();
+								return retVal;
 							}
 						}
 					};
@@ -212,37 +246,6 @@ function onDeviceReady() {
 				
 				this.isReady=false;
 				
-				fileEntry.file( function(file){
-					
-					console.log('file obj available');
-					
-					fileObj = file;
-					
-					reader.onload = function(evt){
-						console.log('reader onload firing');
-						value=evt.target.result;
-						console.log('read value: ' + value);
-						locked = false;
-						
-						console.log('reader onload done');
-						if(firstRead){
-							firstRead = false;
-							thisInterface.isReady = true;
-							$(thisObj).trigger('interfaceready');
-						}
-					};
-					
-					reader.onerror = function(){
-						alert('read failed');
-					};
-					
-					reader.onloadend = function(){ console.log('loadend'); }	
-					
-					console.log('reading as text');
-					reader.readAsText(fileObj);
-				
-				}, function(){ alert('file obj create failed'); });
-				
 				this.write = function(content){
 					if(typeof content !== 'string'){
 						if(typeof content === 'object'){
@@ -255,26 +258,50 @@ function onDeviceReady() {
 					locked = true;
 					value=content;
 					
-					function writeIt(){
-						fileEntry.createWriter(function(writer){
-					
-							writer.onwrite = function(e){
-								locked = false;
-							};
-							
-							writer.truncate(0);
-							writer.write(value);
-						}, function(){ console.log('writer fail'); });
-					}
-					
-					waitForIt(writeIt);
-					
-				},
+					fileEntry.createWriter(function(writer){
+						writer.write(value);
+					} );
+				};
 				
 				this.read = function(){
 					return value;
 				};
 				
+				fileEntry.file( function(e){
+					
+					
+					reader.onload = function(evt){
+						console.log('reader onload firing');
+						value= evt.target.result;
+						thisInterface.write(value);
+						
+						console.log('read value type: ' + typeof value);
+						locked = false;
+						
+						console.log('reader onload done');
+						if(firstRead){
+							firstRead = false;
+							locked = true;
+							fileEntry.createWriter(function(initWriter){
+								initWriter.onwrite=function(){
+									thisInterface.isReady = true;
+									fileObj = e;
+									$(thisObj).trigger('interfaceready');
+								}
+								console.log(value);
+								initWriter.write(value);
+							});
+						}
+					};
+					
+					reader.onerror = function(){
+						alert('read failed');
+					};
+					
+					console.log('reading as text');
+					reader.readAsText(e);
+				
+				}, function(){ alert('file obj create failed'); });
 				
 				function waitForIt(handler){
 					if(!locked){
@@ -286,6 +313,7 @@ function onDeviceReady() {
 						},200 );
 					}
 				}
+
 			}
 			
 		} );
@@ -364,7 +392,7 @@ function initApp(){
 				$_slider = $('#slider'),
 				$_showArticleListBtn = $('#content_navigation > .show_article_list_btn')
 		;
-		
+		alert(dataStorage.creds());
 		if(!creds){
 		
 			$_loginForm.submit( handleLogin );
@@ -386,8 +414,6 @@ function initApp(){
 				}
 			;
 			
-			dataStorage.creds( creds );
-			
 			if( !creds.uname ){
 				isValid = false;
 			}
@@ -408,7 +434,11 @@ function initApp(){
 						localStorage.lastClipDate ? '&lastClipDate=' + localStorage.lastClipDate : ''
 					].join(''))
 				;
-					
+				
+				
+				dataStorage.creds( creds );
+				console.log( 'login creds:' + typeof dataStorage.creds() );
+				
 				getData(url, buildContent);
 			}
 			else {
@@ -755,7 +785,7 @@ function initApp(){
 	//});
 	
 };
-
+/*
 function DesktopData(){
 	
 	this.creds = function(arg){
@@ -800,5 +830,5 @@ function DesktopData(){
 	};
 	
 }
-
+*/
 })();//end 'use strict'; wrapper func
