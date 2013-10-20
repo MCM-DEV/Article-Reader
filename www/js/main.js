@@ -771,7 +771,7 @@ function initApp(){
 	//});
 	
 };
-/*
+
 function DesktopData(){
 	
 	this.creds = function(arg){
@@ -816,5 +816,5 @@ function DesktopData(){
 	};
 	
 }
-*/
+
 })();//end 'use strict'; wrapper func
