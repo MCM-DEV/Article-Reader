@@ -476,14 +476,19 @@ function initApp(){
 				}
 				else { //data load success
 					$_loadingMsg.hide();
-					dataStorage.data( { Count:data.Count, data:fullData } );
-					callBack(dataStorage.data().data);
+					dataStorage.data().Count = data.Count; //concat data later so we only process new data
+					callBack(fullData);
 				}
 			} )(dataStorage.data());
 		}
 		
+		function sortByClipDate(a,b){
+			var retVal =  parseInt( a.clipDate.replace(/[^\d]+/g,'') ) - parseInt( b.clipDate.replace(/[^\d]+/g,'') );
+			return retVal;
+		}
+		
 		function buildContent(data){
-			
+			console.log(data);
 			$('head').append( buildModuleStyleDecs(MODULE_IMG_MAP) );
 			
 			var
@@ -492,10 +497,7 @@ function initApp(){
 				contentPages = []
 			;
 			
-			data.sort( function(a,b){
-				var retVal =  parseInt( a.clipDate.replace(/[^\d]+/g,'') ) - parseInt( b.clipDate.replace(/[^\d]+/g,'') );
-				return retVal;
-			} );
+			data.sort(sortByClipDate);
 			
 			data.reverse();
 			
@@ -532,14 +534,21 @@ function initApp(){
 					}
 					
 					thisData.Content = thisData.Content.replace(/(id|xmlns)\="[^"]+"\s+/g,'');
-					thisData.Content = thisData.Content.replace(/http:\/\/66\.9\.140\.53\:801\//g,AAP_GATEWAY_ROOT);
+					thisData.Content = thisData.Content.replace(/<root>/, '');
+					thisData.Content = thisData.Content.replace(/http:\/\/66\.9\.140\.53\:801\//g, AAP_GATEWAY_ROOT);
 					//thisData.Content = thisData.Content.replace(/src="\//g,'src="' + AAP_GATEWAY_ROOT);
 					//thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/g, '<button class="converted_link" data-link="$1">Visit Link</button>');
 					
-					contentPages.unshift('<div class="page"><div class="content module_'+listItemVars.moduleClass+'"><h4 class="module_name>'+ (thisData.SourceModule !== 'NeoReview' ?  thisData.SourceModule : 'Neo Review') +'</h4>' + thisData.Content + '</div></div>');
+					thisData.Content = '<div class="content module_'+listItemVars.moduleClass+'"><h4 class="module_name">'+ (thisData.SourceModule !== 'NeoReview' ?  thisData.SourceModule : 'Neo Review') +'</h4>' + thisData.Content + '</div>';
+					contentPages.push('<div class="page"></div>');
 					articleListLIs.unshift(articleListItem);
 				})(i);
 			}
+			console.log(data);
+			data = data.concat( dataStorage.data().data );
+			dataStorage.data( {Count:data.length, data:data } );
+			
+			console.log(dataStorage.data());
 			
 			$('#article_list > ul').html( articleListLIs.join('') );
 			$('#slider').html(contentPages.join(''));
@@ -667,14 +676,14 @@ function initApp(){
 					if( isLeft ){
 						sliderPos -= 1;
 						if(sliderPos >= 0){
-							$_slider.animate({scrollLeft:sliderPos * $_window.width()}, 250);
+							$_slider.animate({scrollLeft:sliderPos * $_window.width()}, 250, function(){ FIFOLoad('left', sliderPos); } );
 							currentPage = sliderPos;
 						}
 					}
 					else {
 						sliderPos+=1;
 						if(sliderPos <= sliderLimit){
-							$_slider.animate({scrollLeft:sliderPos * $_window.width()}, 250);
+							$_slider.animate({scrollLeft:sliderPos * $_window.width()}, 250, function(){ FIFOLoad('right', sliderPos); } );
 							currentPage = sliderPos;
 						}
 					}
@@ -682,6 +691,7 @@ function initApp(){
 				}//end typeof e === 'object'
 				else if(typeof e === 'number') {
 					var currentPos = e-1;
+					injectFromListLoad(currentPos);
 					$_slider[0].scrollLeft = currentPos * $_window.width();
 					currentPage = currentPos;
 				}
@@ -702,6 +712,62 @@ function initApp(){
 				}
 				
 				$_contentNavigation.find('.article_count').text( (currentPage + 1) + '/' + (sliderLimit + 1) );
+				
+				function injectFromListLoad(targetPos){
+					var
+						data = dataStorage.data(),
+						dataArr = data.data,
+						count = dataArr.length,
+						i = count,
+						pageArr = []
+					;
+					
+					
+					while(i--){
+						pageArr.push('<div class="page"></div>');
+					}
+					
+					console.log(targetPos);
+					if(targetPos - 1 >= 0){
+						pageArr[targetPos-1] = '<div class="page">' + dataArr[targetPos-1].Content + '</div>';
+					}
+					
+					pageArr[targetPos] = '<div class="page">' + dataArr[targetPos].Content + '</div>';
+					
+					
+					if(targetPos +1 < dataArr.length){
+						pageArr[targetPos+1] = '<div class="page">' + dataArr[targetPos+1].Content + '</div>';
+					}
+					
+					$_slider.html(pageArr.join(''));
+				}
+				
+				function FIFOLoad(direction,targetPos){
+					var
+						$_pages = $('#slider > .page'),
+						data = dataStorage.data(),
+						count = data.Count,
+						dataArr = data.data
+					;
+					
+					if(direction === 'left'){
+						if(targetPos-1 >= 0){
+							$_pages.eq(targetPos-1).html(dataArr[targetPos-1].Content);
+						}
+						if(targetPos+2 < count){
+							$_pages.eq(targetPos+2).html('');
+						}
+					}
+					else {
+						if(targetPos+1 < count){
+							$_pages.eq(targetPos+1).html(dataArr[targetPos+1].Content);
+						}
+						if(targetPos-2 >= 0){
+							$_pages.eq(targetPos-2).html('');
+						}
+						
+					}
+				}
 			}
 			
 			function scrollContent(){
