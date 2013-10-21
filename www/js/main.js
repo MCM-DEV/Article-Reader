@@ -137,7 +137,6 @@ function onDeviceReady() {
 
 			
 			function fileExists(fileEntry){
-				alert('existing files with data. Check for new data only.');
 				filesExist = true;
 				fileOptions = null;
 				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e); });
@@ -146,7 +145,6 @@ function onDeviceReady() {
 			}
 			
 			function noFiles(){
-				alert('no files exist. create new ones');
 				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e); });
 				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e); });
 				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e);});
@@ -281,11 +279,8 @@ function onDeviceReady() {
 								initWriter.onwriteend =function(){
 									thisInterface.isReady = true;
 									fileObj = e;
-									alert('set isReady for '+e.name+' next:');
-									alert(thisInterface.isReady);
 									$(thisObj).trigger('interfaceready');
 								}
-								alert('writing value: ' + value.toString());
 								initWriter.write(value);
 							});
 						}
@@ -324,7 +319,6 @@ function onDeviceReady() {
 }
 
 function initApp(){
-		alert('initApp / dataStorageReady event fired');
 		/*var dcCnt = 0;
 		(function deviceCheck(){
 			if(!device || dcCnt +=1 >= 25){
@@ -391,7 +385,6 @@ function initApp(){
 		;
 		if(!creds){
 			$_loginForm.submit( handleLogin );
-			alert('login should show immediately after this');
 			$_login.show();
 		}
 		else {
@@ -460,16 +453,14 @@ function initApp(){
 				dataStorage.data( { Count:5, data:[] } );
 			}
 			
-			$_loadingMsg.toggle();
+			$_loadingMsg.show();
 			
 			var
-				loadingTimer = setInterval( function(){ $_loadingMsg.toggle(); },500 ),
 				count = 0,
 				fullData = []
 			;
 			
 			( function getDataChunk(data){
-				alert('getDataChunk: more than one alert here should mean ajax server works');
 				fullData = fullData.concat(data.data);
 				var newUrl = url + '&start=' + count;
 				if( count < data.Count ){
@@ -484,7 +475,7 @@ function initApp(){
 					});
 				}
 				else { //data load success
-					clearInterval(loadingTimer);
+					$_loadingMsg.hide();
 					dataStorage.data( { Count:data.Count, data:fullData } );
 					callBack(dataStorage.data().data);
 				}
@@ -577,7 +568,6 @@ function initApp(){
 			} 
 			
 			$('#content_viewer').on('click','.converted_link' , function(e) {
-				alert('wubba');
 				loadURL( $(this).data('link') );
 			});
 			
