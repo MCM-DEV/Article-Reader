@@ -551,7 +551,7 @@ function initApp(){
 						//thisData.Content = thisData.Content.replace(/src="\//g,'src="' + AAP_GATEWAY_ROOT);
 						//thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/g, '<button class="converted_link" data-link="$1">Visit Link</button>');
 						
-						thisData.Content = '<div class="content"><div class="module_'+listItemVars.moduleClass+'"><h4 class="module_name">'+ (thisData.SourceModule !== 'NeoReview' ?  thisData.SourceModule : 'Neo Review') +'</h4>' + thisData.Content + '</div></div>';
+						//thisData.Content = '<div class="content"><div class="module_'+listItemVars.moduleClass+'"><h4 class="module_name">'+ (thisData.SourceModule !== 'NeoReview' ?  thisData.SourceModule : 'Neo Review') +'</h4>' + thisData.Content + '</div></div>';
 						
 						thisData.Content.isProcessed = true;
 					
@@ -569,6 +569,7 @@ function initApp(){
 			$('#slider').html(contentPages.join(''));
 			
 			alert('login should hide after this');
+			
 			$('#login').hide();
 			$('#article_list').show();
 			
