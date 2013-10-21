@@ -57,6 +57,16 @@ stackOverflow and fiddled from there.
         font-size: 14px;
     }
 } */
+@media
+    only screen (-webkit-min-device-pixel-ratio: 2) and (max-device-height: 1136px) and (min-device-height: 960px) and (max-device-width: 640px) and (min-device-width: 560px) {
+		body {
+font-size: 14px;
+ font-family: arial, sans-serif;
+ color:#F00; /*red */
+}
+    /* iPhone only */
+}
+
 
 @media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi), (min-resolution: 1), (-o-min-device-pixel-ratio: 4/4) {
  body {
