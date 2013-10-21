@@ -86,7 +86,7 @@ font-size: 18px;
  color: #963; /*brown iPad4, iPhone-iPodTouch4th*/
 }
 }
-@media (min-resolution: 326dpi) and (min-width: 960px){
+@media (min-resolution: 326dpi) and (min-width: 640px){
  body {
 font-size: 14px;
  font-family: arial, sans-serif;
@@ -137,7 +137,7 @@ div {
 	height: 20em;
 	margin: 0 auto;
 	position: relative;
-	top: 2em;
+	top: 20%;
 	background: url('../img/gatewayLogo.png') center top no-repeat #d9d9d9;
 }
 #logoWrapper h1 {
@@ -157,14 +157,14 @@ div {
 #logoWrapper #loading_msg {
 	display: none;
 	position: relative;
-	/*top: 170px;*/
+	top: -30px;
 	margin: 0 auto;
 	text-align: center;
 	font-family: "Times New Roman", Times, serif;
 	font-weight: normal;
 	font-size: 1em;
 	width: 80%;
-	height: 43%;
+	height: 53%;
 	border: solid 1px #ccc;
 	color: #666;
 	line-height: 9.5em;
