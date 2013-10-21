@@ -104,11 +104,7 @@ else{
 
 function onDeviceReady() {
 	
-	alert('onDeviceReady fires');
-	
 	function onSuccess(fileSystem) {
-		
-		alert('onSuccess fires');
 		
 		dataStorage = new ( function MobileStorage(){
 			var
@@ -235,6 +231,7 @@ function onDeviceReady() {
 				}
 			} );
 			
+			//the _vars are meant to become instances of this constructor
 			function FileInterface(fileEntry){
 			
 				var
@@ -271,6 +268,8 @@ function onDeviceReady() {
 				
 				fileEntry.file( function(e){
 					
+					alert('should see file name next alert');
+					alert(e.name);
 					
 					reader.onload = function(evt){
 						value= evt.target.result;
@@ -325,6 +324,7 @@ function onDeviceReady() {
 }
 
 function initApp(){
+		alert('initApp / dataStorageReady event fired');
 		/*var dcCnt = 0;
 		(function deviceCheck(){
 			if(!device || dcCnt +=1 >= 25){
@@ -391,6 +391,7 @@ function initApp(){
 		;
 		if(!creds){
 			$_loginForm.submit( handleLogin );
+			alert('login should show immediately after this');
 			$_login.show();
 		}
 		else {
@@ -468,6 +469,7 @@ function initApp(){
 			;
 			
 			( function getDataChunk(data){
+				alert('getDataChunk: more than one alert here should mean ajax server works');
 				fullData = fullData.concat(data.data);
 				var newUrl = url + '&start=' + count;
 				if( count < data.Count ){
