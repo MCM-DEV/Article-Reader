@@ -533,6 +533,8 @@ function initApp(){
 				
 			;//end initial vars
 			
+			$('#close_popup').click( function(){ $(this).parent().hide(); });
+			
 			$('#edit_mode_toggle').click( function(){
 				$_articleList.addClass('edit_mode').trigger('editmode');
 			} );
