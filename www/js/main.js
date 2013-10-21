@@ -278,7 +278,7 @@ function onDeviceReady() {
 							firstRead = false;
 							locked = true;
 							fileEntry.createWriter(function(initWriter){
-								initWriter.onwrite=function(){
+								initWriter.onwriteend =function(){
 									thisInterface.isReady = true;
 									fileObj = e;
 									alert('set isReady for '+e.name+' next:');
@@ -505,6 +505,8 @@ function initApp(){
 				var retVal =  parseInt( a.clipDate.replace(/[^\d]+/g,'') ) - parseInt( b.clipDate.replace(/[^\d]+/g,'') );
 				return retVal;
 			} );
+			
+			data.reverse();
 			
 			dataStorage.lastClipDate( parseInt( data[0].clipDate.replace(/[^\d]+/g,'') ) );
 			
