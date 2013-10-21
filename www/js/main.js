@@ -1,6 +1,7 @@
 (function(){
 
 'use strict';
+	
 console.log('app starting');
 /*
 	Original Author's style conventions
@@ -23,7 +24,8 @@ console.log('app starting');
 
 var
 	//configurables 
-	AAP_GATEWAY_ROOT = 'http://66.9.140.53:801/',
+	//AAP_GATEWAY_ROOT = 'http://66.9.140.53:801/',
+	AAP_GATEWAY_ROOT = 'http://demo.aapportalsite.com/',
 	
 	USER_ALERTS = {
 		missingLoginFields:'Please fill in user name and password',
@@ -102,7 +104,11 @@ else{
 
 function onDeviceReady() {
 	
+	alert('onDeviceReady fires');
+	
 	function onSuccess(fileSystem) {
+		
+		alert('onSuccess fires');
 		
 		dataStorage = new ( function MobileStorage(){
 			var
@@ -135,6 +141,7 @@ function onDeviceReady() {
 
 			
 			function fileExists(fileEntry){
+				alert('existing files with data. Check for new data only.');
 				filesExist = true;
 				fileOptions = null;
 				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e); });
@@ -143,6 +150,7 @@ function onDeviceReady() {
 			}
 			
 			function noFiles(){
+				alert('no files exist. create new ones');
 				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e); });
 				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e); });
 				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e);});
@@ -382,13 +390,24 @@ function initApp(){
 				$_showArticleListBtn = $('#content_navigation > .show_article_list_btn')
 		;
 		if(!creds){
-		
 			$_loginForm.submit( handleLogin );
 			$_login.show();
 		}
 		else {
 			//compareData(creds, function(){ buildContent(localStore['data']); });
-			buildContent( dataStorage.data().data );
+			
+			var url = AAP_GATEWAY_ROOT + 'sendtodata/getdata' +
+				[
+					'?uid='+creds.uname,
+					'&pwd='+creds.pword,
+					'&duid='+device.uuid,
+					'&dname='+device.name,
+					'&os=' + device.platform,
+					'&lastClipDate=' + dataStorage.lastClipDate()
+				].join('')
+			;
+			
+			getData( url, buildContent );
 		}
 		
 		function handleLogin(e){
@@ -412,15 +431,15 @@ function initApp(){
 			if(isValid){
 				
 				var
-					url = /*$('body').hasClass('desktop_chrome') ? 'https://dl.dropboxusercontent.com/u/28072275/data2.txt' : */ (AAP_GATEWAY_ROOT + 'sendtodata/getdata' +
+					url = AAP_GATEWAY_ROOT + 'sendtodata/getdata' +
 					[
 						'?uid='+creds.uname,
 						'&pwd='+creds.pword,
 						'&duid='+device.uuid,
 						'&dname='+device.name,
 						'&os=' + device.platform,
-						localStorage.lastClipDate ? '&lastClipDate=' + localStorage.lastClipDate : ''
-					].join(''))
+						'&lastClipDate='
+					].join('')
 				;
 				
 				
@@ -480,10 +499,19 @@ function initApp(){
 				contentPages = []
 			;
 			
+			data.sort( function(a,b){
+				var retVal =  parseInt( a.clipDate.replace(/[^\d]+/g,'') ) - parseInt( b.clipDate.replace(/[^\d]+/g,'') );
+				return retVal;
+			} );
+			
+			dataStorage.lastClipDate( parseInt( data[0].clipDate.replace(/[^\d]+/g,'') ) );
+			
 			while(i--){
 				(function(i){
 					var
 						thisData = data[i],
+						mediaList = thisData.MediaList || [],
+						mlen = mediaList.length,
 						
 						listItemVars = {
 							headline : thisData.Title,
@@ -503,9 +531,15 @@ function initApp(){
 						articleListItem = articleListItem.replace( new RegExp('{{'+x+'}}','g'), listItemVars[x] );
 					}
 					
-					thisData.Content = thisData.Content.replace(/(id|xmlns)="[^"]+"\s+/g,'');
-					thisData.Content = thisData.Content.replace(/src="\//g,'src="' + AAP_GATEWAY_ROOT);
-					thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/, '<button class="converted_link" data-link="$1">Visit Link</button>');
+					while(mlen--){
+						var thisList = mediaList[mlen];
+						thisData.Content.replace(new RegExp(thisList.id,'g'), AAP_GATEWAY_ROOT + thisList.locaton);
+					}
+					
+					thisData.Content = thisData.Content.replace(/(id|xmlns)\="[^"]+"\s+/g,'');
+					thisData.Content = thisData.Content.replace(/http:\/\/66\.9\.140\.53\:801\//g,AAP_GATEWAY_ROOT);
+					//thisData.Content = thisData.Content.replace(/src="\//g,'src="' + AAP_GATEWAY_ROOT);
+					//thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/g, '<button class="converted_link" data-link="$1">Visit Link</button>');
 					
 					contentPages.unshift('<div class="page"><div class="content module_'+listItemVars.moduleClass+'"><h4 class="module_name>'+ (thisData.SourceModule !== 'NeoReview' ?  thisData.SourceModule : 'Neo Review') +'</h4>' + thisData.Content + '</div></div>');
 					articleListLIs.unshift(articleListItem);
@@ -533,7 +567,15 @@ function initApp(){
 				
 			;//end initial vars
 			
-			$('#close_popup').click( function(){ $(this).parent().hide(); });
+			function loadURL(url){
+				$('#external_popup > iframe')[0].src = url;
+				$('#external_popup').show();
+			} 
+			
+			$('#content_viewer').on('click','.converted_link' , function(e) {
+				alert('wubba');
+				loadURL( $(this).data('link') );
+			});
 			
 			$('#edit_mode_toggle').click( function(){
 				$_articleList.addClass('edit_mode').trigger('editmode');
@@ -607,11 +649,6 @@ function initApp(){
 			if( $(document.body).hasClass('desktop_chrome') ){
 				$('.stupid_android_lt3_button_up, .stupid_android_lt3_button_down').mousedown( scrollContent );
 			}
-			
-			$('.converted_link').click( function(e) {
-				e.preventDefault();
-				loadURL( $(this).data('link') );
-			});
 			
 			function gotoPage(e){
 				var sliderLimit = ($_slider.find('.page').size() - 1);
@@ -725,14 +762,7 @@ function initApp(){
 					
 			}
 
-			function loadURL(url){
-				if(navigator && navigator.app){
-					navigator.app.loadUrl(url, { openExternal:true } );
-				}
-				else {
-					location.href = url;
-				}
-			} 
+
 			
 		} //end behaviorInit
 		
@@ -740,19 +770,6 @@ function initApp(){
 			try {
 				return 'localStorage' in window && window['localStorage'] !== null;
 			} catch (e) {
-				return false;
-			}
-		}
-		
-		function stashCreds(u,p){
-			localStorage['creds'] = JSON.stringify({uname:u,pword:p});
-		}
-		
-		function getCreds(){
-			if(localStorage['creds']){
-				return JSON.parse(localStorage['creds']);
-			}
-			else {
 				return false;
 			}
 		}
