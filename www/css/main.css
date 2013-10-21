@@ -154,17 +154,25 @@ div {
 	top: 150px;
 	margin: 0 1em;
 }
-#logoWrapper span#loading_msg {
+#logoWrapper #loading_msg {
 	display: none;
 	position: relative;
 	top: 170px;
-	left: 6.5em;
-	/*text-align: center;*/
+	margin: 0 auto;
+	text-align: center;
 	font-family: "Times New Roman", Times, serif;
 	font-weight: normal;
 	font-size: 1em;
-	color: #3C9;
-	line-height: 22px;
+	width: 80%;
+	height: 27%;
+	border: solid 1px #ccc;
+	color: #666;
+	line-height: 6.5em;
+	background-image: url('../img/iconLoading.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-position-y: 0.6em;
+	background-color: #e0dfdd;
 }
 #logoWrapper #login_form label {
 	display: block;
