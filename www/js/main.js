@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 (function(){
 
 'use strict';
@@ -898,6 +899,8 @@ function DesktopData(){
 }
 
 =======
+=======
+>>>>>>> 8d99d05be26b24c2122ecb5089cab580995a13d5
 (function(){
 
 'use strict';
@@ -1730,5 +1733,8 @@ function DesktopData(){
 	
 }
 
+<<<<<<< HEAD
+>>>>>>> 8d99d05be26b24c2122ecb5089cab580995a13d5
+=======
 >>>>>>> 8d99d05be26b24c2122ecb5089cab580995a13d5
 })();//end 'use strict'; wrapper func
