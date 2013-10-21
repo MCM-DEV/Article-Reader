@@ -139,15 +139,15 @@ function onDeviceReady() {
 			function fileExists(fileEntry){
 				filesExist = true;
 				fileOptions = null;
-				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e); });
-				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e); });
-				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e);});
+				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e.code); });
+				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e.code); });
+				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e.code);});
 			}
 			
 			function noFiles(){
-				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e); });
-				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e); });
-				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e);});
+				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e.code); });
+				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e.code); });
+				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e.code);});
 			}
 			
 			function createDataInterface(fileEntry){
@@ -469,7 +469,7 @@ function initApp(){
 						newUrl,
 						getDataChunk
 					)
-					.fail(function(jqXHR,status,err){ console.log(status+', '+err); })
+					.fail(function(jqXHR,status,err){ alert(status+', '+err); })
 					.always(function(){
 						
 					});
@@ -489,7 +489,7 @@ function initApp(){
 		}
 		
 		function buildContent(data){
-			console.log(data);
+			alert('buildContent begins');
 			$('head').append( buildModuleStyleDecs(MODULE_IMG_MAP) );
 			
 			data = data.concat( dataStorage.data().data );
@@ -511,6 +511,8 @@ function initApp(){
 			dataStorage.lastClipDate( parseInt( data[0].clipDate.replace(/[^\d]+/g,'') ) );
 			
 			console.log( dataStorage.lastClipDate() );
+			
+			alert('data processing starts here');
 			
 			while(i--){
 				(function(i){
@@ -559,11 +561,14 @@ function initApp(){
 				})(i);
 			}
 			
+			alert('data processing finished');
+			
 			dataStorage.data( {Count:data.length, data:data } );
 			
 			$('#article_list > ul').html( articleListLIs.join('') );
 			$('#slider').html(contentPages.join(''));
 			
+			alert('login should hide after this');
 			$('#login').hide();
 			$('#article_list').show();
 			
