@@ -268,9 +268,6 @@ function onDeviceReady() {
 				
 				fileEntry.file( function(e){
 					
-					alert('should see file name next alert');
-					alert(e.name);
-					
 					reader.onload = function(evt){
 						value= evt.target.result;
 						thisInterface.write(value);
@@ -284,8 +281,11 @@ function onDeviceReady() {
 								initWriter.onwrite=function(){
 									thisInterface.isReady = true;
 									fileObj = e;
+									alert('set isReady for '+e.name+' next:');
+									alert(thisInterface.isReady);
 									$(thisObj).trigger('interfaceready');
 								}
+								alert('writing value: ' + value.toString());
 								initWriter.write(value);
 							});
 						}
