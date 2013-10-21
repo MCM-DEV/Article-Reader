@@ -58,6 +58,7 @@ stackOverflow and fiddled from there.
     }
 } */
 
+
 @media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi), (min-resolution: 1), (-o-min-device-pixel-ratio: 4/4) {
  body {
 	font-size: 18px;
@@ -81,18 +82,26 @@ font-size: 18px;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2), (-o-min-device-pixel-ratio: 2/1) {
  body {
-font-size: 18px;
+font-size: 17px;
  font-family: arial, sans-serif;
  color: #963; /*brown iPad4, iPhone-iPodTouch4th*/
 }
 }
-@media (min-resolution: 192dpi) and (min-width: 960px){
+@media (min-resolution: 192dpi) and (min-device-width: 640px){
  body {
-font-size: 14px;
+font-size: 24px;
  font-family: arial, sans-serif;
- color:#F00; /*red */
+ color:#03F; /*blue */
 }
 }
+@media (min-resolution: 192dpi) and (min-device-width: 768px){
+ body {
+font-size: 24px;
+ font-family: arial, sans-serif;
+ color: #0CF; /*light blue*/
+}
+}
+
 
 @media (min-resolution: 300dpi){
  body {
@@ -108,14 +117,6 @@ font-size: 24px;
  color: #cc3333; /*cna red
 }
 }*/
-
-@media (min-width: 1000px) {
- body {
-font-size: 18px;
- font-family: arial, sans-serif;
- color: #0CF; /*light blue*/
-}
-}
 
 
 
@@ -137,7 +138,7 @@ div {
 	height: 20em;
 	margin: 0 auto;
 	position: relative;
-	top: 2em;
+	top: 20%;
 	background: url('../img/gatewayLogo.png') center top no-repeat #d9d9d9;
 }
 #logoWrapper h1 {
@@ -151,20 +152,29 @@ div {
 }
 #logoWrapper #login_form {
 	position: relative;
-	top: 150px;
-	margin: 0 1em;
+	top: 155px;
+	margin: 0 2.8em;
 }
-#logoWrapper span#loading_msg {
+#logoWrapper #loading_msg {
 	display: none;
 	position: relative;
-	top: 170px;
-	left: 6.5em;
-	/*text-align: center;*/
+	top: -35px;
+	margin: 0 auto;
+	text-align: center;
 	font-family: "Times New Roman", Times, serif;
 	font-weight: normal;
 	font-size: 1em;
-	color: #3C9;
-	line-height: 22px;
+	width: 80%;
+	height: 57%;
+	border: solid 1px #ccc;
+	color: #333333;
+	line-height: 12.5em;
+	background-image: url('../img/iconLoading.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-position-y: 3.2em;
+	background-color: #e0dfdd;
+	box-shadow:0 1px 10px #888888;
 }
 #logoWrapper #login_form label {
 	display: block;

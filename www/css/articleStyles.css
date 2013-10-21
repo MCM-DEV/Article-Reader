@@ -13,7 +13,11 @@
   border-top: 6px solid #d94e17;
 }
 
-
+#content_viewer .content  h4 {
+  font-size: 1.2em;
+  font-weight: normal;
+  color: #999;
+}
 #content_viewer .content  p {
   position: relative;
   font-style: normal;  
@@ -385,7 +389,7 @@
 }
 
 #content_viewer .content .article .section .fig.pos-float .fig-caption {
-  width: 255px; 
+  /*width: 255px; */
   float: left;
   margin: 10px 0 0 20px;
 }
@@ -404,10 +408,9 @@
   left: 10px;
 }
 #content_viewer .content .article .section .table-caption {
-  width: 255px;
+  /*width: 255px;*/
   float: left;
   margin: 10px 0 0 10px;
-  height: 200px;
   position: relative;
 }
 #content_viewer .content .article .section .table-inline img {
