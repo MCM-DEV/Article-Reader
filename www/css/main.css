@@ -86,7 +86,7 @@ font-size: 18px;
  color: #963; /*brown iPad4, iPhone-iPodTouch4th*/
 }
 }
-@media (min-resolution: 192dpi) and (min-width: 960px){
+@media (min-resolution: 192dpi) and (min-width: 961px){
  body {
 font-size: 14px;
  font-family: arial, sans-serif;
@@ -152,7 +152,7 @@ div {
 #logoWrapper #login_form {
 	position: relative;
 	top: 150px;
-	margin: 0 1em;
+	margin: 0 2.8em;
 }
 #logoWrapper #loading_msg {
 	display: none;
