@@ -87,14 +87,14 @@ font-size: 17px;
  color: #963; /*brown iPad4, iPhone-iPodTouch4th*/
 }
 }
-@media (min-resolution: 192dpi) and (min-width: 640px){
+@media (min-resolution: 192dpi) and (min-device-width: 640px){
  body {
 font-size: 24px;
  font-family: arial, sans-serif;
  color:#03F; /*blue */
 }
 }
-@media (min-resolution: 192dpi) and (min-width: 768px){
+@media (min-resolution: 192dpi) and (min-device-width: 768px){
  body {
 font-size: 24px;
  font-family: arial, sans-serif;
