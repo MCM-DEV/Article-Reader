@@ -86,7 +86,7 @@ font-size: 17px;
  color: #963; /*brown iPad4, iPhone-iPodTouch4th*/
 }
 }
-@media (min-resolution: 192dpi) and (min-width: 640px){
+@media (min-resolution: 192dpi) and (device-aspect-ratio: 40/71){
  body {
 font-size: 14px;
  font-family: arial, sans-serif;
@@ -164,15 +164,16 @@ div {
 	font-weight: normal;
 	font-size: 1em;
 	width: 80%;
-	height: 55%;
+	height: 57%;
 	border: solid 1px #ccc;
-	color: #cc3333;
-	line-height: 9.5em;
+	color: #333333;
+	line-height: 12.5em;
 	background-image: url('../img/iconLoading.gif');
 	background-repeat: no-repeat;
 	background-position: center;
-	background-position-y: 1.2em;
+	background-position-y: 3.2em;
 	background-color: #e0dfdd;
+	box-shadow:0 1px 10px #888888;
 }
 #logoWrapper #login_form label {
 	display: block;
