@@ -89,6 +89,8 @@
 #content_viewer .content .article ol.affiliation-list li a, 
 #content_viewer .content .article ol.corresp-list li a {
   text-decoration: none;
+  color:#999;
+  cursor:text;
 }
 #content_viewer .content .article ol.contributor-list li a:hover,
 #content_viewer .content .article ol.affiliation-list li a:hover, 
@@ -197,6 +199,12 @@
   float:left;  
 }
 
+#content_viewer .content .article .section p a.xref-bibr {
+	text-decoration:none;
+	color:#333;
+	cursor:text;
+}
+
 #content_viewer .content .article .section p button {
   background: none;
   border: none;
@@ -234,6 +242,13 @@
 #content_viewer .content .article .section sup,
 #content_viewer .content .article .section sub {
   line-height: 10px;
+}
+#content_viewer .content .article .section sup a,
+#content_viewer .content .article .section sub a {
+  line-height: 10px;
+  text-decoration:none;
+  cursor:text;
+  color:#333;
 }
 #content_viewer .content .article .section .xref-table {
   line-height: 10px;
@@ -326,7 +341,8 @@
 #content_viewer .content .article .section ol.cit-list div,
 #content_viewer .content .article .section ol.cit-list span,
 #content_viewer .content .article .section ol.cit-list a {
-  line-height: 10px;
+  /* line-height: 10px; turned off due to NeoReviews issue */
+	font-family: Arial, Helvetica, sans-serif;  
 }
 #content_viewer .content .article .section ol.cit-list div.ref-other {
   /*font-size: 10px;*/
