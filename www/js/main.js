@@ -546,8 +546,8 @@ function initApp(){
 						}
 						
 						thisData.Content = thisData.Content.replace(/(id|xmlns)\="[^"]+"\s+/g,'');
-						thisData.Content = thisData.Content.replace(/<root>/, '');
-						thisData.Content = thisData.Content.replace(/http:\/\/66\.9\.140\.53\:801\//g, AAP_GATEWAY_ROOT);
+						//thisData.Content = thisData.Content.replace(/<root>/, '');
+						//thisData.Content = thisData.Content.replace(/http:\/\/66\.9\.140\.53\:801\//g, AAP_GATEWAY_ROOT);
 						//thisData.Content = thisData.Content.replace(/src="\//g,'src="' + AAP_GATEWAY_ROOT);
 						//thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/g, '<button class="converted_link" data-link="$1">Visit Link</button>');
 						
