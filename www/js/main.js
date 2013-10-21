@@ -559,6 +559,8 @@ function initApp(){
 				})(i);
 			}
 			
+			dataStorage.data( {Count:data.length, data:data } );
+			
 			$('#article_list > ul').html( articleListLIs.join('') );
 			$('#slider').html(contentPages.join(''));
 			
