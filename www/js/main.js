@@ -476,10 +476,11 @@ function initApp(){
 				}
 				else { //data load success
 					$_loadingMsg.hide();
+					
 					dataStorage.data().Count = data.Count; //concat data later so we only process new data
 					callBack(fullData);
 				}
-			} )(dataStorage.data());
+			} )({ Count:5, data:[] });
 		}
 		
 		function sortByClipDate(a,b){
@@ -491,17 +492,25 @@ function initApp(){
 			console.log(data);
 			$('head').append( buildModuleStyleDecs(MODULE_IMG_MAP) );
 			
+			data = data.concat( dataStorage.data().data );
+			dataStorage.data( {Count:data.length, data:data } );
+			
 			var
 				i = data.length,
 				articleListLIs = [],
 				contentPages = []
 			;
 			
+			
+			console.log(dataStorage.data());
+			
 			data.sort(sortByClipDate);
 			
 			data.reverse();
 			
 			dataStorage.lastClipDate( parseInt( data[0].clipDate.replace(/[^\d]+/g,'') ) );
+			
+			console.log( dataStorage.lastClipDate() );
 			
 			while(i--){
 				(function(i){
@@ -527,28 +536,28 @@ function initApp(){
 					for(var x in listItemVars){
 						articleListItem = articleListItem.replace( new RegExp('{{'+x+'}}','g'), listItemVars[x] );
 					}
+					if(!thisData.Content.isProcessed){
 					
-					while(mlen--){
-						var thisList = mediaList[mlen];
-						thisData.Content.replace(new RegExp(thisList.id,'g'), AAP_GATEWAY_ROOT + thisList.locaton);
+						while(mlen--){
+							var thisList = mediaList[mlen];
+							thisData.Content.replace(new RegExp(thisList.id,'g'), AAP_GATEWAY_ROOT + thisList.locaton);
+						}
+						
+						thisData.Content = thisData.Content.replace(/(id|xmlns)\="[^"]+"\s+/g,'');
+						thisData.Content = thisData.Content.replace(/<root>/, '');
+						thisData.Content = thisData.Content.replace(/http:\/\/66\.9\.140\.53\:801\//g, AAP_GATEWAY_ROOT);
+						//thisData.Content = thisData.Content.replace(/src="\//g,'src="' + AAP_GATEWAY_ROOT);
+						//thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/g, '<button class="converted_link" data-link="$1">Visit Link</button>');
+						
+						thisData.Content = '<div class="content"><div class="module_'+listItemVars.moduleClass+'"><h4 class="module_name">'+ (thisData.SourceModule !== 'NeoReview' ?  thisData.SourceModule : 'Neo Review') +'</h4>' + thisData.Content + '</div></div>';
+						
+						thisData.Content.isProcessed = true;
+					
 					}
-					
-					thisData.Content = thisData.Content.replace(/(id|xmlns)\="[^"]+"\s+/g,'');
-					thisData.Content = thisData.Content.replace(/<root>/, '');
-					thisData.Content = thisData.Content.replace(/http:\/\/66\.9\.140\.53\:801\//g, AAP_GATEWAY_ROOT);
-					//thisData.Content = thisData.Content.replace(/src="\//g,'src="' + AAP_GATEWAY_ROOT);
-					//thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/g, '<button class="converted_link" data-link="$1">Visit Link</button>');
-					
-					thisData.Content = '<div class="content"><div class="module_'+listItemVars.moduleClass+'"><h4 class="module_name">'+ (thisData.SourceModule !== 'NeoReview' ?  thisData.SourceModule : 'Neo Review') +'</h4>' + thisData.Content + '</div></div>';
 					contentPages.push('<div class="page"></div>');
 					articleListLIs.unshift(articleListItem);
 				})(i);
 			}
-			console.log(data);
-			data = data.concat( dataStorage.data().data );
-			dataStorage.data( {Count:data.length, data:data } );
-			
-			console.log(dataStorage.data());
 			
 			$('#article_list > ul').html( articleListLIs.join('') );
 			$('#slider').html(contentPages.join(''));
