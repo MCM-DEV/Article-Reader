@@ -417,11 +417,9 @@
 	float:left;
 	width:100%;
 }
-
-
-
-
 /* End: AAP News fig-inline HUGE photos */
+
+
 
 
 /* Neo Reviews Videos */
@@ -741,11 +739,6 @@
 }
 
 
-#content_viewer .content .article .section div.graphic {
-  background-color: #e0f3fb;
-  /*width: 100%;*/
-  margin: 10px 0;
-}
 #content_viewer .content .article .section ol li p {
   position: relative;
   width: 100%;
@@ -754,6 +747,11 @@
   display: inline;
   float: none;
 /*  color: #000;*/
+}
+#content_viewer .content .article .section div.graphic {
+  background-color: #e0f3fb;
+  /*width: 100%;*/
+  margin: 10px 0;
 }
 #content_viewer .content .article .section div.graphic-inline {
   /*width:100%;*/
@@ -765,6 +763,22 @@
   padding-bottom: 20px;
   border-bottom: 1px solid #999999;
 }
+
+/* Begin: AAP News graphic-inline */
+#content_viewer .content.mod_AAP_News .article .section div.graphic {
+  background-color: #e0f3fb;
+  width: 100%;
+  margin: 10px 0;
+}
+#content_viewer .content.mod_AAP_News .article .section div.graphic-inline {
+  width:60%;
+}
+#content_viewer .content.mod_AAP_News .article .section div.graphic-inline img {
+  width:100%;
+}
+/* End: AAP News graphic-inline */
+
+
 
 /* End: SECTION Styling */
 
