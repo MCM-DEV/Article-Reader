@@ -232,6 +232,33 @@ function onDeviceReady() {
 					};
 					
 					
+					thisObj.deleteFiles = function(){ // file1, file2, file..., [callBackFunction]
+						var i = arguments.length,
+						callBack = function(){},
+						fileCount=0;
+						
+						function fileDeleted(){
+							fileCount--;
+							if(fileCount === 0){
+								callBack();
+							}
+						}
+						
+						function deleteFile(fileEntry){
+							fileEntry.remove(fileDeleted, function(e){alert(e.code);});
+						}
+						
+						while(i--){
+							var thisArg = arguments[i];
+							if(typeof thisArg === 'string'){
+								fileSystem.root.getFile(thisArg,{createFile:false},deleteFile, function (e) { alert(e.code); } );
+							}
+							else if (typeof thisArg === 'function'){
+								callBack = thisArg;
+							}
+						}
+					};
+					
 					this.download = function(url, target){
 						$.getJSON( url, function(data){
 							localStorage[target] = data;
