@@ -133,14 +133,36 @@ function onDeviceReady() {
 				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e); });
 				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e);});
 			}
-			*/
+			
 			
 			fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert('getFile error:' + e.code); });
 
 			fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert('getFile error:' + e.code); });
 
 			fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert('getFile error:' + e.code);});
-			
+			*/
+
+			fileSystem.root.getFile('data.txt', { create: false }, fileExists, noFiles);
+
+
+			function fileExists(fileEntry) {
+			    alert("exists");
+			    filesExist = true;
+			    fileOptions = null;
+			    fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function (e) { alert(e.code); });
+			    fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function (e) { alert(e.code); });
+			    fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function (e) { alert(e.code); });
+			}
+
+			function noFiles() {
+			    alert("no files");
+			    alert(FileError.NOT_FOUND_ERR);
+			    //FileError.NOT_FOUND_ERR
+			    fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function (e) { alert(e.code); });
+			    fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function (e) { alert(e.code); });
+			    fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function (e) { alert(e.code); });
+			}
+
 			
 			function createDataInterface(fileEntry){
 				_data=new FileInterface(fileEntry);
