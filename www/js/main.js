@@ -68,7 +68,7 @@ var
 
 var
 	img_cache = [],
-	dataStorage
+	dataStorage //most branching between mobile /desktop happens at this guy
 ;
 
 
@@ -493,7 +493,6 @@ function initApp(){
 			$('head').append( buildModuleStyleDecs(MODULE_IMG_MAP) );
 			
 			data = data.concat( dataStorage.data().data );
-			dataStorage.data( {Count:data.length, data:data } );
 			
 			var
 				i = data.length,
@@ -501,14 +500,18 @@ function initApp(){
 				contentPages = []
 			;
 			
-			
 			console.log(dataStorage.data());
 			
 			data.sort(sortByClipDate);
 			
 			data.reverse();
 			
-			dataStorage.lastClipDate( parseInt( data[0].clipDate.replace(/[^\d]+/g,'') ) );
+			if(data[0]){
+				dataStorage.lastClipDate( parseInt( data[0].clipDate.replace(/[^\d]+/g,'') ) );
+			}
+			else {
+				dataStorage.lastClipDate( 0 );
+			}
 			
 			console.log( dataStorage.lastClipDate() );
 			
@@ -532,13 +535,15 @@ function initApp(){
 						
 						articleListItem = articleListTemplate.join('')
 					;
+						
+					alert('loop iteration['+i+']: backwards count is correct');
 					
 					listItemVars.addedDate = [dateObj.getMonth()+1,dateObj.getDate(),dateObj.getFullYear()].join('-');
 					
 					for(var x in listItemVars){
 						articleListItem = articleListItem.replace( new RegExp('{{'+x+'}}','g'), listItemVars[x] );
 					}
-					if(!thisData.Content.isProcessed){
+					if(!thisData.isProcessed){
 					
 						while(mlen--){
 							var thisList = mediaList[mlen];
@@ -553,7 +558,7 @@ function initApp(){
 						
 						thisData.Content = '<div class="content"><div class="module_'+listItemVars.moduleClass+'"><h4 class="module_name">'+ (thisData.SourceModule !== 'NeoReview' ?  thisData.SourceModule : 'Neo Review') +'</h4>' + thisData.Content + '</div></div>';
 						
-						thisData.Content.isProcessed = true;
+						thisData.isProcessed = true;
 					
 					}
 					contentPages.push('<div class="page"></div>');
