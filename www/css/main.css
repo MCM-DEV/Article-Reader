@@ -126,7 +126,7 @@ div {
 	width: 20em;
 	height: 20em;
 	border: solid 1px #ccc;
-	color: #333333;
+	color: purple;/* #333333; */
 	line-height: 12.5em;
 	background-image: url('../img/iconLoading.gif');
 	background-repeat: no-repeat;
