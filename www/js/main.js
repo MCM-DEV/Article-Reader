@@ -24,8 +24,8 @@ console.log('app starting');
 
 var
 	//configurables 
-	AAP_GATEWAY_ROOT = 'http://66.9.140.53:801/',
-	//AAP_GATEWAY_ROOT = 'http://demo.aapportalsite.com/',
+	//AAP_GATEWAY_ROOT = 'http://66.9.140.53:801/',
+	AAP_GATEWAY_ROOT = 'http://demo.aapportalsite.com/',
 	
 	USER_ALERTS = {
 		missingLoginFields:'Please fill in user name and password',
@@ -249,6 +249,7 @@ function onDeviceReady() {
 						}
 						
 						while(i--){
+							fileCount++;
 							var thisArg = arguments[i];
 							if(typeof thisArg === 'string'){
 								fileSystem.root.getFile(thisArg,{createFile:false},deleteFile, function (e) { alert(e.code); } );
@@ -594,7 +595,6 @@ function initApp(){
 			}
 			
 			$_loadingMsg.show();
-			$('form').hide();
 			
 			var
 				count = 0,
