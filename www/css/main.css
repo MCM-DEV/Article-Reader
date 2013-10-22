@@ -116,15 +116,15 @@ div {
 #logoWrapper #loading_msg {
 	display: none;
 
-	position: relative;
-	top: -20%;
+	position: absolute;
+	top: 0;
 	margin: 0 auto;
 	text-align: center;
 	font-family: "Times New Roman", Times, serif;
 	font-weight: normal;
 	font-size: 1em;
-	width: 80%;
-	height: 60%;
+	width: 20em;
+	height: 20em;
 	border: solid 1px #ccc;
 	color: #333333;
 	line-height: 12.5em;
@@ -134,6 +134,10 @@ div {
 	background-position-y: 3.2em;
 	background-color: #e0dfdd;
 	box-shadow:0 1px 10px #888888;
+}
+#logoWrapper #loading_msg p {
+	text-align:center;
+	margin:9em 0;
 }
 #logoWrapper #login_form label {
 	display: block;
