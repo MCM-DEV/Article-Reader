@@ -115,9 +115,8 @@ div {
 }
 #logoWrapper #loading_msg {
 	display: none;
-
 	position: absolute;
-	top: 8em;
+	top: 8.25em;
 	margin: 0 auto;
 	text-align: center;
 	font-family: "Times New Roman", Times, serif;
