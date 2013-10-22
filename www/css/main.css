@@ -40,86 +40,44 @@ body {
 h1{
 	font-weight: normal;	
 }
-/*
-media queries allow us to scale by setting just one font-size in body
-Please note that these are pretty much arbitratry. I grabbed a list from 
-stackOverflow and fiddled from there.
-*/
-
-/*@media (max-width: 858px) {
+/*colorcode for dev, for final, color should be #333*/
+@media (device-width: 320px) {
     body {
         font-size: 15px;
+		color: red;/*iPodTouch4th*/
     }
 }
-
-@media (max-width: 780px) {
+@media (device-width: 600px) {
     body {
         font-size: 14px;
+		color: orange; /*nook*/
     }
-} */
-
-
-@media (-webkit-min-device-pixel-ratio: 1), (min-resolution: 96dpi), (min-resolution: 1), (-o-min-device-pixel-ratio: 4/4) {
- body {
-	font-size: 18px;
-	font-family: arial, sans-serif;
-	color:#333; /*green, nook, iPad2*/
 }
+@media (device-width: 640px) {
+    body {
+        font-size: 14px;
+		color: blue;
+    }
 }
-@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25), (-o-min-device-pixel-ratio: 5/4) {
- body {
-font-size: 12px;
- font-family: arial, sans-serif;
- color: #F0F; /*magenta*/
+@media (device-width: 720px) {
+    body {
+        font-size: 30px;
+		color:#990; /*Hong's xperia, Marc's Galaxy sIII*/
+    }
 }
-}
-@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 220dpi), (min-resolution: 1.5), (-o-min-device-pixel-ratio: 3/2) {
- body {
-font-size: 18px;
- font-family: arial, sans-serif;
- color: #C3C; /*purple, Kevin's*/ 
-}
-}
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2), (-o-min-device-pixel-ratio: 2/1) {
- body {
-font-size: 17px;
- font-family: arial, sans-serif;
- color: #963; /*brown iPad4, iPhone-iPodTouch4th*/
-}
-}
-@media (min-resolution: 192dpi) and (min-device-width: 640px){
- body {
-font-size: 24px;
- font-family: arial, sans-serif;
- color:#03F; /*blue */
-}
-}
-@media (min-resolution: 192dpi) and (min-device-width: 768px){
- body {
-font-size: 24px;
- font-family: arial, sans-serif;
- color: #0CF; /*light blue*/
-}
+@media (device-width: 768px) {
+    body {
+        font-size: 20px;
+		color: green;/*iPad4*/
+    }
 }
 
-
-@media (min-resolution: 300dpi){
- body {
-font-size: 14px;
- font-family: arial, sans-serif;
- color: #FC0; /*yellow, MarcGalaxy s III, */
+@media (device-width: 800px) {
+    body {
+        font-size: 16px;
+		color: purple;
+    }
 }
-}
-/*@media (min-resolution: 320dpi) and (min-width: 720px) {
- body {
-font-size: 24px;
- font-family: arial, sans-serif;
- color: #cc3333; /*cna red
-}
-}*/
-
-
-
 
 div {
 	margin: 0px;
@@ -165,7 +123,7 @@ div {
 	font-weight: normal;
 	font-size: 1em;
 	width: 80%;
-	height: 57%;
+	height: 60%;
 	border: solid 1px #ccc;
 	color: #333333;
 	line-height: 12.5em;

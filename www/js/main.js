@@ -96,7 +96,9 @@ else{
 			name:'CaptainPlanetsjPhoney',
 			platform:'jos20'
 		};
+
 	}
+	alert("desktop?");
 	dataStorage = new DesktopData();
 	initApp();
 }
@@ -551,12 +553,12 @@ function initApp(){
 						}
 						
 						thisData.Content = thisData.Content.replace(/(id|xmlns)\="[^"]+"\s+/g,'');
-						thisData.Content = thisData.Content.replace(/<root>/, '');
-						thisData.Content = thisData.Content.replace(/http:\/\/66\.9\.140\.53\:801\//g, AAP_GATEWAY_ROOT);
+						//thisData.Content = thisData.Content.replace(/<root>/, '');
+						//thisData.Content = thisData.Content.replace(/http:\/\/66\.9\.140\.53\:801\//g, AAP_GATEWAY_ROOT);
 						//thisData.Content = thisData.Content.replace(/src="\//g,'src="' + AAP_GATEWAY_ROOT);
 						//thisData.Content = thisData.Content.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*)<\/a>/g, '<button class="converted_link" data-link="$1">Visit Link</button>');
 						
-						thisData.Content = '<div class="content"><div class="module_'+listItemVars.moduleClass+'"><h4 class="module_name">'+ (thisData.SourceModule !== 'NeoReview' ?  thisData.SourceModule : 'Neo Review') +'</h4>' + thisData.Content + '</div></div>';
+						//thisData.Content = '<div class="content"><div class="module_'+listItemVars.moduleClass+'"><h4 class="module_name">'+ (thisData.SourceModule !== 'NeoReview' ?  thisData.SourceModule : 'Neo Review') +'</h4>' + thisData.Content + '</div></div>';
 						
 						thisData.isProcessed = true;
 					
@@ -566,14 +568,15 @@ function initApp(){
 				})(i);
 			}
 			
-			alert('data processing finished');
-			
-			dataStorage.data( {Count:data.length, data:data } );
-			
+			//alert('data processing finished');
+			//alert(data.length);
+			//dataStorage.data( {Count:data.length, data:data } );
+			//alert('after data : 567');
 			$('#article_list > ul').html( articleListLIs.join('') );
 			$('#slider').html(contentPages.join(''));
+			//alert('after slider : 570');
+			//alert('login should hide after this');
 			
-			alert('login should hide after this');
 			$('#login').hide();
 			$('#article_list').show();
 			
