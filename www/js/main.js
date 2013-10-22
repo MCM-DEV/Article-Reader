@@ -159,7 +159,8 @@ function onDeviceReady() {
 				if( _data.isReady && _creds.isReady && _clipDate.isReady ){
 			
 					thisObj.data = function(arg){
-						if(arg !== undefined){
+					    if (arg !== undefined) {
+					        console.log(arg);
 							console.log('data set');
 							_data.write(arg);
 						}
@@ -500,7 +501,8 @@ function initApp(){
 		function buildContent(data){
 			alert('buildContent begins');
 			$('head').append( buildModuleStyleDecs(MODULE_IMG_MAP) );
-			
+			console.log("Data object before data concat.")
+			console.log(dataStorage.data());
 			data = data.concat( dataStorage.data().data );
 			
 			var
@@ -509,6 +511,7 @@ function initApp(){
 				contentPages = []
 			;
 			
+            console.log("Data object")
 			console.log(dataStorage.data());
 			
 			data.sort(sortByClipDate);
@@ -521,7 +524,7 @@ function initApp(){
 			else {
 				dataStorage.lastClipDate( 0 );
 			}
-			
+			console.log("LastClipdate");
 			console.log( dataStorage.lastClipDate() );
 			
 			alert('data processing starts here');
