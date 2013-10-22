@@ -135,11 +135,11 @@ function onDeviceReady() {
 			}
 			*/
 			
-			fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e.code); });
+			fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert('getFile error:' + e.code); });
 
-			fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e.code); });
+			fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert('getFile error:' + e.code); });
 
-			fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e.code);});
+			fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert('getFile error:' + e.code);});
 			
 			
 			function createDataInterface(fileEntry){
