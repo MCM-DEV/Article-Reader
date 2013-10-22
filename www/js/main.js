@@ -489,7 +489,7 @@ function initApp(){
 		}
 		
 		function buildContent(data){
-			alert('buildContent begins');
+			//alert('buildContent begins');
 			$('head').append( buildModuleStyleDecs(MODULE_IMG_MAP) );
 			
 			data = data.concat( dataStorage.data().data );
@@ -512,7 +512,7 @@ function initApp(){
 			
 			console.log( dataStorage.lastClipDate() );
 			
-			alert('data processing starts here');
+			//alert('data processing starts here');
 			
 			while(i--){
 				(function(i){
@@ -561,14 +561,14 @@ function initApp(){
 				})(i);
 			}
 			
-			alert('data processing finished');
+			//alert('data processing finished');
 			
 			dataStorage.data( {Count:data.length, data:data } );
 			
 			$('#article_list > ul').html( articleListLIs.join('') );
 			$('#slider').html(contentPages.join(''));
 			
-			alert('login should hide after this');
+			//alert('login should hide after this');
 			
 			$('#login').hide();
 			$('#article_list').show();
