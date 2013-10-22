@@ -264,15 +264,20 @@ function onDeviceReady() {
 						value=content;
 						
 						fileEntry.createWriter(function(writer){
-							writer.onwriteend = function(){
-								locked = false;
-								$(thisInterface).trigger('unlocked');
+							
+							writer.onerror = function(error){
+								alert(error.code);
 							};
-							writer.onerror = function(){
-								alert();
+							
+							writer.onwriteend = function(){
+								
+								writer.onwriteend =function(){
+									locked = false;
+									$(thisInterface).trigger('unlocked');
+								};
+								writer.write(value);
 							};
 							writer.truncate(0);
-							writer.write(value);
 						} );
 					}
 					else {
