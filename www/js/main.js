@@ -502,7 +502,7 @@ function initApp(){
 		}
 		
 		function buildContent(data){
-			alert('buildContent begins');
+			//alert('buildContent begins');
 			$('head').append( buildModuleStyleDecs(MODULE_IMG_MAP) );
 			
 			data = data.concat( dataStorage.data().data );
@@ -528,7 +528,7 @@ function initApp(){
 			
 			console.log( dataStorage.lastClipDate() );
 			
-			alert('data processing starts here');
+			//alert('data processing starts here');
 			
 			while(i--){
 				(function(i){
