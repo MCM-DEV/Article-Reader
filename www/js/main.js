@@ -567,6 +567,7 @@ function initApp(){
 			}
 			
 			$_loadingMsg.show();
+			$('form').hide();
 			
 			var
 				count = 0,
