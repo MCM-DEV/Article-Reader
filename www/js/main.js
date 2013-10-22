@@ -235,7 +235,7 @@ function onDeviceReady() {
 					thisObj.deleteFiles = function(){ // file1, file2, file..., [callBackFunction]
 						var i = arguments.length,
 						callBack = function(){},
-						fileCount=0;
+						fileCount= (typeof arguments[i-1] === 'function') ? i-1 : i;
 						
 						function fileDeleted(){
 							fileCount--;
@@ -251,7 +251,6 @@ function onDeviceReady() {
 						while(i--){
 							var thisArg = arguments[i];
 							if(typeof thisArg === 'string'){
-								fileCount++;
 								fileSystem.root.getFile(thisArg,{createFile:false},deleteFile, function (e) { alert(e.code); } );
 							}
 							else if (typeof thisArg === 'function'){
