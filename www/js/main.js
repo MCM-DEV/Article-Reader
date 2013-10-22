@@ -135,18 +135,16 @@ function onDeviceReady() {
 			}
 			*/
 			
-			fileSystem.root.getFile('creds.txt',{create:false},fileExists, noFiles);
+			fileSystem.root.getFile('creds.txt',{create:false},fileExists, buildInterfaces);
 
 			
 			function fileExists(fileEntry){
 				filesExist = true;
 				fileOptions = null;
-				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e.code); });
-				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e.code); });
-				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e.code);});
+				buildInterfaces();
 			}
 			
-			function noFiles(){
+			function buildInterfaces(){
 				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e.code); });
 				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e.code); });
 				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e.code);});
@@ -240,26 +238,50 @@ function onDeviceReady() {
 					fileObj,
 					locked=true,
 					firstRead = true,
-					value
+					value,
+					writeQueue = []
 				;
+				
+				$(thisInterface).on('unlocked', nextWrite);
+				
+				function nextWrite(){
+					if(writeQueue.length > 0){
+						nextWrite.pop()(); //popped function fires
+					}
+				}
+				
+				function addWriteToQueue(content){
+					writeQueue.unshift( function(){ write(content); } );
+				}
 				
 				this.isReady=false;
 				
-				this.write = function(content){
-					if(typeof content !== 'string'){
-						if(typeof content === 'object'){
-							content = JSON.stringify(content);
+				this.write = write;
+				
+				function write(content){
+					if(!locked){
+						if(typeof content !== 'string'){
+							if(typeof content === 'object'){
+								content = JSON.stringify(content);
+							}
+							else {
+								content=content.toString();
+							}
 						}
-						else {
-							content=content.toString();
-						}
+						locked = true;
+						value=content;
+						
+						fileEntry.createWriter(function(writer){
+							writer.onwriteend = function(){
+								locked = false;
+								$(thisInterface).trigger('unlocked');
+							}
+							writer.write(value);
+						} );
 					}
-					locked = true;
-					value=content;
-					
-					fileEntry.createWriter(function(writer){
-						writer.write(value);
-					} );
+					else {
+						addWriteToQueue(content);
+					}
 				};
 				
 				this.read = function(){
@@ -295,17 +317,6 @@ function onDeviceReady() {
 					reader.readAsText(e);
 				
 				}, function(){ alert('file obj create failed'); });
-				
-				function waitForIt(handler){
-					if(!locked){
-						handler();
-					}
-					else {
-						var lockCheck = setInterval( function(){
-							if(!locked){ clearInterval(lockCheck); handler(); }
-						},200 );
-					}
-				}
 
 			}
 			
@@ -537,8 +548,7 @@ function initApp(){
 						
 						articleListItem = articleListTemplate.join('')
 					;
-						
-					alert('loop iteration['+i+']: backwards count is correct');
+					
 					
 					listItemVars.addedDate = [dateObj.getMonth()+1,dateObj.getDate(),dateObj.getFullYear()].join('-');
 					
@@ -570,7 +580,7 @@ function initApp(){
 			
 			//alert('data processing finished');
 			//alert(data.length);
-			//dataStorage.data( {Count:data.length, data:data } );
+			dataStorage.data( {Count:data.length, data:data } );
 			//alert('after data : 567');
 			$('#article_list > ul').html( articleListLIs.join('') );
 			$('#slider').html(contentPages.join(''));
