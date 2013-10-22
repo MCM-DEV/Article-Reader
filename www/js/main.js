@@ -114,7 +114,7 @@ function onDeviceReady() {
 				_data = null,
 				_creds = null,
 				_clipDate = null,
-				fileOptions = { create:true, exclusive:false },
+				fileOptions = { create:true, exclusive:true },
 				testReader = new FileReader(),
 				filesExist = false
 			;
@@ -135,20 +135,12 @@ function onDeviceReady() {
 			}
 			*/
 			
-			fileSystem.root.getFile('creds.txt',{create:false},fileExists, buildInterfaces);
+			fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e.code); });
 
+			fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e.code); });
+
+			fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e.code);});
 			
-			function fileExists(fileEntry){
-				filesExist = true;
-				fileOptions = null;
-				buildInterfaces();
-			}
-			
-			function buildInterfaces(){
-				fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function(e){ alert(e.code); });
-				fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function(e){ alert(e.code); });
-				fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert(e.code);});
-			}
 			
 			function createDataInterface(fileEntry){
 				_data=new FileInterface(fileEntry);
@@ -260,6 +252,7 @@ function onDeviceReady() {
 				
 				function write(content){
 					if(!locked){
+						locked = true;
 						if(typeof content !== 'string'){
 							if(typeof content === 'object'){
 								content = JSON.stringify(content);
@@ -268,7 +261,6 @@ function onDeviceReady() {
 								content=content.toString();
 							}
 						}
-						locked = true;
 						value=content;
 						
 						fileEntry.createWriter(function(writer){
@@ -276,6 +268,10 @@ function onDeviceReady() {
 								locked = false;
 								$(thisInterface).trigger('unlocked');
 							}
+							writer.onerror( function(){
+								alert();
+							} );
+							writer.truncate(0);
 							writer.write(value);
 						} );
 					}
@@ -502,7 +498,7 @@ function initApp(){
 		}
 		
 		function buildContent(data){
-			//alert('buildContent begins');
+			alert('buildContent begins');
 			$('head').append( buildModuleStyleDecs(MODULE_IMG_MAP) );
 			
 			data = data.concat( dataStorage.data().data );
@@ -528,7 +524,7 @@ function initApp(){
 			
 			console.log( dataStorage.lastClipDate() );
 			
-			//alert('data processing starts here');
+			alert('data processing starts here');
 			
 			while(i--){
 				(function(i){
