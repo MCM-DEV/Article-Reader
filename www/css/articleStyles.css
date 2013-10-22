@@ -21,7 +21,7 @@
 #content_viewer .content  p {
   position: relative;
   font-style: normal;  
-  line-height: 22px;  
+  line-height: 1.25em;  
   width: 100%;
   margin: 0 0 10px;
   color:#333;
