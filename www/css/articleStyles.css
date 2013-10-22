@@ -43,7 +43,7 @@
   color:#333;
 }
 
-#content_viewer .content .article ul.copyright-statement {
+#content_viewer .content ul.copyright-statement {
 	position:relative;
 	float:left;
 	margin: 5px 0 25px 0;
@@ -343,6 +343,8 @@
 #content_viewer .content .article .section ol.cit-list a {
   /* line-height: 10px; turned off due to NeoReviews issue */
 	font-family: Arial, Helvetica, sans-serif;  
+  	text-decoration: none;	
+  	cursor:text;
 }
 #content_viewer .content .article .section ol.cit-list div.ref-other {
   /*font-size: 10px;*/
@@ -395,29 +397,31 @@
 }
 
 /* Begin: AAP News fig-inline HUGE photos */
-.content.mod_AAP_News .article .fig.pos-anchor {
+.content.mod_AAP_News .article .fig.pos-anchor,
+#content_viewer .content.mod_AAP_News .article .section .fig.pos-anchor {
   width: 100%;
   position: relative;
   float: left;
 }
 
-.content.mod_AAP_News .article .fig.pos-anchor .fig-inline {
+.content.mod_AAP_News .article .fig.pos-anchor .fig-inline, 
+#content_viewer .content.mod_AAP_News .article .section .fig.pos-anchor .fig-inline {
   width: 50%;
 }
-.content.mod_AAP_News .article .fig.pos-anchor .fig-inline img{
+.content.mod_AAP_News .article .fig.pos-anchor .fig-inline img, 
+#content_viewer .content.mod_AAP_News .article .section .fig.pos-anchor .fig-inline img {
   float:left;
   width:40%;
 }
-.content.mod_AAP_News .article .fig.pos-anchor .fig-caption {
+.content.mod_AAP_News .article .fig.pos-anchor .fig-caption, 
+#content_viewer .content.mod_AAP_News .article .section .fig.pos-anchor .fig-caption {
 	position:relative;
 	float:left;
 	width:100%;
 }
-
-
-
-
 /* End: AAP News fig-inline HUGE photos */
+
+
 
 
 /* Neo Reviews Videos */
@@ -460,6 +464,8 @@
   width: 243px;
   top: 0;
   left: 10px;
+  text-decoration:none;
+  cursor:text;  
 }
 #content_viewer .content .article .section .fig.pos-float .fig.pos-anchor .fig-inline img{
   float:left;
@@ -484,6 +490,7 @@
   width: 243px;
   top: 0;
   left: 10px;
+  text-decoration: none;  
 }
 #content_viewer .content .article .section .table-caption {
   /*width: 255px;*/
@@ -596,9 +603,10 @@
   background-image: url(../../shared/img/misc/rightchevron.gif);
   background-position: 0 center;
   background-repeat: no-repeat;
-  text-decoration: underline;
+  text-decoration: none;
   white-space: nowrap;
   display: inline-block;
+  cursor:text;  
 }
 
 
@@ -606,6 +614,8 @@
 #content_viewer .content .article .section span.inline-cit.ref-journal .cit-extra a {
   display: inline;
   white-space: normal;
+  text-decoration: none;  
+  cursor:text;  
 }
 #content_viewer .content .article .section span.inline-cit.ref-journal .cit-extra span span {
   font-size: 1em;
@@ -626,6 +636,7 @@
 #content_viewer .content .article .section div.ref-cit div.cit-extra a.cit-ref-sprinkles-open-url-has-image img,
 #content_viewer .content .article .section span.inline-cit.ref-journal .cit-extra a.cit-ref-sprinkles-open-url-has-image img {
   vertical-align: text-bottom;
+
 }
 
 
@@ -716,6 +727,8 @@
 }
 #content_viewer .content .article .section .cit a {
   color: #39c;
+  text-decoration: none;  
+  cursor:text;  
 }
 #content_viewer .content .article .section .cit .topic-header {
   line-height: 16px;
@@ -737,11 +750,6 @@
 }
 
 
-#content_viewer .content .article .section div.graphic {
-  background-color: #e0f3fb;
-  /*width: 100%;*/
-  margin: 10px 0;
-}
 #content_viewer .content .article .section ol li p {
   position: relative;
   width: 100%;
@@ -750,6 +758,11 @@
   display: inline;
   float: none;
 /*  color: #000;*/
+}
+#content_viewer .content .article .section div.graphic {
+  background-color: #e0f3fb;
+  /*width: 100%;*/
+  margin: 10px 0;
 }
 #content_viewer .content .article .section div.graphic-inline {
   /*width:100%;*/
@@ -761,6 +774,22 @@
   padding-bottom: 20px;
   border-bottom: 1px solid #999999;
 }
+
+/* Begin: AAP News graphic-inline */
+#content_viewer .content.mod_AAP_News .article .section div.graphic {
+  background-color: #e0f3fb;
+  width: 100%;
+  margin: 10px 0;
+}
+#content_viewer .content.mod_AAP_News .article .section div.graphic-inline {
+  width:60%;
+}
+#content_viewer .content.mod_AAP_News .article .section div.graphic-inline img {
+  width:100%;
+}
+/* End: AAP News graphic-inline */
+
+
 
 /* End: SECTION Styling */
 
@@ -1002,13 +1031,18 @@ div.imagePreview p.link {
 .redbookMain .article h1 + a {
   padding: 5px 0;
   margin-bottom: 10px;
-  text-decoration: underline;
-  cursor: pointer;
+  text-decoration: none;
+  cursor: text;
   display: block;
 }
 .redbookMain .article div.extract-view {
   border-top: 1px dotted #666;
   padding-top: 5px;
+}
+
+
+a[href*="getHWTableHtml"] {
+	display:none;
 }
 
 

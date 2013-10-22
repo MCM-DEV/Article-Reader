@@ -115,23 +115,22 @@ div {
 }
 #logoWrapper #loading_msg {
 	display: none;
-
 	position: absolute;
-	top: 0;
+	top: 8.25em;
 	margin: 0 auto;
 	text-align: center;
 	font-family: "Times New Roman", Times, serif;
 	font-weight: normal;
 	font-size: 1em;
 	width: 20em;
-	height: 20em;
+	height: 15em;
 	border: solid 1px #ccc;
-	color: purple;/* #333333; */
-	line-height: 12.5em;
+	color: #333; 
+	line-height: 1em;
 	background-image: url('../img/iconLoading.gif');
 	background-repeat: no-repeat;
 	background-position: center;
-	background-position-y: 3.2em;
+	background-position-y: 5em;
 	background-color: #e0dfdd;
 	box-shadow:0 1px 10px #888888;
 }

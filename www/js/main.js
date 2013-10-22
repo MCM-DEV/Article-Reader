@@ -24,8 +24,8 @@ console.log('app starting');
 
 var
 	//configurables 
-	//AAP_GATEWAY_ROOT = 'http://66.9.140.53:801/',
-	AAP_GATEWAY_ROOT = 'http://demo.aapportalsite.com/',
+	AAP_GATEWAY_ROOT = 'http://66.9.140.53:801/',
+	//AAP_GATEWAY_ROOT = 'http://aapgateway.magnani.com/',
 	
 	USER_ALERTS = {
 		missingLoginFields:'Please fill in user name and password',
@@ -142,11 +142,11 @@ function onDeviceReady() {
 			fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert('getFile error:' + e.code);});
 			*/
 
-			fileSystem.root.getFile('data.txt', { create: false }, fileExists, noFiles);
+			fileSystem.root.getFile('data.txt', { create: false, exclusive: false }, fileExists, noFiles);
 
 
 			function fileExists(fileEntry) {
-			    alert("exists");
+			    //alert("exists");
 			    filesExist = true;
 			    fileOptions = null;
 			    fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function (e) { alert(e.code); });
@@ -155,8 +155,8 @@ function onDeviceReady() {
 			}
 
 			function noFiles() {
-			    alert("no files");
-			    alert(FileError.NOT_FOUND_ERR);
+			    //alert("no files");
+			    //alert(FileError.NOT_FOUND_ERR);
 			    //FileError.NOT_FOUND_ERR
 			    fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function (e) { alert(e.code); });
 			    fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function (e) { alert(e.code); });
@@ -252,7 +252,7 @@ function onDeviceReady() {
 						while(i--){
 							var thisArg = arguments[i];
 							if(typeof thisArg === 'string'){
-								fileSystem.root.getFile(thisArg,{createFile:false},deleteFile, function (e) { alert(e.code); } );
+							    fileSystem.root.getFile(thisArg,{ create:false, exclusive:false },deleteFile, function (e) { alert(e.code); } );
 							}
 							else if (typeof thisArg === 'function'){
 								callBack = thisArg;
@@ -631,7 +631,7 @@ function initApp(){
 		}
 		
 		function buildContent(data){
-			alert('buildContent begins');
+			//alert('buildContent begins');
 			$('head').append( buildModuleStyleDecs(MODULE_IMG_MAP) );
 			
 			data = data.concat( dataStorage.data().data );
@@ -657,7 +657,7 @@ function initApp(){
 			
 			console.log( dataStorage.lastClipDate() );
 			
-			alert('data processing starts here');
+			//alert('data processing starts here');
 			
 			while(i--){
 				(function(i){
@@ -985,7 +985,12 @@ function initApp(){
 					
 			}
 
-
+			$("#logMeOutBtn").click(function () {
+			    dataStorage.deleteFiles("creds.txt", "data.txt", function () {
+			        $('#login').show();
+			        $('#article_list').hide();
+			    })
+			});
 			
 		} //end behaviorInit
 		
