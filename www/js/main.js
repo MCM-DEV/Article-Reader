@@ -96,7 +96,9 @@ else{
 			name:'CaptainPlanetsjPhoney',
 			platform:'jos20'
 		};
+
 	}
+	alert("desktop?");
 	dataStorage = new DesktopData();
 	initApp();
 }
@@ -562,7 +564,7 @@ function initApp(){
 			}
 			
 			alert('data processing finished');
-			
+			alert(data.length);
 			dataStorage.data( {Count:data.length, data:data } );
 			alert('after data : 567');
 			$('#article_list > ul').html( articleListLIs.join('') );
