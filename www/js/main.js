@@ -563,13 +563,13 @@ function initApp(){
 				})(i);
 			}
 			
-			alert('data processing finished');
-			alert(data.length);
-			dataStorage.data( {Count:data.length, data:data } );
-			alert('after data : 567');
+			//alert('data processing finished');
+			//alert(data.length);
+			//dataStorage.data( {Count:data.length, data:data } );
+			//alert('after data : 567');
 			$('#article_list > ul').html( articleListLIs.join('') );
 			$('#slider').html(contentPages.join(''));
-			alert('after slider : 570');
+			//alert('after slider : 570');
 			//alert('login should hide after this');
 			
 			$('#login').hide();
