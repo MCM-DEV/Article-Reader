@@ -167,7 +167,8 @@ function onDeviceReady() {
 				if( _data.isReady && _creds.isReady && _clipDate.isReady ){
 			
 					thisObj.data = function(arg){
-						if(arg !== undefined){
+					    if (arg !== undefined) {
+					        console.log(arg);
 							console.log('data set');
 							_data.write(arg);
 						}
