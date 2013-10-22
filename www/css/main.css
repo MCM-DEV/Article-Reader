@@ -115,6 +115,28 @@ div {
 }
 #logoWrapper #loading_msg {
 	display: none;
+
+	position: absolute;
+	top: 50%;
+	margin: 0 auto;
+	text-align: center;
+	font-family: "Times New Roman", Times, serif;
+	font-weight: normal;
+	font-size: 1em;
+	width: 80%;
+	height: 12em;
+	border: solid 1px #ccc;
+	color: #333333;
+	line-height: 9em;
+	background-image: url('../img/iconLoading.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-position-y: 6em;
+	background-color: #e0dfdd;
+	box-shadow: 0 1px 10px #888888;
+	vertical-align: middle;
+
+/*	
 	position: relative;
 	top: -35px;
 	margin: 0 auto;
@@ -133,6 +155,7 @@ div {
 	background-position-y: 3.2em;
 	background-color: #e0dfdd;
 	box-shadow:0 1px 10px #888888;
+*/	
 }
 #logoWrapper #login_form label {
 	display: block;
