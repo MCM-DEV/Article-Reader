@@ -343,6 +343,7 @@
 #content_viewer .content .article .section ol.cit-list a {
   /* line-height: 10px; turned off due to NeoReviews issue */
 	font-family: Arial, Helvetica, sans-serif;  
+  	text-decoration: none;	
 }
 #content_viewer .content .article .section ol.cit-list div.ref-other {
   /*font-size: 10px;*/
@@ -486,6 +487,7 @@
   width: 243px;
   top: 0;
   left: 10px;
+  text-decoration: none;  
 }
 #content_viewer .content .article .section .table-caption {
   /*width: 255px;*/
@@ -598,7 +600,7 @@
   background-image: url(../../shared/img/misc/rightchevron.gif);
   background-position: 0 center;
   background-repeat: no-repeat;
-  text-decoration: underline;
+  text-decoration: none;
   white-space: nowrap;
   display: inline-block;
 }
@@ -608,6 +610,7 @@
 #content_viewer .content .article .section span.inline-cit.ref-journal .cit-extra a {
   display: inline;
   white-space: normal;
+  text-decoration: none;  
 }
 #content_viewer .content .article .section span.inline-cit.ref-journal .cit-extra span span {
   font-size: 1em;
@@ -628,6 +631,7 @@
 #content_viewer .content .article .section div.ref-cit div.cit-extra a.cit-ref-sprinkles-open-url-has-image img,
 #content_viewer .content .article .section span.inline-cit.ref-journal .cit-extra a.cit-ref-sprinkles-open-url-has-image img {
   vertical-align: text-bottom;
+
 }
 
 
@@ -718,6 +722,7 @@
 }
 #content_viewer .content .article .section .cit a {
   color: #39c;
+  text-decoration: none;  
 }
 #content_viewer .content .article .section .cit .topic-header {
   line-height: 16px;
@@ -1020,7 +1025,7 @@ div.imagePreview p.link {
 .redbookMain .article h1 + a {
   padding: 5px 0;
   margin-bottom: 10px;
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
   display: block;
 }
