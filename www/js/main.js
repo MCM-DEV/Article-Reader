@@ -233,6 +233,7 @@ function onDeviceReady() {
 					
 					
 					thisObj.deleteFiles = function(){ // file1, file2, file..., [callBackFunction]
+						alert('deleteFiles');
 						var i = arguments.length,
 						callBack = function(){},
 						fileCount= (typeof arguments[i-1] === 'function') ? i-1 : i;
@@ -450,7 +451,8 @@ function onDeviceReady() {
 		} );
 		
 		
-		$(dataStorage).on('dataStorageReady', initApp );
+		$(dataStorage).on('dataStorageReady', initApp);
+		
 		
 	}
 
@@ -1056,7 +1058,7 @@ function DesktopData(){
 		while(i--){
 			var thisArg = arguments[i];
 			if(typeof thisArg === 'string'){
-				localStorage[ thisArg.split('.')[0] ];
+				delete localStorage[ thisArg.split('.')[0] ];
 			}
 			else if (typeof thisArg === 'function'){
 				callBack = thisArg;
