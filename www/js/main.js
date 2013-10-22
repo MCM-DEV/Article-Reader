@@ -222,6 +222,7 @@ function onDeviceReady() {
 			} );
 			
 			//the _vars are meant to become instances of this constructor
+            /*
 			function FileInterface(fileEntry){
 			
 				var
@@ -320,7 +321,83 @@ function onDeviceReady() {
 				}, function(){ alert('file obj create failed'); });
 
 			}
-			
+			*/
+			function FileInterface(fileEntry) {
+
+			    var
+					reader = new FileReader(),
+					thisInterface = this,
+					fileObj,
+					locked = true,
+					firstRead = true,
+					value
+			    ;
+
+			    this.isReady = false;
+
+			    this.write = function (content) {
+			        if (typeof content !== 'string') {
+			            if (typeof content === 'object') {
+			                content = JSON.stringify(content);
+			            }
+			            else {
+			                content = content.toString();
+			            }
+			        }
+			        locked = true;
+			        value = content;
+
+			        fileEntry.createWriter(function (writer) {
+			            writer.write(value);
+			        });
+			    };
+
+			    this.read = function () {
+			        return value;
+			    };
+
+			    fileEntry.file(function (e) {
+
+			        reader.onload = function (evt) {
+			            value = evt.target.result;
+			            thisInterface.write(value);
+
+			            locked = false;
+
+			            if (firstRead) {
+			                firstRead = false;
+			                locked = true;
+			                fileEntry.createWriter(function (initWriter) {
+			                    initWriter.onwriteend = function () {
+			                        thisInterface.isReady = true;
+			                        fileObj = e;
+			                        $(thisObj).trigger('interfaceready');
+			                    }
+			                    initWriter.write(value);
+			                });
+			            }
+			        };
+
+			        reader.onerror = function () {
+			            alert('read failed');
+			        };
+
+			        reader.readAsText(e);
+
+			    }, function () { alert('file obj create failed'); });
+
+			    function waitForIt(handler) {
+			        if (!locked) {
+			            handler();
+			        }
+			        else {
+			            var lockCheck = setInterval(function () {
+			                if (!locked) { clearInterval(lockCheck); handler(); }
+			            }, 200);
+			        }
+			    }
+
+			}
 		} );
 		
 		
