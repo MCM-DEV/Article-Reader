@@ -62,7 +62,7 @@ h1{
 @media (device-width: 720px) {
     body {
         font-size: 30px;
-		color:#990; /*Hong's xperia, Marc's Galaxy sIII*/
+		color:green; /* #990 Hong's xperia, Marc's Galaxy sIII*/
     }
 }
 @media (device-width: 768px) {
