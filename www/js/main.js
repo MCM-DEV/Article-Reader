@@ -983,7 +983,12 @@ function initApp(){
 					
 			}
 
-
+			$("#logMeOutBtn").click(function () {
+			    dataStorage.deleteFiles("creds.txt", "data.txt", function () {
+			        $('#login').show();
+			        $('#article_list').hide();
+			    })
+			});
 			
 		} //end behaviorInit
 		
