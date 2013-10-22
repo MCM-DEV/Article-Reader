@@ -344,6 +344,7 @@
   /* line-height: 10px; turned off due to NeoReviews issue */
 	font-family: Arial, Helvetica, sans-serif;  
   	text-decoration: none;	
+  	cursor:text;
 }
 #content_viewer .content .article .section ol.cit-list div.ref-other {
   /*font-size: 10px;*/
@@ -463,6 +464,8 @@
   width: 243px;
   top: 0;
   left: 10px;
+  text-decoration:none;
+  cursor:text;  
 }
 #content_viewer .content .article .section .fig.pos-float .fig.pos-anchor .fig-inline img{
   float:left;
@@ -603,6 +606,7 @@
   text-decoration: none;
   white-space: nowrap;
   display: inline-block;
+  cursor:text;  
 }
 
 
@@ -611,6 +615,7 @@
   display: inline;
   white-space: normal;
   text-decoration: none;  
+  cursor:text;  
 }
 #content_viewer .content .article .section span.inline-cit.ref-journal .cit-extra span span {
   font-size: 1em;
@@ -723,6 +728,7 @@
 #content_viewer .content .article .section .cit a {
   color: #39c;
   text-decoration: none;  
+  cursor:text;  
 }
 #content_viewer .content .article .section .cit .topic-header {
   line-height: 16px;
@@ -1026,12 +1032,17 @@ div.imagePreview p.link {
   padding: 5px 0;
   margin-bottom: 10px;
   text-decoration: none;
-  cursor: pointer;
+  cursor: text;
   display: block;
 }
 .redbookMain .article div.extract-view {
   border-top: 1px dotted #666;
   padding-top: 5px;
+}
+
+
+a[href*="getHWTableHtml"] {
+	display:none;
 }
 
 
