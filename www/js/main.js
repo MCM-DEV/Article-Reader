@@ -142,7 +142,7 @@ function onDeviceReady() {
 			fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert('getFile error:' + e.code);});
 			*/
 
-			fileSystem.root.getFile('data.txt', { create: false }, fileExists, noFiles);
+			fileSystem.root.getFile('data.txt', { create: false, exclusive: false }, fileExists, noFiles);
 
 
 			function fileExists(fileEntry) {
@@ -251,7 +251,7 @@ function onDeviceReady() {
 						while(i--){
 							var thisArg = arguments[i];
 							if(typeof thisArg === 'string'){
-								fileSystem.root.getFile(thisArg,{createFile:false},deleteFile, function (e) { alert(e.code); } );
+							    fileSystem.root.getFile(thisArg,{ create:false, exclusive:false },deleteFile, function (e) { alert(e.code); } );
 							}
 							else if (typeof thisArg === 'function'){
 								callBack = thisArg;
