@@ -500,7 +500,7 @@ function initApp(){
 				'<li class="{{moduleClass}}" data-page="{{pageNumber}}">',
 					'<h4>{{headline}}</h4>',
 					'<p class="listDate">',
-						'<b>Published: </b><span>{{publishDate}}</span>',
+						//'<b>Published: </b><span>{{publishDate}}</span>',
 						'<b class="added_label">Added: </b><span>{{addedDate}}</span>',
 					'</p>',
 					'<span class="go_to_article_icon">&gt;</span>',
