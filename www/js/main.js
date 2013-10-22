@@ -249,9 +249,9 @@ function onDeviceReady() {
 						}
 						
 						while(i--){
-							fileCount++;
 							var thisArg = arguments[i];
 							if(typeof thisArg === 'string'){
+								fileCount++;
 								fileSystem.root.getFile(thisArg,{createFile:false},deleteFile, function (e) { alert(e.code); } );
 							}
 							else if (typeof thisArg === 'function'){
