@@ -418,7 +418,7 @@
 
 
 /* Neo Reviews Videos */
-.content.mod_NeoReviews .article .section .fig.pos-float {
+#content_viewer .content.mod_NeoReviews .article .section .fig.pos-float {
   border: solid 1px #3399CC;
   padding: 10px;
   overflow: visible;
@@ -427,7 +427,7 @@
   margin-bottom: 20px;
   height:auto;
 }
-.content.mod_NeoReviews .article .section .fig.pos-float .fig-inline {
+#content_viewer .content.mod_NeoReviews .article .section .fig.pos-float .fig-inline {
 	width: auto;
 	height: auto;
 	overflow: hidden;
@@ -435,18 +435,18 @@
 	margin-top: 10px;
 	float: left;	
 }
-.content.mod_NeoReviews .article .section .fig.pos-float .fig-inline div.fig-expansion.video-content{
+#content_viewer .content.mod_NeoReviews .article .section .fig.pos-float .fig-inline div.fig-expansion.video-content{
 	overflow: hidden;
 	position: relative;
 	margin-top: 10px;
 	float: left;	
 }
-.content.mod_NeoReviews .article .section .fig.pos-float .fig-inline div.fig-expansion.video-content>div{
+#content_viewer .content.mod_NeoReviews .article .section .fig.pos-float .fig-inline div.fig-expansion.video-content>div{
 	text-align:center;
 }
 /* End: NeoReviews Video */
 /* Begin: Grand Rounds Specific Styling */
-.content.mod_GrandRounds .response {
+#content_viewer .content.mod_GrandRounds .response {
 	margin:0;
 }
 /* End: Grand Rounds Specific Styling */
