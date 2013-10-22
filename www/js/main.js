@@ -1049,6 +1049,23 @@ function DesktopData(){
 		}
 	};
 	
+	this.deleteFiles = function(){ // file1, file2, file..., [callBackFunction]
+		var i = arguments.length,
+		callBack = function(){};
+		
+		while(i--){
+			var thisArg = arguments[i];
+			if(typeof thisArg === 'string'){
+				localStorage[ thisArg.split('.')[0] ];
+			}
+			else if (typeof thisArg === 'function'){
+				callBack = thisArg;
+			}
+		}
+		
+		callBack();
+	};
+	
 	this.download = function(url, target){
 		$.getJSON( url, function(data){
 			localStorage[target] = data;
