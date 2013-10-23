@@ -7,6 +7,7 @@
 	color:#333;
 	text-decoration:none;
 	cursor:text;
+	pointer-events: none;
 }
 
 #content_viewer .barBlue {
@@ -97,6 +98,7 @@
   text-decoration: none;
   color:#999;
   cursor:text;
+  pointer-events: none;
 }
 #content_viewer .content .article ol.contributor-list li a:hover,
 #content_viewer .content .article ol.affiliation-list li a:hover, 
@@ -209,6 +211,7 @@
 	text-decoration:none;
 	color:#333;
 	cursor:text;
+	pointer-events: none;
 }
 
 #content_viewer .content .article .section p button {
@@ -255,6 +258,7 @@
   text-decoration:none;
   cursor:text;
   color:#333;
+  pointer-events: none;
 }
 #content_viewer .content .article .section .xref-table {
   line-height: 10px;
@@ -351,6 +355,7 @@
 	font-family: Arial, Helvetica, sans-serif;  
   	text-decoration: none;	
   	cursor:text;
+	pointer-events: none;
 }
 #content_viewer .content .article .section ol.cit-list div.ref-other {
   /*font-size: 10px;*/
@@ -473,6 +478,7 @@
   text-decoration:none;
   cursor:text;  
   color:#333;
+  pointer-events: none;
 }
 #content_viewer .content .article .section .fig.pos-float .fig.pos-anchor .fig-inline img{
   float:left;
@@ -499,6 +505,7 @@
   left: 10px;
   text-decoration: none;  
   color:#333;
+  pointer-events: none;
 }
 #content_viewer .content .article .section .table-caption {
   /*width: 255px;*/
@@ -589,6 +596,7 @@
 #content_viewer .content .article .section div.ref-list .rev-xref-ref,
 #content_viewer .content .article .section div.ref-list .rev-xref-ref:link {
   text-decoration: none;
+  pointer-events: none;
 }
 #content_viewer .content .article .section ol.cit-list li div.ref-confproc div.unstructured {
   font-family: Arial, Helvetica, sans-serif;
@@ -615,7 +623,8 @@
   white-space: nowrap;
   display: inline-block;
   cursor:text;  
-  color:#333;  
+  color:#333; 
+  pointer-events: none; 
 }
 
 
@@ -624,7 +633,8 @@
   display: inline;
   white-space: normal;
   text-decoration: none;  
-  cursor:text;  
+  cursor:text; 
+  pointer-events: none; 
 }
 #content_viewer .content .article .section span.inline-cit.ref-journal .cit-extra span span {
   font-size: 1em;
@@ -716,7 +726,8 @@
   margin: 5px 0 10px 0;
 }
 #content_viewer .content .article .section .cit .cit-title a:hover {
-  color: #39c;
+  /*color: #39c;*/
+  color: #333;
   text-decoration: none;
 }
 #content_viewer .content .article .section .cit h3 {
@@ -735,9 +746,11 @@
   margin-bottom: .1em;
 }
 #content_viewer .content .article .section .cit a {
-  color: #39c;
+  /*color: #39c;*/
+  color: #333;
   text-decoration: none;  
   cursor:text;  
+  pointer-events: none;
 }
 #content_viewer .content .article .section .cit .topic-header {
   line-height: 16px;
@@ -825,7 +838,7 @@
 }
 
 #content_viewer .content .article .response p a.xref-bibr {
-
+pointer-events: none;
 }
 
 /* MISC Stylings */
@@ -1043,6 +1056,7 @@ div.imagePreview p.link {
   text-decoration: none;
   cursor: text;
   display: block;
+  pointer-events: none;
 }
 .redbookMain .article div.extract-view {
   border-top: 1px dotted #666;

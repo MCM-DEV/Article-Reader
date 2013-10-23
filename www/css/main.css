@@ -44,38 +44,38 @@ h1{
 @media (device-width: 320px) {
     body {
         font-size: 15px;
-		color: red;/*iPodTouch4th*/
+		color: #333;/*red iPodTouch4th*/
     }
 }
 @media (device-width: 600px) {
     body {
         font-size: 14px;
-		color: orange; /*nook*/
+		color: #333; /*orange nook, renovo*/
     }
 }
 @media (device-width: 640px) {
     body {
         font-size: 14px;
-		color: blue;
+		color: #333;
     }
 }
 @media (device-width: 720px) {
     body {
         font-size: 30px;
-		color:green; /* #990 Hong's xperia, Marc's Galaxy sIII*/
+		color:#333; /* green #990 Hong's xperia, Marc's Galaxy sIII*/
     }
 }
 @media (device-width: 768px) {
     body {
         font-size: 20px;
-		color: green;/*iPad4*/
+		color: #333;/* green iPad4*/
     }
 }
 
 @media (device-width: 800px) {
     body {
         font-size: 16px;
-		color: purple;
+		color: #333;
     }
 }
 
