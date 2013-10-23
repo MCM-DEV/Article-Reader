@@ -98,7 +98,7 @@
             };
 
         }
-        alert("desktop?");
+       // alert("desktop?");
         dataStorage = new DesktopData();
         initApp();
     }
@@ -279,106 +279,7 @@
                 });
 
                 //the _vars are meant to become instances of this constructor
-                /*
-                function FileInterface(fileEntry){
-                
-                    var
-                        reader=new FileReader(),
-                        thisInterface = this,
-                        fileObj,
-                        locked=true,
-                        firstRead = true,
-                        value,
-                        writeQueue = []
-                    ;
-                    
-                    $(thisInterface).on('unlocked', nextWrite);
-                    
-                    function nextWrite(){
-                        if(writeQueue.length > 0){
-                            nextWrite.pop()(); //popped function fires
-                        }
-                    }
-                    
-                    function addWriteToQueue(content){
-                        writeQueue.unshift( function(){ write(content); } );
-                    }
-                    
-                    this.isReady=false;
-                    
-                    this.write = write;
-                    
-                    function write(content){
-                        if(!locked){
-                            locked = true;
-                            if(typeof content !== 'string'){
-                                if(typeof content === 'object'){
-                                    content = JSON.stringify(content);
-                                }
-                                else {
-                                    content=content.toString();
-                                }
-                            }
-                            value=content;
-                            
-                            fileEntry.createWriter(function(writer){
-                                
-                                writer.onerror = function(error){
-                                    alert(error.code);
-                                };
-                                
-                                writer.onwriteend = function(){
-                                    
-                                    writer.onwriteend =function(){
-                                        locked = false;
-                                        $(thisInterface).trigger('unlocked');
-                                    };
-                                    writer.write(value);
-                                };
-                                writer.truncate(0);
-                            } );
-                        }
-                        else {
-                            addWriteToQueue(content);
-                        }
-                    };
-                    
-                    this.read = function(){
-                        return value;
-                    };
-                    
-                    fileEntry.file( function(e){
-                        
-                        reader.onload = function(evt){
-                            value= evt.target.result;
-                            thisInterface.write(value);
-                            
-                            locked = false;
-                            
-                            if(firstRead){
-                                firstRead = false;
-                                locked = true;
-                                fileEntry.createWriter(function(initWriter){
-                                    initWriter.onwriteend =function(){
-                                        thisInterface.isReady = true;
-                                        fileObj = e;
-                                        $(thisObj).trigger('interfaceready');
-                                    }
-                                    initWriter.write(value);
-                                });
-                            }
-                        };
-                        
-                        reader.onerror = function(){
-                            alert('read failed');
-                        };
-                        
-                        reader.readAsText(e);
-                    
-                    }, function(){ alert('file obj create failed'); });
-    
-                }
-                */
+               
                 function FileInterface(fileEntry) {
 
                     var
@@ -642,7 +543,7 @@
         }
 
         function buildContent(data) {
-            alert('buildContent begins');
+            //alert('buildContent begins');
             $('head').append(buildModuleStyleDecs(MODULE_IMG_MAP));
 
             data = data.concat(dataStorage.data().data);
@@ -668,7 +569,7 @@
 
             console.log(dataStorage.lastClipDate());
 
-            alert('data processing starts here');
+            //alert('data processing starts here');
 
             while (i--) {
                 (function (i) {
@@ -767,13 +668,26 @@
 					index = parseInt($(this).parent().data('page')) - 1,
 					data = dataStorage.data()
                 ;
-
+                currentPage = 0;
+                console.log(currentPage);
                 $('#article_list li').eq(index).fadeOut(function () {
                     $(this).remove();
                     $('#article_list li').each(function (i) { $(this).data('page', i + 1); })
                 });
+                console.log(data);
+                console.log(data.data);
+                console.log(data.data.length);
+
                 $('.page').eq(index).remove();
-                data.data = data.data.splice(index, 1);
+                var test = data.data.splice(index, 1);
+                data.Count--;
+                //data.data = data.data.splice(index, 1);
+
+                
+
+                dataStorage.data({ Count: data.Count, data: data.data });
+
+                //may need to update further
             });
 
             articleSelectOn();
@@ -829,7 +743,7 @@
 
             function gotoPage(e) {
                 var sliderLimit = ($_slider.find('.page').size() - 1);
-
+                console.log(sliderLimit);
                 if (typeof e === 'object') { //slide if object, set to page w no animation if number
 
                     var
