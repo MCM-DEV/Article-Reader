@@ -3,6 +3,12 @@
   margin: 0;
 }
 
+#content_viewer a{
+	color:#333;
+	text-decoration:none;
+	cursor:text;
+}
+
 #content_viewer .barBlue {
   border-top: 6px solid #048bc9;
 }
@@ -466,6 +472,7 @@
   left: 10px;
   text-decoration:none;
   cursor:text;  
+  color:#333;
 }
 #content_viewer .content .article .section .fig.pos-float .fig.pos-anchor .fig-inline img{
   float:left;
@@ -491,6 +498,7 @@
   top: 0;
   left: 10px;
   text-decoration: none;  
+  color:#333;
 }
 #content_viewer .content .article .section .table-caption {
   /*width: 255px;*/
@@ -607,6 +615,7 @@
   white-space: nowrap;
   display: inline-block;
   cursor:text;  
+  color:#333;  
 }
 
 
