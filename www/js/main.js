@@ -26,7 +26,8 @@
         //configurables 
         //AAP_GATEWAY_ROOT = 'http://66.9.140.53:801/',
         AAP_GATEWAY_ROOT = 'http://aapgateway.magnani.com/',
-
+        REFRESH_TIME = 10000,
+        refreshHandle,
         USER_ALERTS = {
             missingLoginFields: 'Please fill in user name and password',
             deviceNotSupported: 'AAP Gateway Reader is not supported for this device.'
@@ -142,26 +143,30 @@
     
                 fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function(e){ alert('getFile error:' + e.code);});
                 */
-
-                fileSystem.root.getFile('creds.txt', { create: false}, fileExists, noFiles);
+                
+                thisObj.resetFiles = function () {
+                    fileSystem.root.getFile('creds.txt', { create: false }, fileExists, noFiles);
+                }
+                fileSystem.root.getFile('creds.txt', { create: false }, fileExists, noFiles);
+                //fileSystem.root.getFile('creds.txt', { create: false}, fileExists, noFiles);
 
 
                 function fileExists(fileEntry) {
                     //alert("exists");
                     filesExist = true;
                     fileOptions = null;
-                    fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function (e) { alert(e.code); });
-                    fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function (e) { alert(e.code); });
-                    fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function (e) { alert(e.code); });
+                    fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function (e) { console.log(e.code); });
+                    fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function (e) { console.log(e.code); });
+                    fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function (e) { console.log(e.code); });
                 }
 
                 function noFiles() {
                     //alert("no files");
                     //alert(FileError.NOT_FOUND_ERR);
                     //FileError.NOT_FOUND_ERR
-                    fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function (e) { alert(e.code); });
-                    fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function (e) { alert(e.code); });
-                    fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function (e) { alert(e.code); });
+                    fileSystem.root.getFile('data.txt', fileOptions, createDataInterface, function (e) { console.log(e.code); });
+                    fileSystem.root.getFile('creds.txt', fileOptions, createCredsInterface, function (e) { console.log(e.code); });
+                    fileSystem.root.getFile('clipDate.txt', fileOptions, createClipDateInterface, function (e) { console.log(e.code); });
                 }
 
 
@@ -247,7 +252,7 @@
 
                             function deleteFile(fileEntry) {
                                 fileEntry.remove(fileDeleted, function (e) {
-                                    Console.log("Delete Error: {0}", e.code);
+                                    console.log("Delete Error: {0}", e.code);
                                 });
                             }
 
@@ -258,7 +263,7 @@
                                     fileSystem.root.getFile(thisArg, { create: false, exclusive: false }, deleteFile, function (e) {
                                         //alert(e.code);
                                         //ignore errors
-                                        Console.log("get file Err: {0}",e.code);
+                                        console.log("get file Err: {0}",e.code);
                                     });
                                 }
                                 else if (typeof thisArg === 'function') {
@@ -340,12 +345,12 @@
                         };
 
                         reader.onerror = function () {
-                            alert('read failed');
+                            console.log('read failed');
                         };
 
                         reader.readAsText(e);
 
-                    }, function () { alert('file obj create failed'); });
+                    }, function () { console.log('file obj create failed'); });
 
                     function waitForIt(handler) {
                         if (!locked) {
@@ -437,9 +442,11 @@
 				$_slider = $('#slider'),
 				$_showArticleListBtn = $('#content_navigation > .show_article_list_btn')
         ;
+        console.log(creds);
         if (!creds) {
             $_loginForm.submit(handleLogin);
             $_login.show();
+            
         }
         else {
             //compareData(creds, function(){ buildContent(localStore['data']); });
@@ -456,7 +463,9 @@
             ;
 
             getData(url, buildContent);
+            
         }
+       
 
         function handleLogin(e) {
             e.preventDefault();
@@ -912,10 +921,15 @@
 
             
             $("#logMeOutBtn").click(function () {                                    
-                dataStorage.deleteFiles("creds.txt", "data.txt", function () {            
+                //dataStorage.deleteFiles("creds.txt", "data.txt", function () {            
                     $('#login').show();
                     $('#article_list').hide();
-                })
+                    creds = {};
+                    dataStorage.creds(creds);
+                    dataStorage.data({ Count: 0, data: [] });
+                    //window.clearInterval(refreshHandle);
+                    //dataStorage.resetFiles();
+                //})
             });
            
 
