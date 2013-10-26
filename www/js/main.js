@@ -501,7 +501,6 @@
 
 
                 dataStorage.creds(creds);
-
                 getData(url, buildContent);
             }
             else {
@@ -532,7 +531,15 @@
 						newUrl,
 						getDataChunk
 					)
-					.fail(function (jqXHR, status, err) { alert(status + ', ' + err); })
+					.fail(function (jqXHR, status, err) {
+					    alert("Invalid username and password");
+					    $('#login').show();
+					    $('#article_list').hide();
+					    creds = {};
+					    dataStorage.creds(creds);
+					    dataStorage.data({ Count: 0, data: [] });
+
+					})
 					.always(function () {
 
 					});
