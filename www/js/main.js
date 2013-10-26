@@ -532,6 +532,7 @@
 						getDataChunk
 					)
 					.fail(function (jqXHR, status, err) {
+					    $_loadingMsg.hide();
 					    alert("Invalid username and password");
 					    $('#login').show();
 					    $('#article_list').hide();
